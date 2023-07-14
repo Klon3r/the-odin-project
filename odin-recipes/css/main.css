@@ -23,7 +23,6 @@ li {
 a {
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
-  padding-left: 10px;
 }
 
 #info {
@@ -38,10 +37,13 @@ a {
   text-align: center;
 }
 
+/* link buttons */
 a.link {
   background-color: white;
   color: black;
-  border: 0;
+  border: 1px;
+  border-style:groove;
+  border-color: black;
   border-radius: 100px;
   box-sizing:border-box;
   cursor: pointer;
@@ -61,11 +63,14 @@ a.link:hover {
   color: white;
 }
 
+/* homepage buttons */
 a.homepage {
   align-items: center;
   background-color: white;
   color: black;
-  border: 0;
+  border: 1px;
+  border-style:groove;
+  border-color: black;
   border-radius: 100px;
   box-sizing:border-box;
   cursor: pointer;
@@ -73,6 +78,8 @@ a.homepage {
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   user-select: none;
   text-decoration: none;
   font-family: 'Courier New', Courier, monospace;
@@ -91,8 +98,5 @@ a.homepage:hover {
 
 img.food-img{
   width: 30%;
-}
-
-img.food-img:hover {
-  width: 35%;
+  min-width: 200px;
 }
