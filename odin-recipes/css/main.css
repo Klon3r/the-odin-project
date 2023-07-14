@@ -26,26 +26,34 @@ a {
   padding-left: 10px;
 }
 
+#info {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
 #buttons {
   text-align: center;
 }
 
 a.link {
-  align-items: center;
   background-color: white;
   color: black;
   border: 0;
   border-radius: 100px;
   box-sizing:border-box;
   cursor: pointer;
-  display: inline-flex;
+  display: inline-block;
   text-align: center;
   padding-left: 20px;
   padding-right: 20px;
-  user-select: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-decoration: none;
   font-family: 'Courier New', Courier, monospace;
-  width: 225px;
+  width: 230px;
 }
 
 a.link:hover {
