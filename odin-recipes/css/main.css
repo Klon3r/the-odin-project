@@ -7,6 +7,20 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+li {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+}
+
+a {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+}
+
 #buttons {
   text-align: center;
 }
@@ -32,4 +46,40 @@ a.link {
 a.link:hover {
   background-color: grey;
   color: white;
+}
+
+a.homepage {
+  align-items: center;
+  background-color: white;
+  color: black;
+  border: 0;
+  border-radius: 100px;
+  box-sizing:border-box;
+  cursor: pointer;
+  display: inline-flex;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  user-select: none;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  width:max-content;
+}
+
+a.homepage:hover {
+  background-color: grey;
+  color: white;
+}
+
+#homepage-button {
+  text-align: center;
+}
+
+
+img.food-img{
+  width: 30%;
+}
+
+img.food-img:hover {
+  width: 35%;
 }
