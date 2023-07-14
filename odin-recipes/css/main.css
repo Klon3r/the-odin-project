@@ -11,6 +11,10 @@ h2 {
   font-family: 'Courier New', Courier, monospace;
 }
 
+h4 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 li {
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
@@ -19,6 +23,7 @@ li {
 a {
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
+  padding-left: 10px;
 }
 
 #buttons {
