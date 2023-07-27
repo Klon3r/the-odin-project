@@ -89,5 +89,59 @@ button {
 
 /* section two - images */
 
+/* image one */
+.in-a-bag {
+  width: 200px;
+  height: 250px;
+  border-radius: 20%;
+}
+
+/* image two */
+.on-a-couch {
+  width: 200px;
+  height: 250px;
+  border-radius: 20%;
+}
+
+/* image three */
+.in-a-car {
+  width: 200px;
+  height: 250px;
+  border-radius: 20%;
+}
+
+/* image four */
+.running {
+  width: 200px;
+  height: 250px;
+  border-radius: 20%;
+}
+
+.img-text {
+  padding-top: 10px;
+  color: black;
+  width: 200px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.section-two-images {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+}
+
+.section-two {
+  background-color: lightsalmon;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+}
 
 /* section three - quote */
