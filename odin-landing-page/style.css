@@ -145,3 +145,29 @@ h3 {
 }
 
 /* section three - quote */
+
+.section-three {
+  background-color: lightseagreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 600px;
+}
+
+.source {
+  text-align: end;
+  padding-right: 15px;
+}
+
+/* section four */
+.section-four {
+  background-color: plum;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
