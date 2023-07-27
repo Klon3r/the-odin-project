@@ -7,28 +7,42 @@
   background-color: pink;
 } */
 
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  margin: 0;
+}
+
 /* section one */
 
 /* header */
 .section-one {
-  background-color: lightpink;
+  background-color: #cc99ff;
   padding-bottom: 50px;
+  flex: 1;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
   display: flex;
-  align-items: center;
-  background-color: lightpink;
   justify-content: space-between;
-  height: 100px;
-  
+  align-items: center;
+  height: 50px;  
+  width: 900px;
+
 }
 
 .header-logo {
   display: flex;
   font-size: 24px;
   color: #f9faf9;
-  padding-right: 100px;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -37,7 +51,7 @@ ul {
   display: flex;
   gap: 20px;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
+  font-size: 18px;
   
 }
 
@@ -46,36 +60,46 @@ a {
   color: #f9faf9;
 }
 
+a:hover {
+  color: black;
+}
+
 /* content */
 .content {
   display: flex;
-  background-color: lightpink;
   justify-content: center;
+
 }
 
 .main-text {
   display: flex;
   flex-direction: column;
   color: #f9faf9;
-  width: 490px
+  width: 490px;
+  padding-right: 20px;
 }
 
 h2 {
-  margin-bottom: 0;
+  margin-top: 20px;
   font-size: 48px;
-  font-weight: 1000;
+  font-weight: bolder;
 }
 
-p {
-  margin-top: 0;
+.main-text-text {
+  margin-top: 5px;
   margin-bottom: 0;
   font-size: 18px;
   color: #E5E7EB;
 }
 
 button {
-  width: 80px;
+  margin-top: 45px;
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
 }
+
 
 .main-image-container {
   display: flex;
@@ -84,33 +108,15 @@ button {
 .main-image {
   width: 400px;
   height: 300px;
+  margin-top: 25px;
   border-radius: 10%;
 }
 
 /* section two - images */
 
-/* image one */
-.in-a-bag {
-  width: 200px;
-  height: 250px;
-  border-radius: 20%;
-}
-
-/* image two */
-.on-a-couch {
-  width: 200px;
-  height: 250px;
-  border-radius: 20%;
-}
-
-/* image three */
-.in-a-car {
-  width: 200px;
-  height: 250px;
-  border-radius: 20%;
-}
-
-/* image four */
+.in-a-bag,
+.on-a-couch,
+.in-a-car,
 .running {
   width: 200px;
   height: 250px;
@@ -122,7 +128,7 @@ button {
   color: black;
   width: 200px;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
 }
 
 .section-two-images {
@@ -133,21 +139,23 @@ button {
 }
 
 .section-two {
-  background-color: lightsalmon;
+  background-color: white;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 h3 {
   text-align: center;
   margin-top: 0px;
   padding-top: 10px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 /* section three - quote */
 
 .section-three {
-  background-color: lightseagreen;
+  background-color: #e6ccff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,19 +163,56 @@ h3 {
 
 .quote {
   padding-top: 25px;
-  padding-bottom: 25px;
-  width: 600px;
+  padding-bottom: 10px;
+  width: 900px;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 26px;
 }
 
 .source {
   text-align: end;
   padding-right: 15px;
+  font-weight: bold;
 }
 
 /* section four */
 .section-four {
-  background-color: plum;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+}
+
+.section-four-container {
+  background-color: #cc99ff;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 900px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+h4 {
+  font-weight: bold;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+.sign-up {
+  padding-left: 20px;
+  padding-bottom: 15px;
+}
+
+.sign-up-text-p {
+  font-size: 15px;
+  margin-top: 5px;
+}
+/* footer */
+.footer {
+  display: flex;
+  background-color: #cc99ff;
+  justify-content: center;
 }
