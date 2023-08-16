@@ -5,27 +5,24 @@
 const choices =['Rock','Paper','Scissors']
 let win = 0;
 let lose = 0;
-let result;
-let playerChoice;
-let computerChoice;
-
 function getComputerChoice() {
   /* Get the computers choice of rock, paper or scissors */
   
   let randomNum = Math.floor(Math.random() * 3); // random number (0-2)
-  computerChoice = choices[randomNum];
+  let computerChoice = choices[randomNum];
   return computerChoice;
 }
 
 function getPlayerChoice() {
   /* get the player choice via input */
   while (true){
-    let playerChoiceInput = prompt("Enter a Number 1-3\n1: Rock\n2: Paper\n3: Scissors\n0:Exit");
+    let playerChoiceInput = prompt("Enter a Number 1-3\n1: Rock\n2: Paper\n3: Scissors");
     
     // check to see if 0-1
     if (playerChoiceInput == 1 || playerChoiceInput == 2 || playerChoiceInput == 3) {
       //getPlayerChoice(playerChoiceInput-1);
-      playerChoice = choices[playerChoiceInput - 1]
+      let playerChoice = choices[playerChoiceInput - 1]
+      //console.log("Player choice:", playerChoice); //for debugging
       return playerChoice
     } 
   }
@@ -33,6 +30,8 @@ function getPlayerChoice() {
 
 function playRound(computerChoice, playerChoice) {
   /* play a round and print out the winner */
+
+  let result;
 
   //rock
   if(playerChoice == 'Rock') {
@@ -79,12 +78,18 @@ function playRound(computerChoice, playerChoice) {
 }
 
 function playGame(){
+  /* play 5 rounds of rock, paper, scissors */
+
+  //clear prev results
+  win = 0;
+  lose = 0;
+
   for (let i = 1; i <= 5; i++) {
-    playRound(getComputerChoice(), getPlayerChoice())
-    if(result == "win") {
-      win = win + 1;
-    } else if (result == "lose") {
-      lose = lose + 1
+    const roundResult = playRound(getComputerChoice(), getPlayerChoice())
+    if(roundResult == "win") {
+      win++;
+    } else if (roundResult == "lose") {
+      lose++;
     }
   }
   console.log("Wins: " + win);
@@ -93,6 +98,5 @@ function playGame(){
     console.log("You beat the computer!\nYou won " + win + " games")
   } else {
     console.log("You lost to the computer!\nYou lost " + lose + " games")
-  }
-  
+  } 
 }
