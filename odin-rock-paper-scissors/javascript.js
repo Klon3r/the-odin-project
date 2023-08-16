@@ -1,102 +1,64 @@
-//----------------------
-// Rock Paper Scissors
-//----------------------
-
 const choices =['Rock','Paper','Scissors']
-let win = 0;
-let lose = 0;
+let playerWins = 0;
+let computerWins = 0;
+
 function getComputerChoice() {
-  /* Get the computers choice of rock, paper or scissors */
-  
-  let randomNum = Math.floor(Math.random() * 3); // random number (0-2)
+  let randomNum = Math.floor(Math.random() * 3); // random number 0 - 2
   let computerChoice = choices[randomNum];
   return computerChoice;
 }
 
 function getPlayerChoice() {
-  /* get the player choice via input */
   while (true){
     let playerChoiceInput = prompt("Enter a Number 1-3\n1: Rock\n2: Paper\n3: Scissors");
-    
-    // check to see if 0-1
     if (playerChoiceInput == 1 || playerChoiceInput == 2 || playerChoiceInput == 3) {
-      //getPlayerChoice(playerChoiceInput-1);
       let playerChoice = choices[playerChoiceInput - 1]
-      //console.log("Player choice:", playerChoice); //for debugging
       return playerChoice
     } 
   }
 }
 
 function playRound(computerChoice, playerChoice) {
-  /* play a round and print out the winner */
-
   let result;
-
-  //rock
-  if(playerChoice == 'Rock') {
-    if (computerChoice == 'Rock') {
-      console.log("You tied!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-      result = "tie"
-    } else if (computerChoice == 'Paper'){
-      console.log("You lose!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-      result = "lose"
-    } else if (computerChoice == 'Scissors'){
-      console.log("You Win!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-      result = "win"
-    }
-  }
-
-  //paper
-  if(playerChoice == 'Paper') {
-    if (computerChoice == 'Paper') {
-      console.log("You tied!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-      result = "tie"
-    } else if (computerChoice == 'Scissors'){
-      console.log("You lose!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-      result = "lose"
-    } else if (computerChoice == 'Rock'){
-      console.log("You Win!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-      result = "win"
-    }
-  }
-
-  //scissors
-    if(playerChoice == 'Scissors') {
-      if (computerChoice == 'Scissors') {
-        console.log("You tied!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-        result = "tie"
-      } else if (computerChoice == 'Rock'){
-        console.log("You lose!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
-        result = "lose"
-      } else if (computerChoice == 'Paper'){
+  // win
+  if (playerChoice == 'Rock' && computerChoice == 'Scissors' ||
+      playerChoice == 'Paper' && computerChoice == 'Rock' ||
+      playerChoice == 'Scissors' && computerChoice == 'Paper') {
         console.log("You Win!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
         result = "win"
       }
+  // lose
+  else if (playerChoice == 'Rock' && computerChoice == 'Paper' ||
+      playerChoice == 'Paper' && computerChoice == 'Scissors' ||
+      playerChoice == 'Scissors' && computerChoice == 'Rock') {
+        console.log("You lose!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
+        result = "lose"
+      }
+  // tie
+  else if (playerChoice == computerChoice) {
+      console.log("You tied!\n" + "You: " + playerChoice + " vs CPU: " + computerChoice);
+      result = "tie"
     }
-    return result
+
+  return result
 }
 
 function playGame(){
-  /* play 5 rounds of rock, paper, scissors */
-
-  //clear prev results
   win = 0;
   lose = 0;
 
   for (let i = 1; i <= 5; i++) {
     const roundResult = playRound(getComputerChoice(), getPlayerChoice())
     if(roundResult == "win") {
-      win++;
+      playerWins++;
     } else if (roundResult == "lose") {
-      lose++;
+      computerWins++;
     }
   }
-  console.log("Wins: " + win);
-  console.log("Loses: " + lose);
+  console.log("Wins: " + playerWins + "\nLoses: " + computerWins);
   if (win > lose) {
-    console.log("You beat the computer!\nYou won " + win + " games")
+    console.log("You beat the computer!\nYou won " + playerWins + " games")
   } else {
-    console.log("You lost to the computer!\nYou lost " + lose + " games")
+    console.log("You lost to the computer!\nYou lost " + computerWins + " games")
   } 
 }
