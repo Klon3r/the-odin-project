@@ -1,4 +1,5 @@
 const choices =['Rock','Paper','Scissors']
+const display = document.getElementById("display");
 let playerWins = 0;
 let computerWins = 0;
 
@@ -43,22 +44,24 @@ function playRound(computerChoice, playerChoice) {
   return result
 }
 
-function playGame(){
-  win = 0;
-  lose = 0;
 
-  for (let i = 1; i <= 5; i++) {
-    const roundResult = playRound(getComputerChoice(), getPlayerChoice())
-    if(roundResult == "win") {
-      playerWins++;
-    } else if (roundResult == "lose") {
-      computerWins++;
-    }
-  }
-  console.log("Wins: " + playerWins + "\nLoses: " + computerWins);
-  if (win > lose) {
-    console.log("You beat the computer!\nYou won " + playerWins + " games")
-  } else {
-    console.log("You lost to the computer!\nYou lost " + computerWins + " games")
-  } 
-}
+
+// function playGame(){
+//   win = 0;
+//   lose = 0;
+
+//   for (let i = 1; i <= 5; i++) {
+//     const roundResult = playRound(getComputerChoice(), getPlayerChoice())
+//     if(roundResult == "win") {
+//       playerWins++;
+//     } else if (roundResult == "lose") {
+//       computerWins++;
+//     }
+//   }
+//   console.log("Wins: " + playerWins + "\nLoses: " + computerWins);
+//   if (win > lose) {
+//     console.log("You beat the computer!\nYou won " + playerWins + " games")
+//   } else {
+//     console.log("You lost to the computer!\nYou lost " + computerWins + " games")
+//   } 
+// }

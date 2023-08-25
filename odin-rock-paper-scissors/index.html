@@ -8,12 +8,18 @@
   <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <h1>Rock Paper Scissors</h1>
-  <p>This game will be played via the console <strong>F12</strong></p>
-  <h4>Commands:<h4></h4>
-  <ul>
-    <li>playGame()</li>
-  </ul>
+  <div class="main">
+    <h1>Rock Paper Scissors</h1>
+    <div class="display-window">
+      <p id="display"></p>
+    </div>
+    <div class="button-div">
+      <br>
+      <button onclick="playRound(getComputerChoice(), 'Rock')">Rock</button>
+      <button onclick="playRound(getComputerChoice(), 'Paper')">Paper</button>
+      <button onclick="playRound(getComputerChoice(), 'Scissors')">Scissors</button>
+    </div>
+  </div>
   
 </body>
 </html>
