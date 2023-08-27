@@ -1,0 +1,13 @@
+#display {
+  border: 1px solid black;
+  display: flex;
+  justify-content: start;
+  flex-wrap:wrap;
+  flex-direction: row;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.grid {
+  border: 1px solid black;
+}
