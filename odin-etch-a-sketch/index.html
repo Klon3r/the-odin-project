@@ -8,7 +8,23 @@
   <title>Etch-A-Sketch</title>
 </head>
 <body>
-  <button onclick=createGrid(16)>CREATE GRID</button>
-  <div id="display"></div>
+  <div id="title"><h1>Etch-A-Sketch</h1></div>
+  <div id="content">
+
+    <div id="slidercontainer">
+      <input type="range" min="2" max="50" value="16" class="slider" id="gridSlider">
+      <p id="gridSliderOutput"></p>
+    </div>
+
+    <div id="display"></div>
+    <div id="buttons">
+      <button onclick=createGrid(16)>CREATE GRID</button>
+      <br>
+      <input type="color" id="colorChoice">
+    </div>
+
+  </div>
+
+  
 </body>
 </html>
