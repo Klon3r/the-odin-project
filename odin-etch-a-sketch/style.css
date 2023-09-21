@@ -1,12 +1,14 @@
 #display {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-wrap:wrap;
   flex-direction: row;
-  width: 400px;
-  height: 400px;
+  width: 602px;
+  height: 602px;
   margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #title {
@@ -28,6 +30,7 @@
 
 .grid {
   border: 1px solid black;
+  box-sizing: border-box;
   /* stop dragging */
   -webkit-user-drag: none;
   user-select: none;
@@ -78,6 +81,9 @@
   cursor: pointer;
 }
 
-
+#sliderValue {
+  display: flex;
+  justify-content: center;
+}
 
 
