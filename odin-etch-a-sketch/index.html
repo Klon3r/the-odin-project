@@ -11,18 +11,41 @@
   <div id="title"><h1>Etch-A-Sketch</h1></div>
   <div id="content">
 
-    <div id="slidercontainer">
-      <input type="range" min="2" max="28" value="16" class="slider" id="gridSlider">
-    </div>
-    <div id="sliderValue"><h3>Grid Size:</h3> <h3 id="gridSliderOutput"></h3></div>
     
-
-    <div id="display"></div>
+    
+    
+    
+    <!-- button container  -->
+  <div id="container">
     <div id="buttons">
-      <button onclick=createGrid(16)>CREATE GRID</button>
+      <div id="colorChoiceBoxes">
+        <h3>Color: </h3><input type="color" id="colorChoice">
+      </div>
       <br>
-      <input type="color" id="colorChoice">
+      <div id="sliderValue"><h3>Grid Size:</h3><h3 id="gridSliderOutput"></h3></div>
+      <div id="slidercontainer">
+        <input type="range" min="2" max="28" value="16" class="slider" id="gridSlider">
+      </div>
+      <div id="clear-button">
+        <button onclick="clearGrid()">RESET</button>
+      </div>
     </div>
+
+    <!-- grid -->
+    <div id="grid-container">
+      <div id="display"></div>
+    </div>
+
+  </div>
+
+  </div>
+
+  <!-- footer -->
+  <div id="footer">
+    <p class="footer-text">TerminalKlone</p>
+    <a href="https://github.com/TerminalKlone">
+      <img src="./img/github-black.svg" alt="github icon" href="https://github.com/TerminalKlone">
+    </a>
 
   </div>
 
