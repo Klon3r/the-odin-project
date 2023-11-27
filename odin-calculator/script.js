@@ -1,13 +1,14 @@
-const calculatorDisplay = document.getElementById("calc-body")
+const calculatorDisplay = document.getElementById("calc-body");
 const calculatorDisplayWidth = calculatorDisplay.clientWidth;
 
-const numberButtonDisplay = document.getElementById("number-buttons")
+const numberButtonDisplay = document.getElementById("number-buttons");
+const operatorButtonDisplay = document.getElementById("operator-buttons");
 const textDisplay = document.getElementById("text-display");
 
 // Create buttons 1 - 9
 function createNumberButtons() {
   // Set the width/height based on the numberButtonsDisplay
-  const buttonWidth = Math.floor(calculatorDisplayWidth / 3);
+  const buttonWidth = Math.floor(calculatorDisplayWidth / 4);
 
   for( let i = 1; i <= 9; i++){
     // Create button
@@ -23,5 +24,30 @@ function createNumberButtons() {
   }
 }
 
+// Create operator buttons
+function createOpereratorButtons() {
+  // Create an array of operators;
+  let operators = ["C"];
+
+  for (let i = 0; i < operators.length; i++){
+    // Create buttons
+    let operatorButton = document.createElement("button");
+    operatorButton.innerText = operators[i];
+
+    // Add button to screen
+    operatorButtonDisplay.appendChild(operatorButton);
+
+    operatorButton.addEventListener("click", function() { operatorChecker(operatorButton.innerText) })
+  }
+}
+
+// Operator Checker
+function operatorChecker(operator) {
+  if (operator === "C") {
+    // Clear display
+    textDisplay.innerText = "";
+  }
+};
 
 createNumberButtons();
+createOpereratorButtons();
