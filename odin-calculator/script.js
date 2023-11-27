@@ -10,18 +10,47 @@ function createNumberButtons() {
   // Set the width/height based on the numberButtonsDisplay
   const buttonWidth = Math.floor(calculatorDisplayWidth / 4);
 
-  for( let i = 1; i <= 9; i++){
-    // Create button
-    let numberButton = document.createElement("button");
-    numberButton.innerText = i;
-    numberButton.style.width = buttonWidth + "px";
-    numberButton.style.height = "60px"
+  // ONE TO NINE
+  for( let row = 0; row < 3; row++){
+    for( let col = 0; col < 3; col++){
+      // Calculate the digit
+      let digit = 7 - row * 3 + col;
 
-    // Add button to the screen
-    numberButtonDisplay.appendChild(numberButton)
+      // Create button
+      let numberButton = document.createElement("button");
+      numberButton.innerText = digit;
+      numberButton.style.width = buttonWidth + "px";
+      numberButton.style.height = "60px"
 
-    numberButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
+
+      // Add button to the screen
+      numberButtonDisplay.appendChild(numberButton)
+
+      numberButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
+    }
   }
+
+  // ZERO
+  let zeroButton = document.createElement("button");
+  zeroButton.innerText = 0;
+  zeroButton.style.width = (buttonWidth * 2)+ "px";
+  zeroButton.style.height = "60px"
+  // Add button to the screen
+  numberButtonDisplay.appendChild(zeroButton)
+
+  zeroButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
+
+  // DECIMAL
+  let decimalButton = document.createElement("button");
+  decimalButton.innerText = ".";
+  decimalButton.style.width = buttonWidth + "px";
+  decimalButton.style.height = "60px"
+  // Add button to the screen
+  numberButtonDisplay.appendChild(decimalButton)
+
+  decimalButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
+
+
 }
 
 // Create operator buttons
@@ -91,8 +120,8 @@ function operate() {
   }
 
   // Convert string to int
-  firstNumber = parseInt(firstNumber);
-  secondNumber = parseInt(secondNumber);
+  firstNumber = parseFloat(firstNumber);
+  secondNumber = parseFloat(secondNumber);
 
   // Do operator function
   if(operator === "add"){
