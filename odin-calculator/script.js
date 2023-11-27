@@ -27,27 +27,35 @@ function createNumberButtons() {
 // Create operator buttons
 function createOpereratorButtons() {
   // Create an array of operators;
-  let operators = ["C"];
+  let operators = ["C", "+", "="];
 
   for (let i = 0; i < operators.length; i++){
     // Create buttons
     let operatorButton = document.createElement("button");
     operatorButton.innerText = operators[i];
+    operatorButton.style.width = "60px";
+    operatorButton.style.height = "60px";
 
     // Add button to screen
     operatorButtonDisplay.appendChild(operatorButton);
 
-    operatorButton.addEventListener("click", function() { operatorChecker(operatorButton.innerText) })
+    // Eventlisteners based on what the button is
+    if(operatorButton.innerText === "C"){
+      operatorButton.addEventListener("click", function() { clearDisplay() })
+    } else {
+      operatorButton.addEventListener("click", function() { textDisplay.innerText += operatorButton.innerText })
+
+    }
+
+
+
   }
 }
 
-// Operator Checker
-function operatorChecker(operator) {
-  if (operator === "C") {
-    // Clear display
-    textDisplay.innerText = "";
-  }
-};
+// Clear the text display
+function clearDisplay(){
+  textDisplay.innerText = "";
+}
 
 createNumberButtons();
 createOpereratorButtons();
