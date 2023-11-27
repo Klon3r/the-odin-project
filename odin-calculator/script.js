@@ -4,11 +4,13 @@ const calculatorDisplayWidth = calculatorDisplay.clientWidth;
 const numberButtonDisplay = document.getElementById("number-buttons");
 const operatorButtonDisplay = document.getElementById("operator-buttons");
 const textDisplay = document.getElementById("text-display");
+const textHistory = document.getElementById("text-history");
 
 let firstNumber;
 let secondNumber;
 let result;
 let operator;
+let checker = true;
 
 // Create buttons 1 - 9
 function createNumberButtons() {
@@ -30,8 +32,9 @@ function createNumberButtons() {
 
       // Add button to the screen
       numberButtonDisplay.appendChild(numberButton)
-
+      
       numberButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
+      numberButton.addEventListener("click", function() {textHistory.innerText += numberButton.innerText})
     }
   }
 
@@ -54,8 +57,6 @@ function createNumberButtons() {
   numberButtonDisplay.appendChild(decimalButton)
 
   decimalButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
-
-
 }
 
 // Create operator buttons
@@ -91,24 +92,33 @@ function createOpereratorButtons() {
 // Clear the text display
 function clearDisplay(){
   textDisplay.innerText = "";
+  textHistory.innerText = "";
 }
 
 // Operate the equation
 function operate() {
   secondNumber = parseFloat(textDisplay.innerText);
+  textHistory.innerText += "=";
 
   if(operator === "+"){
     result = addResult(firstNumber, secondNumber);
     textDisplay.innerText = result;
+    textHistory.innerText += result;
+    checker=true;
   }
   
 }
 
 function add(){
-  // Store number
-  firstNumber = parseFloat(textDisplay.innerText);
-  operator = "+"
-  textDisplay.innerText = ""
+  // Add a checker to see if add was pressed last
+  if(checker){
+    // Store number
+    firstNumber = parseFloat(textDisplay.innerText);
+    operator = "+";
+    textDisplay.innerText = "";
+    textHistory.innerText += "+";
+  }
+  checker = false;
 }
 
 function addResult(a, b){ return a + b };
