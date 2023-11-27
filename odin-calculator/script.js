@@ -5,6 +5,11 @@ const numberButtonDisplay = document.getElementById("number-buttons");
 const operatorButtonDisplay = document.getElementById("operator-buttons");
 const textDisplay = document.getElementById("text-display");
 
+let firstNumber;
+let secondNumber;
+let result;
+let operator;
+
 // Create buttons 1 - 9
 function createNumberButtons() {
   // Set the width/height based on the numberButtonsDisplay
@@ -68,14 +73,17 @@ function createOpereratorButtons() {
     // Add button to screen
     operatorButtonDisplay.appendChild(operatorButton);
 
+    // CANCEL
     if(operatorButton.innerText === "C"){
-      // Cancel
       operatorButton.addEventListener("click", function() { clearDisplay() })
-    } else if(operatorButton.innerText === "=") {
-      // Equals
+    } 
+    // EQUALS
+    if(operatorButton.innerText === "=") {
       operatorButton.addEventListener("click", function() { operate() })
-    } else {
-      operatorButton.addEventListener("click", function() { textDisplay.innerText += operatorButton.innerText })
+    } 
+    // ADD
+    if (operatorButton.innerText === "+"){
+      operatorButton.addEventListener("click", function() { add() })
     }
   }
 }
@@ -87,52 +95,25 @@ function clearDisplay(){
 
 // Operate the equation
 function operate() {
-  let text = textDisplay.innerText;
-  let textSplit = text.split("");
-  console.log(textSplit);
+  secondNumber = parseFloat(textDisplay.innerText);
 
-  let firstNumber = "";
-  let secondNumber = "";
-  let checker = false;
-  let operator;
-
-  // Go through the array and calculate the numbers
-  for (let i = 0; i < textSplit.length; i++) {
-    // If operator is first give an error
-    if(textSplit[0] === "+"){
-      textDisplay.innerText = "ERROR"
-      break;
-    }     
-    
-    // Check for operator
-    if(textSplit[i] === "+"){
-      operator = "add";
-      checker = true;
-      continue;
-    }
-
-    // Add to first or second number  
-    if(checker === false) {
-      firstNumber = firstNumber + textSplit[i];
-    } else {
-      secondNumber += textSplit[i];
-    }
+  if(operator === "+"){
+    result = addResult(firstNumber, secondNumber);
+    textDisplay.innerText = result;
   }
-
-  // Convert string to int
-  firstNumber = parseFloat(firstNumber);
-  secondNumber = parseFloat(secondNumber);
-
-  // Do operator function
-  if(operator === "add"){
-    textDisplay.innerText = add(firstNumber, secondNumber);
-  }
-
-  console.log("First Number = " + firstNumber);
-  console.log("Second Number = " + secondNumber);
+  
 }
 
-function add(a, b){return a + b};
+function add(){
+  // Store number
+  firstNumber = parseFloat(textDisplay.innerText);
+  operator = "+"
+  textDisplay.innerText = ""
+}
+
+function addResult(a, b){ return a + b };
+
+// function add(a, b){return a + b};
 
 createNumberButtons();
 createOpereratorButtons();
