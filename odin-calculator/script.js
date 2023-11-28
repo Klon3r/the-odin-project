@@ -170,6 +170,7 @@ function operate() {
       checker = true;
       textHistory.innerText = "";
       zeroError = true;
+      operator = "";
 
     } else {
       result = divideResults(firstNumber, secondNumber);
@@ -183,18 +184,18 @@ function operate() {
 }
 
 function add(){
-  if(checker){
+  if(checker && textDisplay.innerText != ""){
     // Store number
     firstNumber = parseFloat(textDisplay.innerText);
     operator = "+";
     textDisplay.innerText = "";
     textHistory.innerText += "+";
+    checker = false;
   }
-  checker = false;
 }
 
 function subtract(){
-  if(checker){
+  if(checker && textDisplay.innerText != ""){
     // Store number
     firstNumber = parseFloat(textDisplay.innerText);
     operator = "-";
@@ -205,7 +206,7 @@ function subtract(){
 }
 
 function multiply(){
-  if(checker) {
+  if(checker && textDisplay.innerText != "") {
     //Store number
     firstNumber = parseFloat(textDisplay.innerText);
     operator = "*";
@@ -216,7 +217,7 @@ function multiply(){
 }
 
 function divide() {
-  if(checker) {
+  if(checker && textDisplay.innerText != "") {
     firstNumber = parseFloat(textDisplay.innerText);
     operator = "/";
     textDisplay.innerText = "";
