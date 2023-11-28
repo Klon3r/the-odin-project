@@ -11,6 +11,7 @@ let secondNumber;
 let result;
 let operator;
 let checker = true;
+let zeroError = false;
 
 function createNumberButtons() {
   const buttonWidth = Math.floor(calculatorDisplayWidth / 4);
@@ -28,6 +29,7 @@ function createNumberButtons() {
 
       numberButtonDisplay.appendChild(numberButton)
       
+      numberButton.addEventListener("click", function() {clearZero()})
       numberButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
       numberButton.addEventListener("click", function() {textHistory.innerText += numberButton.innerText})
     }
@@ -41,7 +43,9 @@ function createNumberButtons() {
 
   numberButtonDisplay.appendChild(zeroButton)
 
+  zeroButton.addEventListener("click", function() {clearZero()})
   zeroButton.addEventListener("click", function() {textDisplay.innerText += zeroButton.innerText})
+  zeroButton.addEventListener("click", function() {textHistory.innerText += zeroButton.innerText})
 
   // DECIMAL
   let decimalButton = document.createElement("button");
@@ -51,7 +55,9 @@ function createNumberButtons() {
 
   numberButtonDisplay.appendChild(decimalButton)
 
+  decimalButton.addEventListener("click", function() {clearZero()})
   decimalButton.addEventListener("click", function() {textDisplay.innerText += decimalButton.innerText})
+  decimalButton.addEventListener("click", function() {textHistory.innerText += decimalButton.innerText})
 }
 
 function createOpereratorButtons() {
@@ -76,6 +82,10 @@ function createOpereratorButtons() {
     // MULTIPLY
     if (operatorButton.innerText === "*") {
       operatorButton.addEventListener("click", function() { multiply() });
+    }
+    //DIVIDE
+    if (operatorButton.innerText === "/") {
+      operatorButton.addEventListener("click", function() { divide() });
     }
   }
 }
@@ -115,6 +125,14 @@ function clearDisplay(){
   checker = true;
 }
 
+function clearZero(){
+  if(zeroError === true) {
+    textDisplay.innerText = "";
+    textHistory.innerText = "";
+  }
+  zeroError = flase;
+}
+
 function operate() {
   // NOT NULL
   if(!operator == ""){
@@ -144,6 +162,22 @@ function operate() {
     textHistory.innerText += result;
     checker = true;
     operator = "";
+  }
+  // DIVIDE
+  if(operator === "/") {
+    if(secondNumber === 0){
+      textDisplay.innerText = "You can't divide by 0";
+      checker = true;
+      textHistory.innerText = "";
+      zeroError = true;
+
+    } else {
+      result = divideResults(firstNumber, secondNumber);
+      textDisplay.innerText = result;
+      textHistory.innerText += result;
+      checker = true;
+      operator = "";
+    }
   }
   
 }
@@ -181,10 +215,19 @@ function multiply(){
   checker = false;
 }
 
+function divide() {
+  if(checker) {
+    firstNumber = parseFloat(textDisplay.innerText);
+    operator = "/";
+    textDisplay.innerText = "";
+    textHistory.innerText += "/"
+  }
+}
 
 function addResult(a, b){ return a + b };
 function subtractResult(a,b) { return a - b };
 function multiplyResult(a,b) { return a * b };
+function divideResults(a,b) { return a / b };
 
 createNumberButtons();
 createOpereratorButtons();
