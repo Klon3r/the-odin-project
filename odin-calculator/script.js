@@ -17,8 +17,6 @@ let checker = true;
 let zeroError = false;
 
 function createNumberButtons() {
-  
-
   // ONE TO NINE
   for( let row = 0; row < 3; row++){
     for( let col = 0; col < 3; col++){
@@ -64,7 +62,7 @@ function createNumberButtons() {
 }
 
 function createOpereratorButtons() {
-  let operators = ["+","-","*","/"];
+  let operators = ["+","-","*","="];
 
   for (let i = 0; i < operators.length; i++){
     let operatorButton = document.createElement("button");
@@ -86,15 +84,16 @@ function createOpereratorButtons() {
     if (operatorButton.innerText === "*") {
       operatorButton.addEventListener("click", function() { multiply() });
     }
-    //DIVIDE
-    if (operatorButton.innerText === "/") {
-      operatorButton.addEventListener("click", function() { divide() });
-    }
+    // EQUALS
+    if(operatorButton.innerText === "=") {
+      operatorButton.addEventListener("click", function() { operate() });
+    } 
+
   }
 }
 
 function createMiscButtons() {
-  let misc = ["C","←","+/-","="]
+  let misc = ["C","←","+/-","/"]
 
   for (let i = 0; i < misc.length; i++) {
     let miscButton = document.createElement("button");
@@ -108,10 +107,15 @@ function createMiscButtons() {
     if(miscButton.innerText === "C"){
       miscButton.addEventListener("click", function() { clearDisplay() });
     } 
-    // EQUALS
-    if(miscButton.innerText === "=") {
-      miscButton.addEventListener("click", function() { operate() });
-    } 
+    //DIVIDE
+    if (miscButton.innerText === "/") {
+      miscButton.addEventListener("click", function() { divide() });
+    }
+    // BACKSPACE
+    if (miscButton.innerText === "←") {
+      miscButton.addEventListener("click", function() { backspace() });
+
+    }
 
 
   }
@@ -133,7 +137,17 @@ function clearZero(){
     textDisplay.innerText = "";
     textHistory.innerText = "";
   }
-  zeroError = flase;
+  zeroError = false;
+}
+
+function backspace(){
+  let array = textDisplay.innerText.split("");
+  let arrayHistory = textHistory.innerText.split("");
+  array.pop();
+  arrayHistory.pop();
+  textDisplay.innerText = array.join("");
+  textHistory.innerText = arrayHistory.join("");
+
 }
 
 function operate() {
