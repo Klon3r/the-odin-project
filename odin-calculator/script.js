@@ -1,6 +1,7 @@
 const calculatorDisplay = document.getElementById("calc-body");
 const calculatorDisplayWidth = calculatorDisplay.clientWidth;
 const numberButtonDisplay = document.getElementById("number-buttons");
+const miscButtonDisplay = document.getElementById("misc-buttons")
 const operatorButtonDisplay = document.getElementById("operator-buttons");
 const textDisplay = document.getElementById("text-display");
 const textHistory = document.getElementById("text-history");
@@ -54,7 +55,7 @@ function createNumberButtons() {
 }
 
 function createOpereratorButtons() {
-  let operators = ["C", "+","-","="];
+  let operators = ["+","-","*","/"];
 
   for (let i = 0; i < operators.length; i++){
     let operatorButton = document.createElement("button");
@@ -64,14 +65,6 @@ function createOpereratorButtons() {
 
     operatorButtonDisplay.appendChild(operatorButton);
 
-    // CANCEL
-    if(operatorButton.innerText === "C"){
-      operatorButton.addEventListener("click", function() { clearDisplay() })
-    } 
-    // EQUALS
-    if(operatorButton.innerText === "=") {
-      operatorButton.addEventListener("click", function() { operate() })
-    } 
     // ADD
     if (operatorButton.innerText === "+"){
       operatorButton.addEventListener("click", function() { add() })
@@ -80,6 +73,30 @@ function createOpereratorButtons() {
     if (operatorButton.innerText === "-"){
       operatorButton.addEventListener("click", function() { subtract() })
     }
+  }
+}
+
+function createMiscButtons() {
+  let misc = ["C","="]
+
+  for (let i = 0; i < misc.length; i++) {
+    let miscButton = document.createElement("button");
+    miscButton.innerText = misc[i];
+    miscButton.style.width = "120px";
+    miscButton.style.height = "60px";
+
+    miscButtonDisplay.appendChild(miscButton);
+
+    // CANCEL
+    if(miscButton.innerText === "C"){
+      miscButton.addEventListener("click", function() { clearDisplay() })
+    } 
+    // EQUALS
+    if(miscButton.innerText === "=") {
+      miscButton.addEventListener("click", function() { operate() })
+    } 
+
+
   }
 }
 
@@ -146,3 +163,4 @@ function subtractResult(a,b) { return a - b};
 
 createNumberButtons();
 createOpereratorButtons();
+createMiscButtons();
