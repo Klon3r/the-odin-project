@@ -67,11 +67,15 @@ function createOpereratorButtons() {
 
     // ADD
     if (operatorButton.innerText === "+"){
-      operatorButton.addEventListener("click", function() { add() })
+      operatorButton.addEventListener("click", function() { add() });
     }
     // SUBTRACT
     if (operatorButton.innerText === "-"){
-      operatorButton.addEventListener("click", function() { subtract() })
+      operatorButton.addEventListener("click", function() { subtract() });
+    }
+    // MULTIPLY
+    if (operatorButton.innerText === "*") {
+      operatorButton.addEventListener("click", function() { multiply() });
     }
   }
 }
@@ -89,11 +93,11 @@ function createMiscButtons() {
 
     // CANCEL
     if(miscButton.innerText === "C"){
-      miscButton.addEventListener("click", function() { clearDisplay() })
+      miscButton.addEventListener("click", function() { clearDisplay() });
     } 
     // EQUALS
     if(miscButton.innerText === "=") {
-      miscButton.addEventListener("click", function() { operate() })
+      miscButton.addEventListener("click", function() { operate() });
     } 
 
 
@@ -133,6 +137,14 @@ function operate() {
     checker=true;
     operator = "";
   }
+  // MULTIPLY
+  if(operator === "*"){
+    result = multiplyResult(firstNumber,secondNumber);
+    textDisplay.innerText = result;
+    textHistory.innerText += result;
+    checker = true;
+    operator = "";
+  }
   
 }
 
@@ -158,8 +170,21 @@ function subtract(){
   checker = false;
 }
 
+function multiply(){
+  if(checker) {
+    //Store number
+    firstNumber = parseFloat(textDisplay.innerText);
+    operator = "*";
+    textDisplay.innerText = "";
+    textHistory.innerText += "*";
+  }
+  checker = false;
+}
+
+
 function addResult(a, b){ return a + b };
-function subtractResult(a,b) { return a - b};
+function subtractResult(a,b) { return a - b };
+function multiplyResult(a,b) { return a * b };
 
 createNumberButtons();
 createOpereratorButtons();
