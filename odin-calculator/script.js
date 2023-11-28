@@ -142,11 +142,13 @@ function clearZero(){
 
 function backspace(){
   let array = textDisplay.innerText.split("");
-  let arrayHistory = textHistory.innerText.split("");
-  array.pop();
-  arrayHistory.pop();
-  textDisplay.innerText = array.join("");
-  textHistory.innerText = arrayHistory.join("");
+  if(array.length >= 1) {
+    let arrayHistory = textHistory.innerText.split("");
+    array.pop();
+    arrayHistory.pop();
+    textDisplay.innerText = array.join("");
+    textHistory.innerText = arrayHistory.join("");
+  }
 
 }
 
