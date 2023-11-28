@@ -6,6 +6,9 @@ const operatorButtonDisplay = document.getElementById("operator-buttons");
 const textDisplay = document.getElementById("text-display");
 const textHistory = document.getElementById("text-history");
 
+const buttonWidth = Math.floor(calculatorDisplayWidth / 4);
+const miscbuttonWidth = Math.floor(calculatorDisplayWidth / 4);
+
 let firstNumber;
 let secondNumber;
 let result;
@@ -14,7 +17,7 @@ let checker = true;
 let zeroError = false;
 
 function createNumberButtons() {
-  const buttonWidth = Math.floor(calculatorDisplayWidth / 4);
+  
 
   // ONE TO NINE
   for( let row = 0; row < 3; row++){
@@ -66,7 +69,7 @@ function createOpereratorButtons() {
   for (let i = 0; i < operators.length; i++){
     let operatorButton = document.createElement("button");
     operatorButton.innerText = operators[i];
-    operatorButton.style.width = "60px";
+    operatorButton.style.width = buttonWidth + "px";
     operatorButton.style.height = "60px";
 
     operatorButtonDisplay.appendChild(operatorButton);
@@ -91,12 +94,12 @@ function createOpereratorButtons() {
 }
 
 function createMiscButtons() {
-  let misc = ["C","="]
+  let misc = ["C","←","+/-","="]
 
   for (let i = 0; i < misc.length; i++) {
     let miscButton = document.createElement("button");
     miscButton.innerText = misc[i];
-    miscButton.style.width = "120px";
+    miscButton.style.width = buttonWidth + "px";
     miscButton.style.height = "60px";
 
     miscButtonDisplay.appendChild(miscButton);
