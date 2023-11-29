@@ -7,7 +7,7 @@ const textDisplay = document.getElementById("text-display");
 const textHistory = document.getElementById("text-history");
 
 const buttonWidth = Math.floor(calculatorDisplayWidth / 4);
-const miscbuttonWidth = Math.floor(calculatorDisplayWidth / 4);
+const miscbuttonWidth = Math.floor(calculatorDisplayWidth / 5);
 
 let firstNumber;
 let secondNumber;
@@ -26,7 +26,8 @@ function createNumberButtons() {
       let numberButton = document.createElement("button");
       numberButton.innerText = digit;
       numberButton.style.width = buttonWidth + "px";
-      numberButton.style.height = "60px"
+      numberButton.style.height = "60px";
+      numberButton.id = "numberButton";
 
       numberButtonDisplay.appendChild(numberButton)
       
@@ -41,6 +42,7 @@ function createNumberButtons() {
   zeroButton.innerText = 0;
   zeroButton.style.width = (buttonWidth * 2)+ "px";
   zeroButton.style.height = "60px";
+  zeroButton.id = "numberButton";
 
   numberButtonDisplay.appendChild(zeroButton)
 
@@ -53,6 +55,7 @@ function createNumberButtons() {
   decimalButton.innerText = ".";
   decimalButton.style.width = buttonWidth + "px";
   decimalButton.style.height = "60px"
+  decimalButton.id = "numberButton";
 
   numberButtonDisplay.appendChild(decimalButton)
 
@@ -69,6 +72,7 @@ function createOpereratorButtons() {
     operatorButton.innerText = operators[i];
     operatorButton.style.width = buttonWidth + "px";
     operatorButton.style.height = "60px";
+    operatorButton.id = "operatorButton"
 
     operatorButtonDisplay.appendChild(operatorButton);
 
@@ -100,11 +104,13 @@ function createMiscButtons() {
     miscButton.innerText = misc[i];
     miscButton.style.width = buttonWidth + "px";
     miscButton.style.height = "60px";
+    miscButton.id = "miscButton";
 
     miscButtonDisplay.appendChild(miscButton);
 
     // CANCEL
-    if(miscButton.innerText === "C"){
+    if(miscButton.innerText === "C"){ 
+      miscButton.id = "clearButton";
       miscButton.addEventListener("click", function() { clearDisplay() });
     } 
     //DIVIDE
@@ -113,6 +119,7 @@ function createMiscButtons() {
     }
     // BACKSPACE
     if (miscButton.innerText === "←") {
+      miscButton.id = "backspaceButton";
       miscButton.addEventListener("click", function() { backspace() });
     }
     // POSITIVE/NEGATIVE
