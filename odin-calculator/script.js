@@ -280,6 +280,60 @@ function subtractResult(a,b) { return a - b };
 function multiplyResult(a,b) { return a * b };
 function divideResults(a,b) { return a / b };
 
+document.addEventListener('keydown', function(event) {
+  // 1
+  if(event.code == 'Digit1') {
+    textDisplay.innerText += 1;
+    textHistory.innerText += 1;
+  }
+  // 2
+  if(event.code == 'Digit2') {
+    textDisplay.innerText += 2;
+    textHistory.innerText += 2;
+  }
+  // 3
+  if(event.code == 'Digit3') {
+    textDisplay.innerText += 3;
+    textHistory.innerText += 3;
+  }
+  // 4
+  if(event.code == 'Digit4') {
+    textDisplay.innerText += 4;
+    textHistory.innerText += 4;
+  }
+  // 5
+  if(event.code == 'Digit5') {
+    textDisplay.innerText += 5;
+    textHistory.innerText += 5;
+  }
+  // 6
+  if(event.code == 'Digit6') {
+    textDisplay.innerText += 6;
+    textHistory.innerText += 6;
+  }
+  // 7
+  if(event.code == 'Digit7') {
+    textDisplay.innerText += 7;
+    textHistory.innerText += 7;
+  }
+  // 8
+  if(event.code == 'Digit8') {
+    textDisplay.innerText += 8;
+    textHistory.innerText += 8;
+  }
+  // 9
+  if(event.code == 'Digit9') {
+    textDisplay.innerText += 9;
+    textHistory.innerText += 9;
+  }
+  // 0
+  if(event.code == 'Digit0') {
+    textDisplay.innerText += 0;
+    textHistory.innerText += 0;
+  }
+
+})
+
 createNumberButtons();
 createOpereratorButtons();
 createMiscButtons();
