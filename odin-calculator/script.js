@@ -239,8 +239,9 @@ function subtract(){
     operator = "-";
     textDisplay.innerText = "";
     textHistory.innerText += "-";
+    checker = false;
   }
-  checker = false;
+  
 }
 
 function multiply(){
@@ -250,8 +251,8 @@ function multiply(){
     operator = "*";
     textDisplay.innerText = "";
     textHistory.innerText += "*";
+    checker = false;
   }
-  checker = false;
 }
 
 function divide() {
@@ -260,6 +261,7 @@ function divide() {
     operator = "/";
     textDisplay.innerText = "";
     textHistory.innerText += "/"
+    checker = false;
   }
 }
 
