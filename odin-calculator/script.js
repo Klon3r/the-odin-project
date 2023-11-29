@@ -114,7 +114,10 @@ function createMiscButtons() {
     // BACKSPACE
     if (miscButton.innerText === "←") {
       miscButton.addEventListener("click", function() { backspace() });
-
+    }
+    // POSITIVE/NEGATIVE
+    if (miscButton.innerText === "+/-") {
+      miscButton.addEventListener("click", function() { postitiveNegative()})
     }
 
 
@@ -150,6 +153,22 @@ function backspace(){
     textHistory.innerText = arrayHistory.join("");
   }
 
+}
+
+function postitiveNegative() {
+  let array = textDisplay.innerText.split("")
+  let arrayHistory = textDisplay.innerText.split("");
+  if(array[0] === "-"){
+    array.shift();
+    arrayHistory.shift();
+    textDisplay.innerText = array.join("");
+    textHistory.innerText = arrayHistory.join("");
+  } else {
+    array.unshift("-")
+    arrayHistory.unshift("-")
+    textDisplay.innerText = array.join("");
+    textHistory.innerText = arrayHistory.join("");
+  }
 }
 
 function operate() {
