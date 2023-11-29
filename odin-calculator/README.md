@@ -6,4 +6,5 @@ I learned alot after finishing this project.
 - Make more functions to reduce the amount of code I am writing
 
 Below is a screenshot of the project:
+
 ![Alt text](/img/screenshot.png?raw=true "Screenshot")
