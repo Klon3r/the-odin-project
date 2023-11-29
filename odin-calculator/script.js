@@ -117,7 +117,7 @@ function createMiscButtons() {
     }
     // POSITIVE/NEGATIVE
     if (miscButton.innerText === "+/-") {
-      miscButton.addEventListener("click", function() { postitiveNegative()})
+      miscButton.addEventListener("click", function() { positiveNegative()})
     }
 
 
@@ -155,19 +155,22 @@ function backspace(){
 
 }
 
-function postitiveNegative() {
-  let array = textDisplay.innerText.split("")
-  let arrayHistory = textDisplay.innerText.split("");
+function positiveNegative() {
+  let array = textDisplay.innerText.split("");
+  let arrayHistory = textHistory.innerText.split("");
+  let indexNumber = (arrayHistory.length - array.length);
   if(array[0] === "-"){
+    arrayHistory.splice((indexNumber),1,"");
     array.shift();
-    arrayHistory.shift();
+
     textDisplay.innerText = array.join("");
     textHistory.innerText = arrayHistory.join("");
   } else {
+    arrayHistory.splice((indexNumber),0,"-")
     array.unshift("-")
-    arrayHistory.unshift("-")
+
     textDisplay.innerText = array.join("");
-    textHistory.innerText = arrayHistory.join("");
+    textHistory.innerText = (arrayHistory.join(""));
   }
 }
 
