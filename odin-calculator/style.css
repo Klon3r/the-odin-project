@@ -38,8 +38,8 @@ img {
   display: flex;
   text-align: center;
   flex-direction: column;
-  width: 340px;
-  height: 420px;
+  min-width: 340px;
+  min-height: 420px;
   margin: auto;
   border-radius: 10px;
   background-color: #E1E2EF;
