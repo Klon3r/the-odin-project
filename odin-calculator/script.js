@@ -32,8 +32,8 @@ function createNumberButtons() {
       numberButtonDisplay.appendChild(numberButton)
       
       numberButton.addEventListener("click", function() {clearZero()})
-      numberButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText})
-      numberButton.addEventListener("click", function() {textHistory.innerText += numberButton.innerText})
+      numberButton.addEventListener("click", function() {textDisplay.innerText += numberButton.innerText; autoScrollTextDisplay()})
+      numberButton.addEventListener("click", function() {textHistory.innerText += numberButton.innerText; autoScrollTextHistory()})
     }
   }
 
@@ -47,8 +47,8 @@ function createNumberButtons() {
   numberButtonDisplay.appendChild(zeroButton)
 
   zeroButton.addEventListener("click", function() {clearZero()})
-  zeroButton.addEventListener("click", function() {textDisplay.innerText += zeroButton.innerText})
-  zeroButton.addEventListener("click", function() {textHistory.innerText += zeroButton.innerText})
+  zeroButton.addEventListener("click", function() {textDisplay.innerText += zeroButton.innerText; autoScrollTextDisplay();})
+  zeroButton.addEventListener("click", function() {textHistory.innerText += zeroButton.innerText; autoScrollTextHistory();})
 
   // DECIMAL
   let decimalButton = document.createElement("button");
@@ -60,8 +60,8 @@ function createNumberButtons() {
   numberButtonDisplay.appendChild(decimalButton)
 
   decimalButton.addEventListener("click", function() {clearZero()})
-  decimalButton.addEventListener("click", function() {textDisplay.innerText += decimalButton.innerText})
-  decimalButton.addEventListener("click", function() {textHistory.innerText += decimalButton.innerText})
+  decimalButton.addEventListener("click", function() {textDisplay.innerText += decimalButton.innerText; autoScrollTextDisplay();})
+  decimalButton.addEventListener("click", function() {textHistory.innerText += decimalButton.innerText; autoScrollTextHistory();})
 }
 
 function createOpereratorButtons() {
@@ -228,6 +228,8 @@ function operate() {
       operator = "";
     }
   }
+  autoScrollTextHistory() 
+  autoScrollTextDisplay() 
   
 }
 
@@ -332,7 +334,17 @@ document.addEventListener('keydown', function(event) {
     textHistory.innerText += 0;
   }
 
+  autoScrollTextHistory() 
+  autoScrollTextDisplay() 
 })
+
+function autoScrollTextDisplay() {
+  textDisplay.scrollLeft = textDisplay.scrollWidth;
+}
+
+function autoScrollTextHistory() {
+  textHistory.scrollLeft = textHistory.scrollWidth;
+}
 
 createNumberButtons();
 createOpereratorButtons();
