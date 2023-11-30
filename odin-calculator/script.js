@@ -57,11 +57,10 @@ function createNumberButtons() {
   decimalButton.style.height = "60px"
   decimalButton.id = "numberButton";
 
-  numberButtonDisplay.appendChild(decimalButton)
+  numberButtonDisplay.appendChild(decimalButton);
 
-  decimalButton.addEventListener("click", function() {clearZero()})
-  decimalButton.addEventListener("click", function() {textDisplay.innerText += decimalButton.innerText; autoScrollTextDisplay();})
-  decimalButton.addEventListener("click", function() {textHistory.innerText += decimalButton.innerText; autoScrollTextHistory();})
+  decimalButton.addEventListener("click", function() {clearZero()});
+  decimalButton.addEventListener("click", function() {decimal()});
 }
 
 function createOpereratorButtons() {
@@ -131,6 +130,17 @@ function createMiscButtons() {
   }
 }
 
+function decimal() {
+  let array = textDisplay.innerText.split("");
+  if(!array.includes(".")) {
+    textDisplay.innerText += "."
+    textHistory.innerText += "."
+    autoScrollTextDisplay();
+    autoScrollTextHistory();
+  }
+
+}
+
 function clearDisplay(){
   textDisplay.innerText = "";
   textHistory.innerText = "";
@@ -189,7 +199,7 @@ function operate() {
   }
   // ADD
   if(operator === "+"){
-    result = addResult(firstNumber, secondNumber);
+    result = new Decimal(addResult(firstNumber, secondNumber));
     textDisplay.innerText = result;
     textHistory.innerText += result;
     checker=true;
@@ -197,7 +207,7 @@ function operate() {
   }
   // SUB
   if(operator === "-"){
-    result = subtractResult(firstNumber, secondNumber);
+    result = new Decimal(subtractResult(firstNumber, secondNumber));
     textDisplay.innerText = result;
     textHistory.innerText += result;
     checker=true;
@@ -205,7 +215,7 @@ function operate() {
   }
   // MULTIPLY
   if(operator === "*"){
-    result = multiplyResult(firstNumber,secondNumber);
+    result = new Decimal(multiplyResult(firstNumber,secondNumber));
     textDisplay.innerText = result;
     textHistory.innerText += result;
     checker = true;
@@ -221,7 +231,7 @@ function operate() {
       operator = "";
 
     } else {
-      result = divideResults(firstNumber, secondNumber);
+      result = divideResults(new Decimal(firstNumber), new Decimal(secondNumber));
       textDisplay.innerText = result;
       textHistory.innerText += result;
       checker = true;
