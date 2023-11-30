@@ -199,7 +199,8 @@ function operate() {
   }
   // ADD
   if(operator === "+"){
-    result = new Decimal(addResult(firstNumber, secondNumber));
+    result = addResult(firstNumber,secondNumber);
+    result = Math.round(result * 1000) / 1000;
     textDisplay.innerText = result;
     textHistory.innerText += result;
     checker=true;
@@ -208,6 +209,7 @@ function operate() {
   // SUB
   if(operator === "-"){
     result = new Decimal(subtractResult(firstNumber, secondNumber));
+    result = Math.round(result * 1000) / 1000;
     textDisplay.innerText = result;
     textHistory.innerText += result;
     checker=true;
@@ -216,6 +218,7 @@ function operate() {
   // MULTIPLY
   if(operator === "*"){
     result = new Decimal(multiplyResult(firstNumber,secondNumber));
+    result = Math.round(result * 1000) / 1000;
     textDisplay.innerText = result;
     textHistory.innerText += result;
     checker = true;
@@ -232,6 +235,7 @@ function operate() {
 
     } else {
       result = divideResults(new Decimal(firstNumber), new Decimal(secondNumber));
+      result = Math.round(result * 1000) / 1000;
       textDisplay.innerText = result;
       textHistory.innerText += result;
       checker = true;
