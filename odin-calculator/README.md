@@ -7,4 +7,4 @@ I learned alot after finishing this project.
 
 Below is a screenshot of the project:
 
-![Alt text](/img/screenshot.png?raw=true "Screenshot")
+![Alt text](img/screenshot.png?raw=true "Screenshot")
