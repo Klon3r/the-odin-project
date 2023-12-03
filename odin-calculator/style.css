@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Handjet:wght@900&display=swap');
+
+body {
+  background-color: #89608E;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.footer-text {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Allerta Stencil', sans-serif;
+}
+
+img {
+  padding-top: 15px;
+  padding-left: 10px;
+  width: 35px;
+  height: 35px;
+}
+#calc-outside {
+  background-color: #E1E2EF;
+  width: 340px;
+  min-height: 445px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+  border: 3px solid black;
+  box-shadow: 10px 10px #735177;
+  margin-top: 100px;
+}
+
+#calc-body {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  min-width: 340px;
+  min-height: 420px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: #E1E2EF;
+}
+
+#calc-display {
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column; 
+  width: 335px;
+  min-height: 120px;
+  background-color: lightgray;
+  border-radius: 6px;
+}
+
+#text-display{
+  height:100px;
+  text-align: left;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 25px;
+  overflow: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: lightgray #D78521;
+}
+
+#text-history{
+  text-align: start;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-family: 'Allerta Stencil', sans-serif;
+  color:grey;
+  font-size: 13px;
+  overflow: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: lightgray #D78521;
+}
+
+#button-display {
+  display: flex;
+}
+
+#misc-buttons {
+  margin-top: 20px;
+}
+
+#miscButton, #numberButton, #operatorButton, #clearButton, #backspaceButton  {
+  border: 1px solid black;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Allerta Stencil', sans-serif;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+}
+
+#numberButton {
+  background-color: #33CA7F;
+}
+
+#operatorButton, #miscButton {
+  background-color: #D78521;
+}
+
+#miscButton:hover, #numberButton:hover, #operatorButton:hover, #clearButton:hover, #backspaceButton:hover {
+  background-color: lightgrey;
+}
+
+#clearButton, #backspaceButton {
+  background-color: #d33b3b;
+}
