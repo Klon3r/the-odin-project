@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Fira+Sans:wght@600&family=Press+Start+2P&display=swap');
+
+body {
+  background-color: lightgray;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 3px solid black;
+  padding-bottom: 5px;
+  width: 700px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: pink;
+}
+
+.scores {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.score-section {
+  display: flex;
+  align-items: center;
+}
+
+.score-section h3 {
+  margin-right: 10px;
+}
+
+.display-window {
+  border: 3px solid black;
+  text-align: left;
+  width: 600px;
+  margin: 0 auto;
+  height: 300px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+#display {
+  margin-left: 10px;
+  max-height: 280px;
+  overflow: auto;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+img {
+  padding-top: 15px;
+  padding-left: 10px;
+  width: 20px;
+  height: 20px;
+}

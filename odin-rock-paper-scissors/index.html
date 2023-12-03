@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="javascript.js" defer></script>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <div class="main">
+    <h1>Rock Paper Scissors</h1>
+    <div class="scores">
+      <div class="score-section">
+        <h3>YOU: </h3> 
+        <h3 id="player-score"></h3>
+      </div>
+      <div class="score-section">
+        <h3>CPU:</h3> 
+        <h3 id="cpu-score"></h3>
+      </div>
+    </div>
+
+    <div class="display-window">
+      <p id="display">Winner is the first to win 5 games. Good luck!<br><br></p>
+    </div>
+    <div class="button-div">
+      <br>
+      <button onclick="playRound(getComputerChoice(), 'Rock')">Rock</button>
+      <button onclick="playRound(getComputerChoice(), 'Paper')">Paper</button>
+      <button onclick="playRound(getComputerChoice(), 'Scissors')">Scissors</button>
+    </div>
+    <div>
+      <br><br><br><br>
+      <button onclick="resetGame()">Reset</button>
+      <div class="footer">
+        <p class="footer-text">TerminalKlone</p>
+        <a href="https://github.com/TerminalKlone">
+          <img src="./img/github-black.svg" alt="github icon" href="https://github.com/TerminalKlone" onmouseover="this.src='./img/github-white.svg'" onmouseout="this.src='./img/github-black.svg'">
+        </a>
+      </div>
+    </div>
+    
+  </div>
+  
+</body>
+</html>
