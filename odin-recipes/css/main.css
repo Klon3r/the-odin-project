@@ -1,0 +1,102 @@
+body {
+  background-color: pink;
+}
+
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h4 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+li {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+}
+
+a {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+}
+
+#info {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+#buttons {
+  text-align: center;
+}
+
+/* link buttons */
+a.link {
+  background-color: white;
+  color: black;
+  border: 1px;
+  border-style:groove;
+  border-color: black;
+  border-radius: 100px;
+  box-sizing:border-box;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  width: 230px;
+}
+
+a.link:hover {
+  background-color: grey;
+  color: white;
+}
+
+/* homepage buttons */
+a.homepage {
+  align-items: center;
+  background-color: white;
+  color: black;
+  border: 1px;
+  border-style:groove;
+  border-color: black;
+  border-radius: 100px;
+  box-sizing:border-box;
+  cursor: pointer;
+  display: inline-flex;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  user-select: none;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  width:max-content;
+}
+
+a.homepage:hover {
+  background-color: grey;
+  color: white;
+}
+
+#homepage-button {
+  text-align: center;
+}
+
+
+img.food-img{
+  width: 30%;
+  min-width: 200px;
+}
