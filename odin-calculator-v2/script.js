@@ -39,7 +39,8 @@ function buttonAction(text) {
 function operation(text) {
   if (operationCheck === true ) {
     if( text === "C") { clearDisplay(); }
-    else if( text === "=") { equals() }
+    else if( text === "=") { equals(); }
+    else if( text === "←") { backspace(); }
     else {
       display.innerText += text
       operator = text;
@@ -63,6 +64,14 @@ function equals() {
 function clearDisplay() {
   display.innerText = "";
   operationCheck = false;
+}
+
+function backspace() {
+  if(display.innerText != "") {
+    let textArray = display.innerText.split("");
+    textArray.pop();
+    display.innerText = textArray.join("");
+  } 
 }
 
 createButtons();
