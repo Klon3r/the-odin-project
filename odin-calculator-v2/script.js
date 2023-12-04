@@ -1,5 +1,10 @@
 const buttonArray = ["C","←","+/-","/","7","8","9","+","4","5","6","-","1","2","3","*","0",".","="];
-const operators = ["C","←","+/-","/","+","-","*",".","="]
+const operatorsArray = ["C","←","+/-","/","+","-","*",".","="]
+let operationCheck = false;
+let operator = "";
+let firstNumber;
+let secondNumber;
+let result;
 
 const buttonDisplay = document.getElementById("calculator-buttons");
 const display = document.getElementById("display");
@@ -15,17 +20,49 @@ function createButtons() {
     
     button.style.height = (buttonDisplayHeight / 5) + "px";
     buttonDisplay.appendChild(button);
+
     button.addEventListener("click", function() { buttonAction(button.innerText) });
   }
 }
 
 function buttonAction(text) {
-  if ( operators.includes(text) ) {
+  if ( operatorsArray.includes(text) ) {
     console.log("Operation: " + text)
+    operation(text)
   } else {
-    console.log("Text: " + text);
-    display.innerText += text;
+      display.innerText += text;    
+      operationCheck = true;
+      console.log("Number: " + text)
   }
+}
+
+function operation(text) {
+  if (operationCheck === true ) {
+    if( text === "C") { clearDisplay(); }
+    else if( text === "=") { equals() }
+    else {
+      display.innerText += text
+      operator = text;
+    }
+  }
+}
+
+function equals() {
+  textArray = display.innerText.split(operator)
+  firstNumber = textArray[0];
+  secondNumber = textArray[1];
+
+  if( operator === "+") { result = firstNumber + secondNumber }
+  else if ( operator === "-" ) { result = firstNumber - secondNumber }
+  else if ( operator === "/" ) { result = firstNumber / secondNumber }
+  else if ( operator === "*" ) { result = firstNumber * secondNumber }
+
+  display.innerText = result;
+}
+
+function clearDisplay() {
+  display.innerText = "";
+  operationCheck = false;
 }
 
 createButtons();
