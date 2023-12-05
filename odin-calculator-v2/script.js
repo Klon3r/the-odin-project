@@ -108,21 +108,4 @@ function positiveNegative() {
   }
 }
 
-
-// function positiveNegative() {
-//   if(!display.innerText.includes("+","-","/","*")){
-//     let textArray = display.innerText.split("");
-//     if( textArray[0] === "-") { textArray.shift(); }
-//     else { textArray.unshift("-"); console.log(textArray) } 
-//     display.innerText = textArray.join("");
-//   } else {
-//     let textArray = display.innerText.split("");
-//     if( textArray[2] === "-") { textArray.shift(); }
-//     else { textArray.unshift("-"); console.log(textArray) } 
-//     display.innerText = textArray.join("");
-//   }
-  
-
-// }
-
 createButtons();
