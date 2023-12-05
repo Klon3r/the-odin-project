@@ -1,13 +1,12 @@
-const buttonArray = ["C","←","+/-","/","7","8","9","+","4","5","6","-","1","2","3","*","0",".","="];
-const numberArray = ["7","8","9","4","5","6","1","2","3",".","0"];
-const operatorsArray = ["C","←","+/-","/","+","-","*",".","="]
 let operationCheck = false;
 let operator = "";
 let firstNumber;
 let secondNumber;
 let result;
 let canUseDecimal = true;
-
+const buttonArray = ["C","←","+/-","/","7","8","9","+","4","5","6","-","1","2","3","*","0",".","="];
+const numberArray = ["7","8","9","4","5","6","1","2","3",".","0"];
+const operatorsArray = ["C","←","+/-","/","+","-","*",".","="]
 const buttonDisplay = document.getElementById("calculator-buttons");
 const display = document.getElementById("display");
 const buttonDisplayWidth = buttonDisplay.clientWidth;
@@ -36,6 +35,7 @@ function buttonAction(text) {
   } else {
       display.innerText += text;    
       operationCheck = true;
+      autoScrollDisplay()
       console.log("Number: " + text)
   }
 }
@@ -110,5 +110,19 @@ function positiveNegative() {
     display.innerText = textArray[0] + operator + textArray [1];
   }
 }
+
+function autoScrollDisplay(){ display.scrollLeft = display.scrollWidth; }
+
+document.addEventListener("keydown", function(event) {
+  if(event.code == 'Digit1') { display.innerText += 1; }
+  else if (event.code == "Digit2") { display.innerText += 2; }
+  else if (event.code == "Digit3") { display.innerText += 3; }
+  else if (event.code == "Digit4") { display.innerText += 4; }
+  else if (event.code == "Digit5") { display.innerText += 5; }
+  else if (event.code == "Digit6") { display.innerText += 6; }
+  else if (event.code == "Digit7") { display.innerText += 7; }
+  else if (event.code == "Digit8") { display.innerText += 8; }
+  else if (event.code == "Digit9") { display.innerText += 9; }
+})
 
 createButtons();
