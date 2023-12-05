@@ -40,13 +40,15 @@ function buttonAction(text) {
 function operation(text) {
   if (operationCheck === true ) {
     if( text === "C") { clearDisplay(); }
-    else if( text === "=") { equals(); }
-    else if( text === "←") { backspace(); }
-    else if( text === ".") { decimal(); }
+    else if( text === "=" ) { equals(); }
+    else if( text === "←" ) { backspace(); }
+    else if( text === "." ) { decimal(); }
+    else if( text === "+/-" ) { positiveNegative(); }
     else {
       display.innerText += text
       operator = text;
       canUseDecimal = true;
+      operationCheck = false;
     }
   }
 }
@@ -63,6 +65,7 @@ function equals() {
 
   result = Math.round(result * 1000) / 1000;
   display.innerText = result;
+  operationCheck = true;
   if(result.toString().includes(".")) { canUseDecimal = false;}
 }
 
@@ -86,6 +89,14 @@ function decimal() {
     display.innerText += "."; 
     canUseDecimal = false; 
   }
+}
+
+function positiveNegative() {
+  if(!display.innerText.includes("+","-","/","*")){
+    let textArray = display.innerText.split("");
+    console.log(textArray)
+  }
+
 }
 
 createButtons();
