@@ -1,5 +1,5 @@
 # The Odin Project
-This is a collection of the projects that I have completed during the odin project
+This is a collection of the projects that I have completed
 
 ## Foundations
 
