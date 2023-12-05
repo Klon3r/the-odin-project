@@ -92,11 +92,37 @@ function decimal() {
 }
 
 function positiveNegative() {
-  if(!display.innerText.includes("+","-","/","*")){
-    let textArray = display.innerText.split("");
-    console.log(textArray)
+  let displayText = display.innerText;
+  if (!displayText.includes("+") && !displayText.includes("-") && !displayText.includes("/") && !displayText.includes("*")) {
+    let textArray = displayText.split("");
+    if (textArray[0] === "-") { textArray.shift();} 
+    else { textArray.unshift("-"); }
+    display.innerText = textArray.join("");
+  } else {
+    let textArray = displayText.split(operator);
+    let textArray2 = textArray[1].split("")
+    if(textArray2[0] === "-") { textArray2.shift();}
+    else { textArray2.unshift("-") }; 
+    textArray[1] = textArray2.join("");
+    display.innerText = textArray[0] + operator + textArray [1];
   }
-
 }
+
+
+// function positiveNegative() {
+//   if(!display.innerText.includes("+","-","/","*")){
+//     let textArray = display.innerText.split("");
+//     if( textArray[0] === "-") { textArray.shift(); }
+//     else { textArray.unshift("-"); console.log(textArray) } 
+//     display.innerText = textArray.join("");
+//   } else {
+//     let textArray = display.innerText.split("");
+//     if( textArray[2] === "-") { textArray.shift(); }
+//     else { textArray.unshift("-"); console.log(textArray) } 
+//     display.innerText = textArray.join("");
+//   }
+  
+
+// }
 
 createButtons();
