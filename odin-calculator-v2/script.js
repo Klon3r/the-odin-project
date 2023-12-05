@@ -1,4 +1,5 @@
 const buttonArray = ["C","←","+/-","/","7","8","9","+","4","5","6","-","1","2","3","*","0",".","="];
+const numberArray = ["7","8","9","4","5","6","1","2","3",".","0"];
 const operatorsArray = ["C","←","+/-","/","+","-","*",".","="]
 let operationCheck = false;
 let operator = "";
@@ -16,8 +17,10 @@ function createButtons() {
   for (let i = 0; i < buttonArray.length; i++){
     let button = document.createElement("button");
     button.innerText = buttonArray[i];
-    
+
     if (button.innerText === "0") { button.style.width = (buttonDisplayWidth / 4) * 2 + "px"} else { button.style.width = (buttonDisplayWidth / 4) + "px"; }
+    if (operatorsArray.includes(button.innerText)) { button.id = "operator-button"}
+    if (numberArray.includes(button.innerText)) { button.id = "number-button" } 
     
     button.style.height = (buttonDisplayHeight / 5) + "px";
     buttonDisplay.appendChild(button);
