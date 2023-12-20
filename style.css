@@ -1,0 +1,27 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.bg-img {
+  display: flex;
+  background-image: url(/img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh; /* 100% */
+  width: 100vw;
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.right-side {
+  width: 130vw;
+  background-color: pink;
+}
