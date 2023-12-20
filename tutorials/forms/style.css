@@ -4,3 +4,11 @@ fieldset {
   width: 400px;
   margin: auto;
 }
+
+input:invalid {
+  border-color: red;
+}
+
+input {
+  border: 1px solid black;
+}
