@@ -5,6 +5,7 @@
   --banner-color: rgba(0, 0, 0, 0.650);
   --banner-txt-color: rgb(255, 255, 255);
   --background-color: pink;
+  --error-color: rgba(252, 5, 5, 0.87);
 }
 
 * {
@@ -71,7 +72,7 @@
 form {
   display: flex;
   flex-flow: row wrap;
-  width: 25vw;
+  width: 30vw;
   gap: 20px;
   /* border: 1px solid black; */
 }
@@ -92,7 +93,7 @@ p {
 
 input {
   font-family: 'Courier New', Courier, monospace;
-  min-width: 10vw;
+  min-width: 13vw;
   min-height: 2vh;
 }
 
@@ -109,4 +110,14 @@ button {
 button:hover {
   background-color: lightgrey;
   cursor: pointer;
+}
+
+.password {
+  border: 2px solid var(--error-color);
+}
+
+#passwordMessage {
+  font-size: 0.8rem;
+  color: var(--error-color);
+  padding-top: 0.5vh;
 }
