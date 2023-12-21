@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .bg-img {
@@ -24,7 +25,7 @@
   background-position: center center;
   background-size: cover;
   /* width: 100vw; */
-  min-width: 300px;
+  min-width: 100px;
   min-height: 300px;
 }
 
@@ -47,14 +48,14 @@
 }
 
 .logo-img {
-  height: 8vh;
+  height: 7vh;
 }
 
 .logo-txt {
   justify-content: center;
   color: var(--banner-txt-color);
   font-family: 'Press Start 2P';
-  font-size: 2vw;
+  font-size: 1.5em;
   font-weight: 500;
 }
 
@@ -67,11 +68,12 @@
 }
 
 
-.form {
+form {
   display: flex;
   flex-flow: row wrap;
   width: 25vw;
   gap: 20px;
+  /* border: 1px solid black; */
 }
 
 .input {
@@ -96,4 +98,15 @@ input {
 
 label {
   font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+  min-width: 7vw;
+  min-height: 3vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button:hover {
+  background-color: lightgrey;
+  cursor: pointer;
 }
