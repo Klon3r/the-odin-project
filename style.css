@@ -69,7 +69,6 @@
 
 .form {
   display: flex;
-  border: 1px solid black;
   flex-flow: row wrap;
   width: 25vw;
   gap: 20px;
@@ -78,4 +77,23 @@
 .input {
   display: flex;
   flex-flow: column wrap;
+}
+
+.create {
+  margin-top: 3vh;
+}
+
+p {
+  font-size: 1.1em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+  font-family: 'Courier New', Courier, monospace;
+  min-width: 10vw;
+  min-height: 2vh;
+}
+
+label {
+  font-family: 'Courier New', Courier, monospace;
 }
