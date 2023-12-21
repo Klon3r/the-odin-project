@@ -60,3 +60,15 @@
   font-weight: 500;
 }
 
+.form {
+  display: flex;
+  border: 1px solid black;
+  flex-flow: row wrap;
+  width: 30vw;
+  gap: 50px;
+}
+
+.input {
+  display: flex;
+  flex-flow: column wrap;
+}
