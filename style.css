@@ -105,10 +105,6 @@ button {
   min-width: 7vw;
   min-height: 3vh;
   font-family: 'Courier New', Courier, monospace;
-}
-
-button:hover {
-  background-color: lightgrey;
   cursor: pointer;
 }
 
