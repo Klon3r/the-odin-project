@@ -19,6 +19,8 @@ function checkPassword() {
     passwordMessage.innerText = "";
     console.log("The passwords match!")
   } else {
+    addPasswordClass()
+    passwordMessage.innerText = "*Passwords do not match";
     console.log("The passwords do not match!")
   }
 }
