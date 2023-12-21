@@ -13,6 +13,10 @@
   margin: 0px;
 }
 
+body {
+  background-color: var(--background-color);
+}
+
 .content {
   display: flex;
   justify-content: center;
@@ -25,14 +29,9 @@
   background-image: url(/img/bg.jpg);
   background-position: center center;
   background-size: cover;
-  /* width: 100vw; */
-  min-width: 100px;
+  width: 100vw;
+  min-width: 230px;
   min-height: 300px;
-}
-
-.right-side {
-  width: 130vw;
-  background-color: var(--background-color);
 }
 
 .banner {
@@ -56,11 +55,13 @@
   justify-content: center;
   color: var(--banner-txt-color);
   font-family: 'Press Start 2P';
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
 .right-side {
+  width: 130vw;
+  background-color: var(--background-color);
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
