@@ -102,7 +102,7 @@ label {
 }
 
 button {
-  min-width: 7vw;
+  min-width: 10vw;
   min-height: 3vh;
   font-family: 'Courier New', Courier, monospace;
   cursor: pointer;
