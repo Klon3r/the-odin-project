@@ -24,16 +24,20 @@ function checkPassword() {
     console.log("The passwords match!")
     removePasswordClass();
     addPasswordMessage("");
+    buttonEnable();
     passwordsMatch = true;
   } else {
     console.log("The passwords do not match!")
     addPasswordClass();
     addPasswordMessage("*Passwords do not match");
+    buttonDisable();
     passwordsMatch = false;
   }
 }
 
-function validateForm(){( passwordsMatch === true ) ? true : false}
+function buttonDisable() { submitButton.disabled = true; }
+function buttonEnable() { submitButton.disabled = false; }
 
 addPasswordClass();
 addPasswordMessage("*Passwords do not match");
+buttonDisable()
