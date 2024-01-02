@@ -1,0 +1,35 @@
+* {
+  border: 1px solid red;
+}
+
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-rows: repeat(5, minmax(200px, 1fr));
+  grid-template-areas:
+  "sidebar header header header"
+  "sidebar info info announcements"
+  "sidebar info info announcements"
+  "sidebar info info trending"
+  "sidebar info info trending" ;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.info {
+  grid-area: info;
+}
+
+.annoucements {
+  grid-area: announcements;
+}
+
+.trending {
+  grid-area: trending;
+}
