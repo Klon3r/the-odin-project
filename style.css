@@ -40,6 +40,8 @@
 
 .announcements {
   grid-area: announcements;
+  padding: 5px;
+  
 }
 
 .trending {
@@ -133,6 +135,7 @@
   background-color: var(--announcements-container-color);
   padding: 10px;
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 .announcements-content {
