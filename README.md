@@ -1,6 +1,6 @@
 # The Odin Project: Admin Dashboard
 
-<a href="https://terminalklone.github.io/odin-admin-dashboard/">
+<a href="https://terminalklone.github.io/odin-admin-dashboard/">Live Preview
 
 ## Screenshot
 ![Screenshot](./img/screenshot.png)
