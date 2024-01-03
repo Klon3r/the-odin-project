@@ -27,6 +27,9 @@
 
 .header {
   grid-area: header;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .sidebar {
@@ -89,6 +92,7 @@
 }
 
 /* TRENDING */
+
 .trending-container {
   background-color: var(--trending-container-color);
   display: grid;
@@ -100,4 +104,34 @@
   display: flex;
   justify-content: space-evenly;
   padding: 15px
+}
+
+/* HEADER */
+.searchbar {
+  display: flex;
+  grid-column-start: 1 2;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.searchbar input {
+  margin-left: 10px;
+  width: 50rem;
+  height: 2rem;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px
+}
+
+.hello-user {
+  display: flex;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.hello-user p {
+  margin-left: 20px;
 }
