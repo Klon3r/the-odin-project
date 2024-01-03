@@ -9,6 +9,7 @@
   --content-color: lightgray;
   --info-content-color: white;
   --announcements-container-color: white;
+  --trending-container-color: white;
 }
 
 .admin-dashboard {
@@ -61,10 +62,12 @@
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* gap: 15px; */
 }
 
 .info-content {
   padding: 10px;
+  /* margin-right: 10px; */
   margin: 10px;
   background-color: var(--info-content-color);
   border-radius: 15px;
@@ -78,5 +81,23 @@
 .announcements-container {
   background-color: var(--announcements-container-color);
   padding: 10px;
-  
+  margin-right: 10px;
+}
+
+.announcements-content {
+  padding-right: 5px;
+}
+
+/* TRENDING */
+.trending-container {
+  background-color: var(--trending-container-color);
+  display: grid;
+  margin-right: 10px;
+  padding: 10px
+}
+
+.trending-flex {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px
 }
