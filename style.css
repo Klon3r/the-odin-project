@@ -2,10 +2,11 @@
   /* border: 1px solid red; */
   padding: 0;
   margin: 0;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 :root {
-  --sidebar-background-color: rgb(154, 218, 230);
+  --sidebar-background-color: rgb(163, 89, 197);
   --content-color: lightgray;
   --info-content-color: white;
   --announcements-container-color: white;
@@ -15,14 +16,13 @@
 .admin-dashboard {
   
   display: grid;
-  grid-template-columns: repeat(6, minmax(200px, 1fr));
-  grid-template-rows: repeat(5, minmax(200px, 1fr));
+  grid-template-columns: minmax(200px, 0.9fr) repeat(5, minmax(200px, 1fr));
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
   "sidebar header header header header header"
   "sidebar info info info info announcements"
   "sidebar info info info info announcements"
   "sidebar info info info info trending"
-  "sidebar info info info info trending" ;
 }
 
 .header {
@@ -35,13 +35,41 @@
 .sidebar {
   grid-area: sidebar;
   display: grid;
-  background-color: var(--sidebar-background-color);  
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr repeat(2, 1fr);
+  background-color: var(--sidebar-background-color);
+  align-items: center;
+  padding-left: 10px;
 }
 
 .sidebar ul li {
   list-style: none;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  text-decoration: underline;
+}
+
+.sidebar img {
+  width: 10%;
+}
+
+#logo {
+  width: 20%;
+  margin-right: 20px;
+}
+
+.sidebar div {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar p {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 .info {
@@ -65,6 +93,7 @@
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: repeat(3 minmax(150px, 1fr));
   /* gap: 15px; */
 }
 
@@ -97,7 +126,7 @@
   background-color: var(--trending-container-color);
   display: grid;
   margin-right: 10px;
-  padding: 10px
+  padding: 7px;
 }
 
 .trending-flex {
