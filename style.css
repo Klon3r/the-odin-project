@@ -6,11 +6,12 @@
 }
 
 :root {
-  --sidebar-background-color: rgb(163, 89, 197);
+  --sidebar-background-color: rgb(170, 91, 206);
   --content-color: lightgray;
   --info-content-color: white;
   --announcements-container-color: white;
   --trending-container-color: white;
+  --header-background-color: white;
 }
 
 .admin-dashboard {
@@ -27,11 +28,10 @@
 .header {
   grid-area: header;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  background-color: var(--header-background-color)
 }
-
-
 
 .info {
   grid-area: info;
@@ -52,11 +52,11 @@
 /* -sidebar- */
 .sidebar {
   grid-area: sidebar;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display:grid;
   background-color: var(--sidebar-background-color);
-  align-items: center;
+  grid-template-columns: 1;
+  grid-template-rows: auto auto 1fr;
+  gap: 50px;
   padding-left: 10px;
 }
 
@@ -144,7 +144,7 @@
 .searchbar {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin-left: 30px;
   margin-top: 20px;
@@ -152,7 +152,7 @@
 
 .searchbar input {
   margin-left: 10px;
-  width: 50rem;
+  width: calc(100vw / 2.5);
   height: 2rem;
   border-radius: 5px;
   border: 0px solid black;
@@ -162,9 +162,8 @@
 
 .user-info {
   display: flex;
+  justify-content: space-between;
   margin-top: 20px;
-  padding-left: 80px;
-  gap: 70px;
 }
 
 .hello-user {
@@ -185,14 +184,17 @@
 }
 
 .header #bell {
-  width: 10%;
-  padding-right: 20px;
+  width: 3rem;
+  margin-right: 20px;
   cursor: pointer;
 }
 
 .header #user-icon {
-  width: 10%;
-  margin-bottom: 5px;
+  width: 3.5rem;
+  background-color: white;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid black;
 }
 
 .user-info-and-icon {
@@ -209,10 +211,11 @@
 }
 
 button {
-  width: 5vw;
-  height: 5vh;
+  border-radius: 10px;
   font-size: 1em;
   border: 2px solid black;
   cursor: pointer;
   font-weight: bold;
+  width: 6rem;
+  height: 2rem;
 }
