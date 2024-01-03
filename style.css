@@ -22,7 +22,8 @@
   "sidebar header header header header header"
   "sidebar info info info info announcements"
   "sidebar info info info info announcements"
-  "sidebar info info info info trending"
+  "sidebar info info info info trending";
+  min-height: 100vh
 }
 
 .header {
@@ -153,8 +154,13 @@
 
 .trending-flex {
   display: flex;
-  justify-content: space-evenly;
-  padding: 15px
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.trending img {
+  width: 3em;
 }
 
 /* -header- */
