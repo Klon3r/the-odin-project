@@ -14,7 +14,6 @@
 }
 
 .admin-dashboard {
-  
   display: grid;
   grid-template-columns: minmax(200px, 0.9fr) repeat(5, minmax(200px, 1fr));
   grid-template-rows: repeat(4, 1fr);
@@ -32,14 +31,38 @@
   grid-template-rows: repeat(2, 1fr);
 }
 
+
+
+.info {
+  grid-area: info;
+}
+
+.announcements {
+  grid-area: announcements;
+}
+
+.trending {
+  grid-area: trending;
+}
+
+.announcements, .trending, .info {
+  background-color: var(--content-color);
+}
+
+/* -sidebar- */
 .sidebar {
   grid-area: sidebar;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--sidebar-background-color);
   align-items: center;
   padding-left: 10px;
+}
+
+.logo-and-text {
+  display: flex;
+  min-width: 100px;
 }
 
 .sidebar ul li {
@@ -67,39 +90,21 @@
 }
 
 .sidebar p {
-  font-size: 1.5rem;
+  font-size: 1.2em;
   margin-left: 10px;
   font-weight: bold;
+  text-size-adjust: auto;
 }
 
-.info {
-  grid-area: info;
-}
-
-.announcements {
-  grid-area: announcements;
-}
-
-.trending {
-  grid-area: trending;
-}
-
-.announcements, .trending, .info {
-  background-color: var(--content-color);
-}
-
-/* INFO */
-
+/* -info- */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: repeat(3 minmax(150px, 1fr));
-  /* gap: 15px; */
 }
 
 .info-content {
   padding: 10px;
-  /* margin-right: 10px; */
   margin: 10px;
   background-color: var(--info-content-color);
   border-radius: 15px;
@@ -109,7 +114,7 @@
   padding-bottom: 10px;
 }
 
-/* ANNOUNCEMENTS */
+/* -announcements- */
 .announcements-container {
   background-color: var(--announcements-container-color);
   padding: 10px;
@@ -120,7 +125,7 @@
   padding-right: 5px;
 }
 
-/* TRENDING */
+/* -trending- */
 
 .trending-container {
   background-color: var(--trending-container-color);
@@ -135,7 +140,7 @@
   padding: 15px
 }
 
-/* HEADER */
+/* -header- */
 .searchbar {
   display: flex;
   grid-column-start: 1 2;
@@ -163,4 +168,8 @@
 
 .hello-user p {
   margin-left: 20px;
+}
+
+.header img {
+  width: 5%;
 }
