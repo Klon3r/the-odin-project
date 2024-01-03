@@ -143,7 +143,9 @@
 /* -header- */
 .searchbar {
   display: flex;
-  grid-column-start: 1 2;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin-left: 30px;
   margin-top: 20px;
 }
@@ -152,24 +154,65 @@
   margin-left: 10px;
   width: 50rem;
   height: 2rem;
+  border-radius: 5px;
+  border: 0px solid black;
+  background-color: lightgray;
+  font-size: 1.5em;
 }
 
 .user-info {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px
+  margin-top: 20px;
+  padding-left: 80px;
+  gap: 70px;
 }
 
 .hello-user {
   display: flex;
+  align-items: center;
   margin-left: 30px;
   margin-top: 20px;
 }
 
 .hello-user p {
   margin-left: 20px;
+  font-size: 1.5em;
 }
 
 .header img {
-  width: 5%;
+  width: 4%;
+  margin-top: 5px;
+}
+
+.header #bell {
+  width: 10%;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.header #user-icon {
+  width: 10%;
+  margin-bottom: 5px;
+}
+
+.user-info-and-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around; 
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 5vw;
+  height: 5vh;
+  font-size: 1em;
+  border: 2px solid black;
+  cursor: pointer;
+  font-weight: bold;
 }
