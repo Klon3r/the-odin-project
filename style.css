@@ -59,7 +59,7 @@
   display:grid;
   background-color: var(--sidebar-background-color);
   grid-template-columns: 1;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
   gap: 50px;
   padding-left: 10px;
 }
