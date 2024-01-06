@@ -1,7 +1,8 @@
 # The Odin Project: Admin Dashboard
-
-<a align="center" href="https://terminalklone.github.io/odin-admin-dashboard/">Live Preview
-
+<div align="center">
+<a href="https://terminalklone.github.io/odin-admin-dashboard/">Live Preview
+</div>
+  
 ## Screenshot
 ![Screenshot](./img/screenshot.png)
 
