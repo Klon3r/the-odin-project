@@ -1,4 +1,7 @@
 # The Odin Project: Admin Dashboard
+Using the knowledge I have gained so far to make a dashboard design
+
+## Live Site
 <div align="center">
 <a href="https://terminalklone.github.io/odin-admin-dashboard/">Live Preview
 </div>
