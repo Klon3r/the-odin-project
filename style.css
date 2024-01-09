@@ -9,3 +9,14 @@ body {
 .header {
   border-bottom: 2px solid black;
 }
+
+.book-content {
+  border: 1px solid black;
+  padding: 2rem;
+}
+
+.content {
+  display: flex;
+  gap: 2em;
+  padding: 2em;
+}
