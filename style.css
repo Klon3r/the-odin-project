@@ -1,0 +1,11 @@
+:root {
+  --background-color: lightgrey;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.header {
+  border-bottom: 2px solid black;
+}
