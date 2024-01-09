@@ -19,14 +19,15 @@ function refreshBooks() {
     const bookPages = document.createElement("h4");
     const bookRead = document.createElement("h4");
     const deleteBookButton = document.createElement("button")
+    const finishedButton = document.createElement("button");
 
     bookName.innerText = myLibrary[book].name;
     bookAuthor.innerText = myLibrary[book].author;
     bookPages.innerText = myLibrary[book].pages + " pages";
     if(myLibrary[book].finished === false) { 
-      bookRead.innerText = "Not finshed"
+      bookRead.innerText = "Not Read"
     } else {
-      bookRead.innerText = "Finished"
+      bookRead.innerText = "Read"
     }
 
     let bookIndex = book;
@@ -34,11 +35,21 @@ function refreshBooks() {
     deleteBookButton.innerText = "Delete";
     deleteBookButton.addEventListener('mousedown', function() { deleteBook(myLibrary[bookIndex].id ) })
 
+    finishedButton.innerText = "Finished";
+    finishedButton.addEventListener('mousedown', function() { 
+      if(bookRead.innerText === "Not Read"){
+        bookRead.innerText = "Read";
+      } else {
+        bookRead.innerText = "Not Read";
+      }
+    })
+
     bookContent.appendChild(bookName);
     bookContent.appendChild(bookAuthor);
     bookContent.appendChild(bookPages);
     bookContent.appendChild(bookRead);
     bookContent.appendChild(deleteBookButton);
+    bookContent.appendChild(finishedButton);
     content.appendChild(bookContent);
   }
 }
@@ -56,6 +67,11 @@ function deleteBook(index) {
   myLibrary.splice(index, 1);
   clearBookDisplay()
   refreshBooks();
+}
+
+function finishedBook() {
+
+
 }
 
 function cancel() { 
