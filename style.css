@@ -7,7 +7,16 @@ body {
 }
 
 .header {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
   border-bottom: 2px solid black;
+  align-items: center;
+}
+
+#new-book {
+  width: 6rem;
+  height: 3rem;
 }
 
 .book-content {
@@ -19,4 +28,11 @@ body {
   display: flex;
   gap: 2em;
   padding: 2em;
+}
+
+#input-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  margin-bottom: 0.5em;
 }
