@@ -10,8 +10,34 @@
 <body>
   <div class="header">
     <h2>Library</h2>
+    <button id="new-book" onclick="addBook()">Add Book</button>
   </div>
   <div id="content" class="content">
+    <dialog id="addBookDialog">
+      <div id="input-div">
+        <label for="bookNameInput">Title: </label>
+        <input type="text" name="bookNameInput" id="bookNameInput" required>
+      </div>
+      <div id="input-div">
+        <label for="bookAuthorInput">Author: </label>
+        <input type="text" name="bookAuthorInput" id="bookAuthorInput" required>
+      </div>
+      <div id="input-div">
+        <label for="bookPagesInput">Pages: </label>
+        <input type="number" name="bookPagesInput" id="bookPagesInput">
+      </div>
+      <div id="input-div">
+        <label for="bookHaveRead">Finished? </label>
+        <label for="yes">Yes</label>
+        <input type="radio" name="bookHaveRead" id="yes" value="Yes">
+        <label for="no">No</label>
+        <input type="radio" name="bookHaveRead" id="no" value="No">
+      </div>
+      <div id="input-div">
+        <button id="cancel" onclick="cancel()">Cancel</button>
+        <button id="addBookButton" onclick="addBook()">Add Book</button>
+      </div>
+    </dialog>
 
   </div>
 </body>
