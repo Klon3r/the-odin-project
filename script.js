@@ -7,6 +7,7 @@ function Book(name, author, pages, finished) {
   this.author = author;
   this.pages = pages;
   this.finished = finished;
+  let id;
 };
 
 function refreshBooks() {
@@ -17,6 +18,7 @@ function refreshBooks() {
     const bookAuthor = document.createElement("h4");
     const bookPages = document.createElement("h4");
     const bookRead = document.createElement("h4");
+    const deleteBookButton = document.createElement("button")
 
     bookName.innerText = myLibrary[book].name;
     bookAuthor.innerText = myLibrary[book].author;
@@ -27,10 +29,16 @@ function refreshBooks() {
       bookRead.innerText = "Finished"
     }
 
+    let bookIndex = book;
+    myLibrary[bookIndex].id = bookIndex;
+    deleteBookButton.innerText = "Delete";
+    deleteBookButton.addEventListener('mousedown', function() { deleteBook(myLibrary[bookIndex].id ) })
+
     bookContent.appendChild(bookName);
     bookContent.appendChild(bookAuthor);
     bookContent.appendChild(bookPages);
     bookContent.appendChild(bookRead);
+    bookContent.appendChild(deleteBookButton);
     content.appendChild(bookContent);
   }
 }
@@ -42,6 +50,12 @@ function addBook() {
   bookPagesInput.value = "";
   document.getElementById('true').checked = false;
   document.getElementById('false').checked = false;
+}
+
+function deleteBook(index) {
+  myLibrary.splice(index, 1);
+  clearBookDisplay()
+  refreshBooks();
 }
 
 function cancel() { 
@@ -65,8 +79,9 @@ function clearBookDisplay() {
 }
 
 // Template books
-const book1 = new Book("IT", "Stephen King", 1115, false);
+const template = new Book("IT", "Stephen King", 1115, false);
+myLibrary.push(template);
 const book2 = new Book("Hannibal Rising", "Thomas Harris", 384, true)
-myLibrary.push(book1);
+
 myLibrary.push(book2);
 refreshBooks();
