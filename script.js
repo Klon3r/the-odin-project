@@ -1,5 +1,10 @@
 const myLibrary = [];
 const content = document.getElementById("content");
+const addBookDialog = document.getElementById("addBookDialog");
+const bookNameInput = document.getElementById("bookNameInput");
+const bookAuthorInput = document.getElementById("bookAuthorInput");
+const bookPagesInput = document.getElementById("bookPagesInput");
+const bookHaveRead = document.getElementById("bookHaveRead");
 
 function Book(name, author, pages, haveRead) {
   this.name = name;
@@ -9,10 +14,6 @@ function Book(name, author, pages, haveRead) {
 };
 
 function placeBooks() {
-  // create div
-  // loop through myLibrary array
-  // place book onto the div
-
   for (book in myLibrary) {
     const bookContent = document.createElement('div');
     bookContent.className = "book-content"
@@ -36,8 +37,19 @@ function placeBooks() {
     bookContent.appendChild(bookRead);
     content.appendChild(bookContent);
   }
-
 }
+
+function addBook() {
+  addBookDialog.showModal();
+}
+
+function cancel() { 
+  addBookDialog.close();
+  bookNameInput.value = "";
+  bookAuthorInput.value = "";
+  bookPagesInput.value = "";
+  bookHaveRead.value = "";
+};
 
 // Template books
 const book1 = new Book("IT", "Stephen King", 1115, false);
