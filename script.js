@@ -15,19 +15,26 @@ function refreshBooks() {
     const bookContent = document.createElement('div');
     bookContent.className = "book-content"
     const bookName = document.createElement("h4");
+    bookName.style.gridArea = "title";
     const bookAuthor = document.createElement("h4");
+    bookAuthor.style.gridArea = "author";
     const bookPages = document.createElement("h4");
+    bookPages.style.gridArea = "pages";
     const bookRead = document.createElement("h4");
+    bookRead.style.gridArea = "read";
     const deleteBookButton = document.createElement("button")
+    deleteBookButton.style.gridArea = "delete";
     const finishedButton = document.createElement("button");
+    finishedButton.style.gridArea = "finished";
 
-    bookName.innerText = myLibrary[book].name;
-    bookAuthor.innerText = myLibrary[book].author;
+
+    bookName.innerText = "Title: " + myLibrary[book].name;
+    bookAuthor.innerText = "Author: " + myLibrary[book].author;
     bookPages.innerText = myLibrary[book].pages + " pages";
     if(myLibrary[book].finished === false) { 
-      bookRead.innerText = "Not Read"
+      bookRead.innerText = "Finished: No";
     } else {
-      bookRead.innerText = "Read"
+      bookRead.innerText = "Finished: Yes";
     }
 
     let bookIndex = book;
@@ -36,11 +43,13 @@ function refreshBooks() {
     deleteBookButton.addEventListener('mousedown', function() { deleteBook(myLibrary[bookIndex].id ) })
 
     finishedButton.innerText = "Finished";
-    finishedButton.addEventListener('mousedown', function() { 
-      if(bookRead.innerText === "Not Read"){
-        bookRead.innerText = "Read";
+    finishedButton.addEventListener('mousedown', function() {
+      if(bookRead.innerText === "Finished: No"){
+        bookRead.innerText = "Finished: Yes";
+        myLibrary[bookIndex].finished = true;
       } else {
-        bookRead.innerText = "Not Read";
+        bookRead.innerText = "Finished: No";
+        myLibrary[bookIndex].finished = false;
       }
     })
 
