@@ -14,27 +14,27 @@ function refreshBooks() {
   for (book in myLibrary) {
     const bookContent = document.createElement('div');
     bookContent.className = "book-content"
+    bookContent.style.backgroundImage = "url('./img/paper.jpg')"
     const bookName = document.createElement("h4");
-    bookName.style.gridArea = "title";
     const bookAuthor = document.createElement("h4");
-    bookAuthor.style.gridArea = "author";
     const bookPages = document.createElement("h4");
-    bookPages.style.gridArea = "pages";
     const bookRead = document.createElement("h4");
-    bookRead.style.gridArea = "read";
     const deleteBookButton = document.createElement("button")
     deleteBookButton.style.gridArea = "delete";
     const finishedButton = document.createElement("button");
     finishedButton.style.gridArea = "finished";
-
+    const buttonDiv = document.createElement("div");
+    buttonDiv.className = "button-div"
 
     bookName.innerText = "Title: " + myLibrary[book].name;
     bookAuthor.innerText = "Author: " + myLibrary[book].author;
     bookPages.innerText = myLibrary[book].pages + " pages";
     if(myLibrary[book].finished === false) { 
       bookRead.innerText = "Finished: No";
+      bookRead.style.color = "red";
     } else {
       bookRead.innerText = "Finished: Yes";
+      bookRead.style.color = "green";
     }
 
     let bookIndex = book;
@@ -47,9 +47,11 @@ function refreshBooks() {
       if(bookRead.innerText === "Finished: No"){
         bookRead.innerText = "Finished: Yes";
         myLibrary[bookIndex].finished = true;
+        bookRead.style.color = "green";
       } else {
         bookRead.innerText = "Finished: No";
         myLibrary[bookIndex].finished = false;
+        bookRead.style.color = "red";
       }
     })
 
@@ -57,8 +59,9 @@ function refreshBooks() {
     bookContent.appendChild(bookAuthor);
     bookContent.appendChild(bookPages);
     bookContent.appendChild(bookRead);
-    bookContent.appendChild(deleteBookButton);
-    bookContent.appendChild(finishedButton);
+    bookContent.appendChild(buttonDiv);
+    buttonDiv.appendChild(deleteBookButton);
+    buttonDiv.appendChild(finishedButton);
     content.appendChild(bookContent);
   }
 }
@@ -78,15 +81,6 @@ function deleteBook(index) {
   refreshBooks();
 }
 
-function finishedBook() {
-
-
-}
-
-function cancel() { 
-  addBookDialog.close();
-};
-
 function addBookToLibrary() {
   const bookNameInput = document.getElementById("bookNameInput");
   const bookAuthorInput = document.getElementById("bookAuthorInput");
@@ -99,14 +93,17 @@ function addBookToLibrary() {
   refreshBooks()
 }
 
-function clearBookDisplay() {
-  document.querySelectorAll('.book-content').forEach(e => e.remove());
+function clearBookDisplay() { 
+  document.querySelectorAll('.book-content').forEach(e => e.remove()); 
 }
 
-// Template books
-const template = new Book("IT", "Stephen King", 1115, false);
-myLibrary.push(template);
-const book2 = new Book("Hannibal Rising", "Thomas Harris", 384, true)
+function cancel() {
+  addBookDialog.close();
+};
 
+// Template books
+const book1 = new Book("IT", "Stephen King", 1115, false);
+const book2 = new Book("Hannibal Rising", "Thomas Harris", 384, true)
+myLibrary.push(book1);
 myLibrary.push(book2);
 refreshBooks();
