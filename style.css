@@ -2,6 +2,10 @@
   --background-color: lightgrey;
 }
 
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 body {
   background-color: var(--background-color);
 }
@@ -20,8 +24,13 @@ body {
 }
 
 .book-content {
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius: 5%;
   padding: 2rem;
+}
+
+.book-content > .column {
+  border-right: 1px solid red;
 }
 
 .content {
@@ -36,3 +45,4 @@ body {
   gap: 2em;
   margin-bottom: 0.5em;
 }
+
