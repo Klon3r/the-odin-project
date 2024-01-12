@@ -14,13 +14,18 @@ body {
   gap: 10em;
 }
 
-.playerDiv {
+.player-div {
   display: flex;
   gap: 10em;
   justify-content: center;
 }
 
 .start-div {
+  display: flex;
+  justify-content: center;
+}
+
+.gameContainer {
   display: flex;
   justify-content: center;
 }
