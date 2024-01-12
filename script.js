@@ -20,6 +20,9 @@ function createGameBoard() {
   for( let i = 1; i <= 9; i++ ) {
     let cell = document.createElement('div');
     cell.className = "cell-" + i;
+    cell.id = "cell"
+    cell.style.borderBottom = "1px solid black";
+    cell.style.borderRight = "1px solid black";
     cell.innerText = i;
  
     cell.style.gridArea = gridAreas[Math.floor((i - 1) / 3)];
