@@ -43,7 +43,14 @@ function createGameBoard() {
 };
 
 function startGame(){
-  
+  const playerOneName = document.getElementById('playerOneName');
+  const playerTwoName = document.getElementById('playerTwoName');
+
+  // check for null
+  if ( playerOneName.value === "" || playerTwoName.value === "" ) {
+    alert("Player names are empty")
+  }
+
 };
 
 // createGameBoard();
