@@ -11,7 +11,24 @@
   <div class="header">
     <h1>Tic Tac Toe</h2>
   </div>
+
   <div id="container" class="container">
+    <div class="playerDiv">
+      <div class="playerOneInfo">
+        <h2>Player One (O)</h2>
+        <label for="playerOneName">Name: </label>
+        <input type="text" name="playerOneName" id="playerOneName">
+      </div>
+
+      <div class="playerTwoInfo">
+        <h2>Player Two (X)</h2>
+        <label for="playerTwoName">Name: </label>
+        <input type="text" name="playerTwoName" id="playerTwoName">
+      </div>
+    </div>
+    <div class="start-div">
+      <button class="start-button" onclick="startGame()">Start!</button>
+    </div>
 
   </div>
 </body>
