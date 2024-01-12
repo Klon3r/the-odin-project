@@ -1,12 +1,19 @@
-let gameBoard = [0,0,0,0,0,0,0,0,0] // 3 x 3
+let gameBoard = [ 0,0,0,
+                  0,0,0,
+                  0,0,0]
 
 // Create players
+function createPlayer(name) {
+  return {name}
+}
 
 // GameLogic
 
 function createGameBoard() {
   const board = document.createElement('div');
-  const container = document.getElementById('container');
+  const gameContainer = document.getElementById('container');
+  gameContainer.className = "gameContainer";
+  
   board.style.width = "20em";
   board.style.height = "20em";
   board.className = "board"
@@ -33,6 +40,10 @@ function createGameBoard() {
   }
 
   container.appendChild(board);
-}
+};
 
-createGameBoard();
+function startGame(){
+  
+};
+
+// createGameBoard();
