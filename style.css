@@ -10,7 +10,24 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
+  gap: 10em;
+}
+
+.playerDiv {
+  display: flex;
+  gap: 10em;
   justify-content: center;
+}
+
+.start-div {
+  display: flex;
+  justify-content: center;
+}
+
+.start-button {
+  width: 8em;
+  height: 5em;
 }
 
 .board {
