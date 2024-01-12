@@ -1,9 +1,28 @@
 body {
-  background-color: lightslategray;
+  background-color: rgb(151, 151, 151);
 }
 
 .header {
   border-bottom: 1px solid black;
   display: flex;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 2em;
+}
+
+#cell:hover {
+  background-color: rgb(99, 99, 99);
+  cursor: pointer;
 }
