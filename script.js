@@ -1,12 +1,7 @@
-let gameBoard = [ 0,0,0,
-                  0,0,0,
-                  0,0,0]
-
-let players = [];
-
-// Create players
-function createPlayer(name, player, symbol) {
-  return {name, player, symbol}
+function createPlayer(players, name, player, symbol) {
+  const newPlayer = {name, player, symbol};
+  players.push(newPlayer)
+  return newPlayer;
 }
 
 // GameLogic
@@ -52,10 +47,9 @@ function startGame(){
   if ( playerOneName.value === "" || playerTwoName.value === "" ) {
     alert("Player names are empty")
   } else {
-    const playerOne = createPlayer(playerOneName.value, "playerOne", "O");
-    const playerTwo = createPlayer(playerTwoName.value, "playerTwo", "X");
-    players.push(playerOne);
-    players.push(playerTwo);
+    const players = [];
+    const playerOne = createPlayer(players, playerOneName.value, "playerOne", "O");
+    const playerTwo = createPlayer(players, playerTwoName.value, "playerTwo", "X");
     removePlayerInput();
     createGameBoard();
   }
