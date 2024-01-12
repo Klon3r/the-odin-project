@@ -2,9 +2,11 @@ let gameBoard = [ 0,0,0,
                   0,0,0,
                   0,0,0]
 
+let players = [];
+
 // Create players
-function createPlayer(name) {
-  return {name}
+function createPlayer(name, player, symbol) {
+  return {name, player, symbol}
 }
 
 // GameLogic
@@ -49,8 +51,19 @@ function startGame(){
   // check for null
   if ( playerOneName.value === "" || playerTwoName.value === "" ) {
     alert("Player names are empty")
+  } else {
+    const playerOne = createPlayer(playerOneName.value, "playerOne", "O");
+    const playerTwo = createPlayer(playerTwoName.value, "playerTwo", "X");
+    players.push(playerOne);
+    players.push(playerTwo);
+    removePlayerInput();
+    createGameBoard();
   }
+};
 
+function removePlayerInput() {
+  document.querySelectorAll('.player-div').forEach(e => e.remove());
+  document.querySelectorAll('.start-div').forEach(e => e.remove());
 };
 
 // createGameBoard();
