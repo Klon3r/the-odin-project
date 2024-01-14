@@ -1,4 +1,4 @@
-function Gameboard() {
+function gameboard() {
   let gameboard = ["","","","","","","","",""];
   
   const getGameboard = () => { return gameboard }
@@ -9,13 +9,13 @@ function Gameboard() {
   return {getGameboard, setGameboard, resetGameboard, printGameboard}
 }
 
-function Player(players, name, player, symbol, turn) {
+function player(players, name, player, symbol, turn) {
   const newPlayer = {name, player, symbol, turn};
   players.push(newPlayer)
   return newPlayer;
 }
 
-function CreateGameBoard(players, gameboard) {
+function createGameBoard(players, gameboard) {
   const board = document.createElement('div');
   const gameContainer = document.getElementById('container');
   gameContainer.className = "gameContainer";
@@ -43,13 +43,13 @@ function CreateGameBoard(players, gameboard) {
     board.appendChild(cell);
 
     // Add event listener to each cell
-    cell.addEventListener('mousedown', () => { HandleCellClick(cell, players, gameboard); });
+    cell.addEventListener('mousedown', () => { handleCellClick(cell, players, gameboard); });
   }
 
   container.appendChild(board);
 };
 
-function StartGame(){
+function startGame(){
   const playerOneName = document.getElementById('playerOneName');
   const playerTwoName = document.getElementById('playerTwoName');
 
@@ -58,16 +58,16 @@ function StartGame(){
     alert("Player names are empty")
   } else {
     const players = [];
-    const playerTwo = Player(players, playerTwoName.value, "playerTwo", "X", true);
-    const playerOne = Player(players, playerOneName.value, "playerOne", "O", false);
-    const gameboard = Gameboard();
+    const playerOne = player(players, playerOneName.value, "playerOne", "O", false);
+    const playerTwo = player(players, playerTwoName.value, "playerTwo", "X", true);
+    const gameboard = gameboard();
 
-    RemovePlayerInput();
-    CreateGameBoard(players, gameboard);
+    removePlayerInput();
+    createGameBoard(players, gameboard);
   }
 };
 
-function HandleCellClick(cell, players, gameboard) {
+function handleCellClick(cell, players, gameboard) {
   const currentPlayer = players.find(player => player.turn);
   const index = cell.id-1;
   const currentCells = gameboard.getGameboard();
@@ -76,16 +76,13 @@ function HandleCellClick(cell, players, gameboard) {
     // update gameboard
     gameboard.setGameboard(index, currentPlayer.symbol);
     gameboard.getGameboard();
-    SwapPlayer(players);
+    swapPlayer(players);
   } else {
     console.log("You can't place a symbol there!")
   }
-
-
-  
 }
 
-function SwapPlayer(players) {
+function swapPlayer(players) {
   const playerOne = players[0];
   const playerTwo = players[1];
   if( playerOne.turn === true ) {
@@ -97,7 +94,11 @@ function SwapPlayer(players) {
   }
 }
 
-function RemovePlayerInput() {
+function displayInfo(players) {
+  const textOutput = document.getElementById('text-output');
+}
+
+function removePlayerInput() {
   document.querySelectorAll('.player-div').forEach(e => e.remove());
   document.querySelectorAll('.start-div').forEach(e => e.remove());
 };
