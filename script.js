@@ -1,11 +1,12 @@
 function Gameboard() {
-  let gameboard = ["1","2","3","4","5","6","7","8","9"];
+  let gameboard = ["","","","","","","","",""];
   
-  const getGameboard = () => { console.log(gameboard) }
+  const getGameboard = () => { return gameboard }
+  const printGameboard = () => { console.log(gameboard) }
   const setGameboard = (index, val) => { gameboard[index] = val; }
-  const resetGameboard = () => { gameboard = [1,2,3,4,5,6,7,8,9]; }
+  const resetGameboard = () => { gameboard = ["","","","","","","","",""]; }
 
-  return {getGameboard, setGameboard, resetGameboard}
+  return {getGameboard, setGameboard, resetGameboard, printGameboard}
 }
 
 function Player(players, name, player, symbol, turn) {
@@ -42,7 +43,7 @@ function CreateGameBoard(players, gameboard) {
     board.appendChild(cell);
 
     // Add event listener to each cell
-    cell.addEventListener('mousedown', () => { handleCellClick(cell, players, gameboard); });
+    cell.addEventListener('mousedown', () => { HandleCellClick(cell, players, gameboard); });
   }
 
   container.appendChild(board);
@@ -66,18 +67,25 @@ function StartGame(){
   }
 };
 
-function handleCellClick(cell, players, gameboard) {
+function HandleCellClick(cell, players, gameboard) {
   const currentPlayer = players.find(player => player.turn);
-  cell.innerText = currentPlayer.symbol;
-  // update gameboard
-  index = cell.id;
-  gameboard.setGameboard(index-1, currentPlayer.symbol);
-  gameboard.getGameboard();
+  const index = cell.id-1;
+  const currentCells = gameboard.getGameboard();
+  if(currentCells[index] === "" ) {
+    cell.innerText = currentPlayer.symbol;
+    // update gameboard
+    gameboard.setGameboard(index, currentPlayer.symbol);
+    gameboard.getGameboard();
+    SwapPlayer(players);
+  } else {
+    console.log("You can't place a symbol there!")
+  }
 
-  swapPlayer(players);
+
+  
 }
 
-function swapPlayer(players) {
+function SwapPlayer(players) {
   const playerOne = players[0];
   const playerTwo = players[1];
   if( playerOne.turn === true ) {
