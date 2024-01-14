@@ -1,5 +1,5 @@
 function Gameboard() {
-  let gameboard = [1,2,3,4,5,6,7,8,9];
+  let gameboard = ["1","2","3","4","5","6","7","8","9"];
   
   const getGameboard = () => { console.log(gameboard) }
   const setGameboard = (index, val) => { gameboard[index] = val; }
@@ -14,7 +14,7 @@ function Player(players, name, player, symbol, turn) {
   return newPlayer;
 }
 
-function CreateGameBoard(players) {
+function CreateGameBoard(players, gameboard) {
   const board = document.createElement('div');
   const gameContainer = document.getElementById('container');
   gameContainer.className = "gameContainer";
@@ -32,7 +32,7 @@ function CreateGameBoard(players) {
   for( let i = 1; i <= 9; i++ ) {
     let cell = document.createElement('div');
     cell.className = "cell-" + i;
-    cell.id = "cell"
+    cell.id = i;
     cell.style.borderBottom = "1px solid black";
     cell.style.borderRight = "1px solid black";
     cell.innerText = i;
@@ -42,7 +42,7 @@ function CreateGameBoard(players) {
     board.appendChild(cell);
 
     // Add event listener to each cell
-    cell.addEventListener('mousedown', () => { handleCellClick(cell, players); });
+    cell.addEventListener('mousedown', () => { handleCellClick(cell, players, gameboard); });
   }
 
   container.appendChild(board);
@@ -62,13 +62,18 @@ function StartGame(){
     const gameboard = Gameboard();
 
     RemovePlayerInput();
-    CreateGameBoard(players);
+    CreateGameBoard(players, gameboard);
   }
 };
 
-function handleCellClick(cell, players) {
+function handleCellClick(cell, players, gameboard) {
   const currentPlayer = players.find(player => player.turn);
   cell.innerText = currentPlayer.symbol;
+  // update gameboard
+  index = cell.id;
+  gameboard.setGameboard(index, currentPlayer.symbol);
+  gameboard.getGameboard();
+
 }
 
 function RemovePlayerInput() {
