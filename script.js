@@ -71,9 +71,22 @@ function handleCellClick(cell, players, gameboard) {
   cell.innerText = currentPlayer.symbol;
   // update gameboard
   index = cell.id;
-  gameboard.setGameboard(index, currentPlayer.symbol);
+  gameboard.setGameboard(index-1, currentPlayer.symbol);
   gameboard.getGameboard();
 
+  swapPlayer(players);
+}
+
+function swapPlayer(players) {
+  const playerOne = players[0];
+  const playerTwo = players[1];
+  if( playerOne.turn === true ) {
+    playerOne.turn = false;
+    playerTwo.turn = true;
+  } else {
+    playerTwo.turn = false;
+    playerOne.turn = true;
+  }
 }
 
 function RemovePlayerInput() {
