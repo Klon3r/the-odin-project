@@ -12,10 +12,12 @@ function Gameboard() {
 function player(players, name, player, symbol, turn) {
   const newPlayer = {name, player, symbol, turn};
   players.push(newPlayer)
+
   return newPlayer;
 }
 
 function createGameBoard(players, gameboard) {
+  gameboard.resetGameboard();
   const board = document.createElement('div');
   const gameContainer = document.getElementById('container');
   gameContainer.className = "gameContainer";
@@ -34,8 +36,8 @@ function createGameBoard(players, gameboard) {
     let cell = document.createElement('div');
     cell.className = "cell";
     cell.id = i;
-    cell.style.borderBottom = "1px solid black";
-    cell.style.borderRight = "1px solid black";
+    cell.style.borderBottom = "3px solid black";
+    cell.style.borderRight = "3px solid black";
     // cell.innerText = i;
  
     cell.style.gridArea = gridAreas[Math.floor((i - 1) / 3)];
@@ -100,9 +102,19 @@ function gameLogic(players, gameboard) {
     const [a, b, c] = combination;
     if (currentCells[a] === currentSymbol && currentCells[b] === currentSymbol && currentCells[c] === currentSymbol) {
       console.log(currentPlayer.name + " wins!");
+      showWinner(currentPlayer.name, players, gameboard);
     }
   }
+}
 
+function showWinner(winner, players, gameboard) {
+  const dialog = document.getElementById('dialog');
+  const winnerText = document.getElementById('winner')
+  dialog.showModal();
+  winnerText.innerText = winner + " is the winner"
+
+  const newGameButton = document.getElementById('new-game-button');
+  newGameButton.addEventListener("mousedown", () => { newGame(players, gameboard) });
 }
 
 function swapPlayer(players) {
@@ -117,6 +129,14 @@ function swapPlayer(players) {
     playerOne.turn = true;
     // changeDisplayInfo(players) 
   }
+}
+
+function newGame(players, gameboard) {
+  const dialog = document.getElementById('dialog');
+  dialog.close();
+  document.querySelectorAll('.cell').forEach(e => e.innerText = "");
+  gameboard.resetGameboard();
+
 }
 
 function displayInfo(players) {
