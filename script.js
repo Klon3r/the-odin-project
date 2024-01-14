@@ -36,7 +36,7 @@ function createGameBoard(players, gameboard) {
     cell.id = i;
     cell.style.borderBottom = "1px solid black";
     cell.style.borderRight = "1px solid black";
-    cell.innerText = i;
+    // cell.innerText = i;
  
     cell.style.gridArea = gridAreas[Math.floor((i - 1) / 3)];
 
@@ -78,7 +78,8 @@ function handleCellClick(cell, players, gameboard) {
     gameboard.setGameboard(index, currentPlayer.symbol);
     gameboard.getGameboard();
     swapPlayer(players);
-    displayInfo(players);
+    changeDisplayInfo(players);
+    
   } else {
     console.log("You can't place a symbol there!")
   }
@@ -90,18 +91,27 @@ function swapPlayer(players) {
   if( playerOne.turn === true ) {
     playerOne.turn = false;
     playerTwo.turn = true;
+    // changeDisplayInfo(players) 
   } else {
     playerTwo.turn = false;
     playerOne.turn = true;
+    // changeDisplayInfo(players) 
   }
 }
 
 function displayInfo(players) {
   const textOutput = document.getElementById('text-output');
   let playerNameOutput = document.createElement('h2');
+  playerNameOutput.id = 'playerNameOutput';
   const currentPlayer = players.find(player => player.turn);
-  playerNameOutput.innerText = currentPlayer.name + "'s Turn";
+  playerNameOutput.innerText = currentPlayer.name + "'s Turn (" + currentPlayer.symbol + ")";
   textOutput.appendChild(playerNameOutput);
+}
+
+function changeDisplayInfo(players) {
+  const playerNameOutput = document.getElementById('playerNameOutput');
+  const currentPlayer = players.find(player => player.turn);
+  playerNameOutput.innerText = currentPlayer.name + "'s Turn (" + currentPlayer.symbol + ")";
 }
 
 function removePlayerInput() {
