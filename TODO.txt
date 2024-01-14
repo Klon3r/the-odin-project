@@ -1,0 +1,5 @@
+- Players Tie
+- Add button to go back to main menu
+- Styling for <dialog>
+-----------------------
+Maybe AI
