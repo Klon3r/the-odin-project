@@ -44,6 +44,14 @@ body {
   margin-top: 2em;
 }
 
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5em;
+  font-weight: bolder;
+}
+
 .cell:hover {
   background-color: rgb(99, 99, 99);
   cursor: pointer;
