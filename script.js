@@ -1,4 +1,4 @@
-function gameboard() {
+function Gameboard() {
   let gameboard = ["","","","","","","","",""];
   
   const getGameboard = () => { return gameboard }
@@ -32,7 +32,7 @@ function createGameBoard(players, gameboard) {
   
   for( let i = 1; i <= 9; i++ ) {
     let cell = document.createElement('div');
-    cell.className = "cell-" + i;
+    cell.className = "cell";
     cell.id = i;
     cell.style.borderBottom = "1px solid black";
     cell.style.borderRight = "1px solid black";
@@ -58,12 +58,13 @@ function startGame(){
     alert("Player names are empty")
   } else {
     const players = [];
-    const playerOne = player(players, playerOneName.value, "playerOne", "O", false);
-    const playerTwo = player(players, playerTwoName.value, "playerTwo", "X", true);
-    const gameboard = gameboard();
+    const playerOne = player(players, playerOneName.value, "playerOne", "O", true);
+    const playerTwo = player(players, playerTwoName.value, "playerTwo", "X", false);
+    const gameboard = Gameboard();
 
     removePlayerInput();
     createGameBoard(players, gameboard);
+    displayInfo(players);
   }
 };
 
@@ -77,6 +78,7 @@ function handleCellClick(cell, players, gameboard) {
     gameboard.setGameboard(index, currentPlayer.symbol);
     gameboard.getGameboard();
     swapPlayer(players);
+    displayInfo(players);
   } else {
     console.log("You can't place a symbol there!")
   }
@@ -96,6 +98,10 @@ function swapPlayer(players) {
 
 function displayInfo(players) {
   const textOutput = document.getElementById('text-output');
+  let playerNameOutput = document.createElement('h2');
+  const currentPlayer = players.find(player => player.turn);
+  playerNameOutput.innerText = currentPlayer.name + "'s Turn";
+  textOutput.appendChild(playerNameOutput);
 }
 
 function removePlayerInput() {
