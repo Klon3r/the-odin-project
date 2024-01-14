@@ -74,9 +74,8 @@ function handleCellClick(cell, players, gameboard) {
   const currentCells = gameboard.getGameboard();
   if(currentCells[index] === "" ) {
     cell.innerText = currentPlayer.symbol;
-    // update gameboard
+
     gameboard.setGameboard(index, currentPlayer.symbol);
-    gameboard.getGameboard();
     gameLogic(players, gameboard, cell);
     swapPlayer(players);
     changeDisplayInfo(players);
