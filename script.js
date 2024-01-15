@@ -37,14 +37,11 @@ function createGameBoard(players, gameboard) {
     cell.className = "cell";
     cell.id = i;
     cell.style.borderBottom = "3px solid black";
-    cell.style.borderRight = "3px solid black";
-    // cell.innerText = i;
- 
+    cell.style.borderRight = "3px solid black"; 
     cell.style.gridArea = gridAreas[Math.floor((i - 1) / 3)];
 
     board.appendChild(cell);
 
-    // Add event listener to each cell
     cell.addEventListener('mousedown', () => { handleCellClick(cell, players, gameboard); });
   }
 
@@ -110,6 +107,7 @@ function resetGame() {
   inputPlayerOneName.type = "text";
   inputPlayerOneName.name = "playerOneName";
   inputPlayerOneName.id = "playerOneName";
+  inputPlayerOneName.autocomplete = "off"
 
   playerOneInfo.appendChild(playerOneH2);
   playerOneInfo.appendChild(labelPlayerOneName);
@@ -137,6 +135,7 @@ function resetGame() {
   inputPlayerTwoName.type = "text";
   inputPlayerTwoName.name = "playerTwoName";
   inputPlayerTwoName.id = "playerTwoName";
+  inputPlayerTwoName.autocomplete = "off"
 
   playerTwoInfo.appendChild(playerTwoH2);
   playerTwoInfo.appendChild(labelPlayerTwoName);
@@ -212,7 +211,7 @@ function showOutcome(winner, players, gameboard) {
     dialogText(textOutput, "The game is a tie!")
   } else {
     //winner
-    dialogText(textOutput, winner + " is the winner ")
+    dialogText(textOutput, winner + " is the winner!")
   }
 
   const newGameButton = document.getElementById('new-game-button');
