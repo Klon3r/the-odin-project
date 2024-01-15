@@ -1,3 +1,0 @@
-- Styling for <dialog>
------------------------
-Maybe AI
