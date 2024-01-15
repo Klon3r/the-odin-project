@@ -1,5 +1,5 @@
 # The Odin Project: Tic Tac Toe
-The goal for this project was to try and have a minimal if any global variables aswell as try and use factory functions to create objects.
+The goal for this project was to try and use minimal if any global variables aswell as try and use factory functions to create objects.
 
 ## Live Site
 <div align="center">
