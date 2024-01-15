@@ -67,8 +67,93 @@ function startGame(){
     removePlayerInput();
     createGameBoard(players, gameboard);
     displayInfo(players);
+    createResetButton();
   }
 };
+
+function createResetButton() {
+  const resetDiv = document.getElementById('reset-div');
+  const resetButton = document.createElement('button');
+  resetButton.innerText = "Back to Main Menu";
+  resetButton.className = "resetButton";
+
+  resetButton.addEventListener("mousedown", () => resetGame())
+
+  resetDiv.appendChild(resetButton);
+}
+
+function resetGame() {
+  document.querySelectorAll('.board').forEach(e => e.remove());
+  document.querySelectorAll('#playerNameOutput').forEach(e => e.remove());
+
+  const container = document.getElementById('container');
+  container.className = "container"
+  const playerDiv = document.createElement('div');
+  playerDiv.className = "player-div";
+
+  // Player One
+  const playerOneInfo = document.createElement('div');
+  playerOneInfo.className = "playerOneInfo";
+
+  const playerOneH2 = document.createElement('h2');
+  playerOneH2.innerText = "Player One (O)";
+
+  const labelPlayerOneName = document.createElement('label');
+  labelPlayerOneName.innerText = "Name: ";
+  labelPlayerOneName.setAttribute("for", "playerOneName");
+
+  const inputPlayerOneName = document.createElement('input');
+  inputPlayerOneName.type = "text";
+  inputPlayerOneName.name = "playerOneName";
+  inputPlayerOneName.id = "playerOneName";
+
+  playerOneInfo.appendChild(playerOneH2);
+  playerOneInfo.appendChild(labelPlayerOneName);
+  playerOneInfo.appendChild(inputPlayerOneName);
+  playerDiv.appendChild(playerOneInfo);
+  container.appendChild(playerDiv);
+
+  // VS
+  const vs = document.createElement('h2');
+  vs.innerText = "VS";
+  playerDiv.appendChild(vs);
+
+  // Player Two
+  const playerTwoInfo = document.createElement('div');
+  playerOneInfo.className = "playerOneInfo";
+
+  const playerTwoH2 = document.createElement('h2');
+  playerTwoH2.innerText = "Player Two (X)";
+
+  const labelPlayerTwoName = document.createElement('label');
+  labelPlayerTwoName.innerText = "Name: ";
+  labelPlayerTwoName.setAttribute("for", "playerTwoName");
+
+  const inputPlayerTwoName = document.createElement('input');
+  inputPlayerTwoName.type = "text";
+  inputPlayerTwoName.name = "playerTwoName";
+  inputPlayerTwoName.id = "playerTwoName";
+
+  playerTwoInfo.appendChild(playerTwoH2);
+  playerTwoInfo.appendChild(labelPlayerTwoName);
+  playerTwoInfo.appendChild(inputPlayerTwoName);
+  playerDiv.appendChild(playerTwoInfo);
+  container.appendChild(playerDiv);
+
+  // start-div
+  const startDiv = document.createElement('div');
+  startDiv.className = "start-div";
+  const startButton = document.createElement('button')
+  startButton.className = "start-button";
+  startButton.addEventListener("mousedown", () => startGame());
+  startButton.innerText = "Start Game";
+
+  startDiv.appendChild(startButton);
+  container.appendChild(startDiv);
+
+  // Remove button
+  document.querySelectorAll('.resetButton').forEach(e => e.remove());
+}
 
 function handleCellClick(cell, players, gameboard) {
   const currentPlayer = players.find(player => player.turn);
@@ -79,12 +164,13 @@ function handleCellClick(cell, players, gameboard) {
 
     gameboard.setGameboard(index, currentPlayer.symbol);
     gameLogic(players, gameboard, cell);
-    swapPlayer(players);
-    changeDisplayInfo(players);
     
   } else {
     console.log("You can't place a symbol there!")
   }
+
+  swapPlayer(players);
+  changeDisplayInfo(players);
 }
 
 function gameLogic(players, gameboard) {
@@ -102,19 +188,35 @@ function gameLogic(players, gameboard) {
     const [a, b, c] = combination;
     if (currentCells[a] === currentSymbol && currentCells[b] === currentSymbol && currentCells[c] === currentSymbol) {
       console.log(currentPlayer.name + " wins!");
-      showWinner(currentPlayer.name, players, gameboard);
+      showOutcome(currentPlayer.name, players, gameboard);
     }
+  }
+
+  // check for tie
+  if(currentCells.every(cell => cell !== "")){
+    showOutcome(false, players, gameboard)
   }
 }
 
-function showWinner(winner, players, gameboard) {
+function showOutcome(winner, players, gameboard) {
   const dialog = document.getElementById('dialog');
-  const winnerText = document.getElementById('winner')
+  const textOutput = document.getElementById('dialog-text');
   dialog.showModal();
-  winnerText.innerText = winner + " is the winner"
+
+  if( winner === false ) {
+    //tie
+    dialogText(textOutput, "The game is a tie!")
+  } else {
+    //winner
+    dialogText(textOutput, winner + " is the winner")
+  }
 
   const newGameButton = document.getElementById('new-game-button');
   newGameButton.addEventListener("mousedown", () => { newGame(players, gameboard) });
+}
+
+function dialogText(textElement, text) {
+  textElement.innerText = text;
 }
 
 function swapPlayer(players) {
@@ -123,11 +225,9 @@ function swapPlayer(players) {
   if( playerOne.turn === true ) {
     playerOne.turn = false;
     playerTwo.turn = true;
-    // changeDisplayInfo(players) 
   } else {
     playerTwo.turn = false;
     playerOne.turn = true;
-    // changeDisplayInfo(players) 
   }
 }
 
@@ -136,7 +236,6 @@ function newGame(players, gameboard) {
   dialog.close();
   document.querySelectorAll('.cell').forEach(e => e.innerText = "");
   gameboard.resetGameboard();
-
 }
 
 function displayInfo(players) {
