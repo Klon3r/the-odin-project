@@ -83,6 +83,7 @@ function createResetButton() {
 }
 
 function resetGame() {
+  removePlayerInput();
   document.querySelectorAll('.board').forEach(e => e.remove());
   document.querySelectorAll('#playerNameOutput').forEach(e => e.remove());
 
