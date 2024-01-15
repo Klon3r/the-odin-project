@@ -86,6 +86,9 @@ function resetGame() {
   document.querySelectorAll('.board').forEach(e => e.remove());
   document.querySelectorAll('#playerNameOutput').forEach(e => e.remove());
 
+  const dialog = document.getElementById('dialog');
+  dialog.close();
+
   const container = document.getElementById('container');
   container.className = "container"
   const playerDiv = document.createElement('div');
@@ -208,11 +211,14 @@ function showOutcome(winner, players, gameboard) {
     dialogText(textOutput, "The game is a tie!")
   } else {
     //winner
-    dialogText(textOutput, winner + " is the winner")
+    dialogText(textOutput, winner + " is the winner ")
   }
 
   const newGameButton = document.getElementById('new-game-button');
+  const mainMenuButton = document.getElementById('reset-game-button');
   newGameButton.addEventListener("mousedown", () => { newGame(players, gameboard) });
+  mainMenuButton.addEventListener("mousedown", () => { resetGame() });
+
 }
 
 function dialogText(textElement, text) {
