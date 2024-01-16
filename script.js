@@ -2,13 +2,14 @@ const myLibrary = [];
 const content = document.getElementById("content");
 const addBookDialog = document.getElementById("addBookDialog");
 
-function Book(name, author, pages, finished) {
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-  this.finished = finished;
-  let id;
-};
+class Book {
+	constructor(name, author, pages, finished) {
+  		this.name = name;
+	  	this.author = author;
+  		this.pages = pages;
+		this.finished = finished;
+		let id;
+	}
 
 function refreshBooks() {
   for (book in myLibrary) {
