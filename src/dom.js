@@ -14,6 +14,7 @@ export function addProjectButton() {
     const newButton = document.createElement('button');
 
     newButton.innerText = "+"
+    newButton.id = 'project-new-button';
 
     newButton.addEventListener('click', () => { showProjectDialog(); } )
 
