@@ -1,13 +1,11 @@
 export function addProject(title) {
     localStorage.setItem(title, "")
-
-    // Add the title to project side bar
     reloadProjectSidebar();
 }
 
 function reloadProjectSidebar() {
     removeProjectSidebarContent();
-    const project = document.getElementById('project-title-div');
+    const project = document.getElementById('project-list-div');
 
     // loop through local storage
     for (const [key] of Object.entries(localStorage)) {
@@ -15,6 +13,9 @@ function reloadProjectSidebar() {
         projectNames.id = key;
         projectNames.className = "project-title-list"
         projectNames.innerText = key;
+
+        projectNames.addEventListener('click', () => {console.log(projectNames.id)})
+
         project.appendChild(projectNames)
      }
 }
