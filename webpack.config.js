@@ -19,7 +19,7 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
         filename: 'index.html',
         inject: 'body',
-        title: '// todo list'
+        title: 'Todo List'
     
     })],
 };
