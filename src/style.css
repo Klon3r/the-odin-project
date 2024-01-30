@@ -11,6 +11,7 @@ body {
 #header {
     display: flex;
     border: 1px solid black;
+    justify-content: center;
 }
 
 #container {
@@ -21,9 +22,35 @@ body {
 
 #project {
     border-right: 1px solid black;
-    padding-left: 1em;
 }
 
 #content {
     padding-left: 1em;
+}
+
+.project-title-list:hover {
+    cursor: pointer;
+}
+
+#project-title-div {
+    padding-left: 5px;
+}
+
+#project-title-div > h3 {
+    margin: 2px;
+}
+
+#project-list-div {
+    padding-left: 15px;
+}
+
+#project-list-div > h4 {
+    margin: 5px;
+}
+
+#project-button-div {
+    display: flex;
+    justify-content: end;
+    padding-right: 5px;
+    margin: 5px;
 }
