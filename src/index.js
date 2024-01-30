@@ -1,6 +1,5 @@
 import css from './style.css';
 
-
 function init() {
     const root = document.createElement('div');
     const header = document.createElement('div');
@@ -14,11 +13,9 @@ function init() {
     header.id = 'header';
     content.id = 'content';
     
-
     header.innerText = 'header';
     content.innerText = 'content';
     projects.innerText = 'projects';
-
 
     document.body.appendChild(root);
     root.appendChild(header);
