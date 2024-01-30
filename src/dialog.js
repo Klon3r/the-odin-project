@@ -10,6 +10,8 @@ export function createProjectDialog() {
 
 export function showProjectDialog() {
     const projectDialog = document.getElementById('project-dialog');
+    const projectTitle = document.getElementById('project-title-input');
+    projectTitle.value = '';
     projectDialog.showModal();
 }
 
@@ -25,7 +27,7 @@ function addInputProjectDialog() {
     const projectDialogDiv = document.createElement('div');
     const projectDialogAddButton = document.createElement('button');
 
-    projectTitle.id = 'projectTitle-input'
+    projectTitle.id = 'project-title-input'
     projectTitle.type = "text";
     projectTitleLabel.textContent = "Project Name: "
     projectDialogAddButton.innerText = "add";
