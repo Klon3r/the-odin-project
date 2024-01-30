@@ -11,11 +11,15 @@ module.exports = {
     module: {
         rules: [
             {
-                // CSS
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
         ],
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin({
+        filename: 'index.html',
+        inject: 'body',
+        title: '// todo list'
+    
+    })],
 };
