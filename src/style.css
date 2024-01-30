@@ -1,7 +1,11 @@
+body {
+    background-color: lightgrey;
+}
+
 #root {
     margin: auto;
     padding-top: 100px;
-    width: 1200px;
+    width: calc(80vw);
 }
 
 #header {
