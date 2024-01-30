@@ -1,27 +1,33 @@
 import css from './style.css';
+import { addHeaderTitle, addProjectButton } from './dom';
 
 function init() {
     const root = document.createElement('div');
     const header = document.createElement('div');
     const container = document.createElement('div');
-    const projects = document.createElement('div');
+    const project = document.createElement('div');
+    const projectButtonDiv = document.createElement('div');
     const content = document.createElement('div');
 
     root.id = 'root';
     container.id = 'container';
-    projects.id = 'project';
+    project.id = 'project';
+    projectButtonDiv.id = 'project-button-div';
     header.id = 'header';
     content.id = 'content';
     
-    header.innerText = 'header';
     content.innerText = 'content';
-    projects.innerText = 'projects';
+    project.innerText = 'projects';
 
     document.body.appendChild(root);
     root.appendChild(header);
     root.appendChild(container);
-    container.appendChild(projects);
+    container.appendChild(project);
+    project.appendChild(projectButtonDiv);
     container.appendChild(content)
+
 }
 
 init();
+addHeaderTitle();
+addProjectButton();
