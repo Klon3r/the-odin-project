@@ -8,6 +8,8 @@ function init() {
     const container = document.createElement('div');
     const project = document.createElement('div');
     const projectTitleDiv = document.createElement('div');
+    const projectTitleHeading = document.createElement('h3');
+    const projectListDiv = document.createElement('div');
     const projectButtonDiv = document.createElement('div');
     const content = document.createElement('div');
 
@@ -16,14 +18,18 @@ function init() {
     project.id = 'project';
     projectTitleDiv.id = 'project-title-div';
     projectButtonDiv.id = 'project-button-div';
+    projectListDiv.id = 'project-list-div'
     header.id = 'header';
     content.id = 'content';
+    projectTitleHeading.innerText = "-Projects-"
     
     document.body.appendChild(root);
     root.appendChild(header);
     root.appendChild(container);
     container.appendChild(project);
     project.appendChild(projectTitleDiv);
+    projectTitleDiv.appendChild(projectTitleHeading);
+    project.appendChild(projectListDiv);
     project.appendChild(projectButtonDiv);
     container.appendChild(content)
 
