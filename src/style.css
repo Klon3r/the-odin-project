@@ -1,0 +1,25 @@
+#root {
+    margin: auto;
+    padding-top: 100px;
+    width: 1200px;
+}
+
+#header {
+    display: flex;
+    border: 1px solid black;
+}
+
+#container {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+#project {
+    border-right: 1px solid black;
+    padding-left: 1em;
+}
+
+#content {
+    padding-left: 1em;
+}
