@@ -30,7 +30,7 @@ function addInputProjectDialog() {
     projectTitleLabel.textContent = "Project Name: "
     projectDialogAddButton.innerText = "add";
 
-    projectDialogAddButton.addEventListener('click', () => { addProject( projectTitle.value ) });
+    projectDialogAddButton.addEventListener('click', () => { addProject( projectTitle.value ); closeProjectDialog(); });
 
     projectDialog.appendChild(projectTitleLabel)
     projectDialog.appendChild(projectTitle);
