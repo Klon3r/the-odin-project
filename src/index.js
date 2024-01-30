@@ -1,5 +1,6 @@
 import css from './style.css';
 import { addHeaderTitle, addProjectButton } from './dom';
+import { createProjectDialog } from './dialog';
 
 function init() {
     const root = document.createElement('div');
@@ -26,8 +27,10 @@ function init() {
     project.appendChild(projectButtonDiv);
     container.appendChild(content)
 
+    
+    addHeaderTitle();
+    addProjectButton();
+    createProjectDialog()
 }
 
 init();
-addHeaderTitle();
-addProjectButton();
