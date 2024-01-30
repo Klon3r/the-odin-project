@@ -1,3 +1,5 @@
+import { showProjectDialog } from "./dialog";
+
 export function addHeaderTitle() {
     const header = document.getElementById('header');
     const headerTitle = document.createElement('h2');
@@ -13,7 +15,7 @@ export function addProjectButton() {
 
     newButton.innerText = "+"
 
-    newButton.addEventListener('click', () => { console.log("Click") } )
+    newButton.addEventListener('click', () => { showProjectDialog(); } )
 
     projectButtonDiv.appendChild(newButton)
 }
