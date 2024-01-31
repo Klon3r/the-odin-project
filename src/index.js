@@ -1,6 +1,6 @@
 import css from './style.css';
 import { addHeaderTitle, addProjectButton } from './dom';
-import { createProjectDialog } from './dialog';
+import { createProjectDialog, createNoteDialog } from './dialog';
 import { reloadProjectSidebar } from './project';
 
 function init() {
@@ -38,6 +38,7 @@ function init() {
     addHeaderTitle();
     addProjectButton();
     createProjectDialog()
+    createNoteDialog();
 }
 
 init();
