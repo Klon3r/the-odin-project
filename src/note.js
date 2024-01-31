@@ -19,7 +19,7 @@ export function noteInit() {
 
 function createNoteTitle() {
     const noteTitleDiv = document.getElementById('note-title-div');
-    const noteTitle = document.createElement('h4');
+    const noteTitle = document.createElement('h3');
 
     noteTitle.id = 'note-title';
     noteTitle.innerText = '-Notes-';
