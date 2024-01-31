@@ -61,3 +61,7 @@ body {
     margin: 2px;
 }
 
+#note-title-div {
+    display: flex;
+    gap: 10px;
+}
