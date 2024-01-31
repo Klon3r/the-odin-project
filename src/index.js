@@ -1,6 +1,7 @@
 import css from './style.css';
 import { addHeaderTitle, addProjectButton } from './dom';
 import { createProjectDialog } from './dialog';
+import { reloadProjectSidebar } from './project';
 
 function init() {
     const root = document.createElement('div');
@@ -40,5 +41,6 @@ function init() {
 }
 
 init();
+reloadProjectSidebar();
 // For testing remove localStorage
-localStorage.clear()
+// localStorage.clear()
