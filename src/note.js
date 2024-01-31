@@ -1,4 +1,6 @@
-export function noteInit() {
+export function noteInit(projectId) {
+    clearNoteContent()
+
     const content = document.getElementById('content')
     const noteTitleDiv = document.createElement('div');
     const noteContentDiv = document.createElement('div');
@@ -13,27 +15,35 @@ export function noteInit() {
     content.appendChild(noteButtonDiv);
     
     
-    createNoteTitle();
+    createNoteTitle(projectId);
     createNoteAddButton();
 }
 
-function createNoteTitle() {
+function clearNoteContent() {
+    document.querySelectorAll('#note-title-div').forEach(e => e.remove());
+    document.querySelectorAll('#note-content-div').forEach(e => e.remove());
+    document.querySelectorAll('#note-button-div').forEach(e => e.remove());
+}
+
+function createNoteTitle(projectId) {
     const noteTitleDiv = document.getElementById('note-title-div');
     const noteTitle = document.createElement('h3');
 
     noteTitle.id = 'note-title';
-    noteTitle.innerText = '-Notes-';
+    noteTitle.innerText = `-Notes for ${projectId}-`;
 
     noteTitleDiv.appendChild(noteTitle);
 }
 
 function createNoteAddButton() {
-    const noteButtonDiv = document.getElementById('note-button-div');
+    const noteButtonDiv = document.getElementById('note-title-div');
     const noteButton = document.createElement('button');
 
     noteButton.id = 'note-button';
     noteButton.innerText = 'Add Note';
 
-    noteButtonDiv.appendChild(noteButton);
+    noteButton.addEventListener('click', () => { console.log("CLICK");})
 
+    noteButtonDiv.appendChild(noteButton);
 }
+
