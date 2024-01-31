@@ -16,7 +16,7 @@ export function reloadProjectSidebar() {
         projectNames.className = "project-title-list"
         projectNames.innerText = key;
 
-        projectNames.addEventListener('click', () => { noteInit(); console.log(projectNames.id)})
+        projectNames.addEventListener('click', () => { noteInit(projectNames.id);})
 
         project.appendChild(projectNames)
      }
