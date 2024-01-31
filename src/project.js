@@ -1,11 +1,11 @@
-import { createNoteTitle } from "./note";
+import { noteInit } from "./note";
 
 export function addProject(title) {
     localStorage.setItem(title, "")
     reloadProjectSidebar();
 }
 
-function reloadProjectSidebar() {
+export function reloadProjectSidebar() {
     removeProjectSidebarContent();
     const project = document.getElementById('project-list-div');
 
@@ -16,7 +16,7 @@ function reloadProjectSidebar() {
         projectNames.className = "project-title-list"
         projectNames.innerText = key;
 
-        projectNames.addEventListener('click', () => { createNoteTitle(); console.log(projectNames.id)})
+        projectNames.addEventListener('click', () => { noteInit(); console.log(projectNames.id)})
 
         project.appendChild(projectNames)
      }
