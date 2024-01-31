@@ -39,3 +39,9 @@ function addInputProjectDialog() {
     projectDialog.appendChild(projectDialogDiv);
     projectDialog.appendChild(projectDialogAddButton);
 }
+
+export function createNoteDialog() {
+    const noteDialog = document.createElement('dialog');
+    noteDialog.id = 'note-dialog'
+    document.body.appendChild(noteDialog);
+}
