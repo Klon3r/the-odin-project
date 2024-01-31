@@ -1,3 +1,5 @@
+import { showNoteDialog } from "./dialog";
+
 export function noteInit(projectId) {
     clearNoteContent()
 
@@ -42,7 +44,7 @@ function createNoteAddButton() {
     noteButton.id = 'note-button';
     noteButton.innerText = 'Add Note';
 
-    noteButton.addEventListener('click', () => { console.log("CLICK");})
+    noteButton.addEventListener('click', () => { showNoteDialog();})
 
     noteButtonDiv.appendChild(noteButton);
 }
