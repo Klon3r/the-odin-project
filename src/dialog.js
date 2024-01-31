@@ -44,4 +44,40 @@ export function createNoteDialog() {
     const noteDialog = document.createElement('dialog');
     noteDialog.id = 'note-dialog'
     document.body.appendChild(noteDialog);
+    addInputNoteDialog()
+}
+
+export function showNoteDialog() {
+    const noteDialog = document.getElementById('note-dialog');
+    noteDialog.showModal();
+}
+
+function addInputNoteDialog() {
+    const noteDialog = document.getElementById('note-dialog');
+    const noteTitleDiv = document.createElement('div');
+    const noteTitle = document.createElement('input');
+    const noteTitleLabel = document.createElement('label');
+    const noteDescDiv = document.createElement('div');
+    const noteDesc = document.createElement('input');
+    const noteDescLabel = document.createElement('label');
+    const noteDialogDiv = document.createElement('div');
+    const noteDialogAddButton = document.createElement('button');
+
+    noteTitleLabel.textContent = "Note Title: "
+    noteDescLabel.textContent = "Note Description: "
+    noteTitle.type = 'text';
+    noteDialogAddButton.innerText = 'add';
+
+    noteTitleDiv.appendChild(noteTitleLabel);
+    noteTitleDiv.appendChild(noteTitle);
+    noteDescDiv.appendChild(noteDescLabel);
+    noteDescDiv.appendChild(noteDesc);
+
+    noteDialog.appendChild(noteTitleDiv);
+    noteDialog.appendChild(noteDescDiv);
+
+    // button    
+    noteDialog.appendChild(noteDialogDiv);
+    noteDialogDiv.appendChild(noteDialogAddButton);
+
 }
