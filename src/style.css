@@ -26,6 +26,8 @@ body {
 
 #content {
     padding-left: 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-title-list:hover {
@@ -54,3 +56,8 @@ body {
     padding-right: 5px;
     margin: 5px;
 }
+
+#note-title-div > h3 {
+    margin: 2px;
+}
+
