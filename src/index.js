@@ -43,5 +43,3 @@ function init() {
 
 init();
 reloadProjectSidebar();
-// For testing remove localStorage
-// localStorage.clear()
