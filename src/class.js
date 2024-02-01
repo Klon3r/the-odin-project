@@ -1,5 +1,6 @@
 export default class noteClass {
-    constructor(title, desc) {
+    constructor(project, title, desc) {
+        this.project = project;
         this.title = title;
         this.desc = desc;
     //     this.dueDate = dueDate;
@@ -8,9 +9,22 @@ export default class noteClass {
     //     this.checked = checked;
     }
 
+    // setNoteToStorage(key) {
+    //     localStorage.setItem(key, `Title: ${this.title} Desc: ${this.desc}`)
+    // }
+
     setNoteToStorage(key) {
-        localStorage.setItem(key, `Title: ${this.title} Desc: ${this.desc}`)
+        const existingNotesJSON = localStorage.getItem(key);
+        let existingNotes = existingNotesJSON ? JSON.parse(existingNotesJSON) : {};
+
+        existingNotes[this.title] = [{
+            desc: this.desc
+        }]
+
+        localStorage.setItem(key, JSON.stringify(existingNotes))
     }
 
+    retrieveNoteFromStorage(key) {
 
+    }
 }
