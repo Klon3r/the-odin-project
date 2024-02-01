@@ -13,7 +13,7 @@ export default class noteClass {
         }
 
         existingNotes[this.project].push({
-            desc: this.desc
+            todo: this.desc
         })
 
         localStorage.setItem(key, JSON.stringify(existingNotes))
