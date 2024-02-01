@@ -129,7 +129,17 @@ body {
 
 #note-info-div p {
     margin: 2px;
-    padding-left: 20px;
     font-size: 0.8rem;
+}
 
+#note-info-div {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#note-info-div:hover {
+    background-color: lightpink;
 }
