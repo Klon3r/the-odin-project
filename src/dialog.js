@@ -1,4 +1,5 @@
 import { addProject } from "./project";
+import { addNote } from "./note";
 
 export function createProjectDialog() {
     const projectDialog = document.createElement('dialog');
@@ -49,6 +50,11 @@ export function createNoteDialog() {
 
 export function showNoteDialog() {
     const noteDialog = document.getElementById('note-dialog');
+    const noteTitle = document.getElementById('note-title-input');
+    const noteDesc = document.getElementById('note-desc-input');
+    noteTitle.value = '';
+    noteDesc.value = '';
+
     noteDialog.showModal();
 }
 
@@ -63,10 +69,16 @@ function addInputNoteDialog() {
     const noteDialogDiv = document.createElement('div');
     const noteDialogAddButton = document.createElement('button');
 
+    noteTitle.id = 'note-title-input';
+    noteDesc.id = 'note-desc-input';
+
     noteTitleLabel.textContent = "Note Title: "
     noteDescLabel.textContent = "Note Description: "
     noteTitle.type = 'text';
+    noteDesc.type = 'text';
     noteDialogAddButton.innerText = 'add';
+
+    noteDialogAddButton.addEventListener('click', () => { addNote(noteTitle.value, noteDesc.value); closeNoteDialog() })
 
     noteTitleDiv.appendChild(noteTitleLabel);
     noteTitleDiv.appendChild(noteTitle);
@@ -79,5 +91,9 @@ function addInputNoteDialog() {
     // button    
     noteDialog.appendChild(noteDialogDiv);
     noteDialogDiv.appendChild(noteDialogAddButton);
+}
 
+function closeNoteDialog() {
+    const noteDialog = document.getElementById('note-dialog');
+    noteDialog.close();
 }
