@@ -49,6 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
+    background-color: whitesmoke;
 }
 
 .project-title-list:hover {
@@ -118,6 +119,12 @@ body {
 
 #note-delete-button {
     margin-right: 5px;
+    width: 20px;
+}
+
+#note-delete-button:hover {
+    cursor: pointer;
+    transform: scale(110%);
 }
 
 #project-dialog > h3 {
@@ -129,17 +136,15 @@ body {
 
 #note-info-div p {
     margin: 2px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 #note-info-div {
     margin: 10px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-}
-
-#note-info-div:hover {
-    background-color: lightpink;
+    background-color: lightgray;
 }
