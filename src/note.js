@@ -57,11 +57,17 @@ export function addNote(title, desc) {
     const note = new noteClass(findProjectKey.value, title, desc)
     // set storage with note
     note.setNoteToStorage(findProjectKey.value);
-
+    setTimeout(() => {
+        reloadNoteContent();
+    }, 10)
 }
 
 function reloadNoteContent() {
     const findProjectKey = document.getElementById('note-title');
+    const noteDiv = document.getElementById('note-content-div');
+
+    // Clear existing content
+    noteDiv.innerHTML = '';
 
     const noteObjJSON = localStorage.getItem(findProjectKey.value);
     let noteObj = noteObjJSON ? JSON.parse(noteObjJSON) : {};
@@ -81,6 +87,8 @@ function updateNoteContent(title, desc) {
     const noteTitle = document.createElement('h4');
     const noteDesc = document.createElement('p');
 
+    const findProjectKey = document.getElementById('note-title');
+
     const noteButtonDiv = document.createElement('div');
     const deleteButton = document.createElement('button');
 
@@ -89,10 +97,14 @@ function updateNoteContent(title, desc) {
     noteButtonDiv.id = 'note-button-div';
     deleteButton.id = 'note-delete-button'
 
+    noteButtonDiv.className = 'note-content';
+    noteTitleDiv.className = 'note-content';
+
     noteTitle.innerText = title;
     noteDesc.innerText = `- ${desc}`;
-
     deleteButton.innerText = "-"
+
+    deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,noteTitle.innerText, reloadNoteContent)} );
 
     noteTitleDiv.appendChild(noteTitle);
     noteTitleDiv.appendChild(deleteButton);
@@ -101,4 +113,23 @@ function updateNoteContent(title, desc) {
 
     noteDiv.appendChild(noteTitleDiv)
     noteDiv.appendChild(noteInfoDiv);
+}
+
+function deleteNoteFromStorage(key, noteTitle, callback) {
+    console.log(key, noteTitle);
+    const noteJSON = JSON.parse(localStorage.getItem(key));
+    console.log(noteJSON)
+    
+    for(let item in noteJSON) {
+        if(item === noteTitle) {
+            delete noteJSON[noteTitle];
+            localStorage.setItem(key, JSON.stringify(noteJSON));
+        }
+    }
+
+    // Set a slight delay before reloading
+    setTimeout(() => {
+        callback();
+    }, 10)
+    
 }
