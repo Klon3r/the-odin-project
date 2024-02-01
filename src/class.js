@@ -23,8 +23,4 @@ export default class noteClass {
 
         localStorage.setItem(key, JSON.stringify(existingNotes))
     }
-
-    retrieveNoteFromStorage(key) {
-
-    }
 }
