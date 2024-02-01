@@ -75,8 +75,7 @@ function reloadNoteContent(projectId) {
     if (noteObj[projectId]) {
         const projectNotes = noteObj[projectId];
         for (let i = 0; i < projectNotes.length; i++) {
-            const desc = projectNotes[i].desc;
-            console.log(`Project: ${projectId}\nDesc: ${desc}`);
+            const desc = projectNotes[i].todo;
             updateNoteContent(desc);
         }
     }
@@ -85,8 +84,6 @@ function reloadNoteContent(projectId) {
 function updateNoteContent(desc) {
     const noteDiv = document.getElementById('note-content-div');
     const noteInfoDiv = document.createElement('div');
-    const noteTitleDiv = document.createElement('div');
-    // const noteTitle = document.createElement('h4');
     const noteDesc = document.createElement('p');
 
     const findProjectKey = document.getElementById('note-title');
@@ -94,38 +91,32 @@ function updateNoteContent(desc) {
     const noteButtonDiv = document.createElement('div');
     const deleteButton = document.createElement('button');
 
-    noteTitleDiv.id = 'note-obj-div';
     noteInfoDiv.id = 'note-info-div';
     noteButtonDiv.id = 'note-button-div';
     deleteButton.id = 'note-delete-button'
 
     noteButtonDiv.className = 'note-content';
-    noteTitleDiv.className = 'note-content';
 
-    // noteTitle.innerText = title;
-    noteDesc.innerText = `- ${desc}`;
+    noteDesc.innerText = `${desc}`;
     deleteButton.innerText = "-"
 
-    deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,noteTitle.innerText, reloadNoteContent)} );
-
-    // noteTitleDiv.appendChild(noteTitle);
-    noteTitleDiv.appendChild(deleteButton);
-
+    deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
+    
     noteInfoDiv.appendChild(noteDesc);
-
-    noteDiv.appendChild(noteTitleDiv)
+    noteInfoDiv.appendChild(deleteButton);
     noteDiv.appendChild(noteInfoDiv);
 }
 
-function deleteNoteFromStorage(key, noteTitle, callback) {
-    console.log(key, noteTitle);
+function deleteNoteFromStorage(key, desc, callback) {
     const noteJSON = JSON.parse(localStorage.getItem(key));
-    console.log(noteJSON)
     
-    for(let item in noteJSON) {
-        if(item === noteTitle) {
-            delete noteJSON[noteTitle];
+    for (let item in noteJSON) {
+        const currentNote = noteJSON[item];
+        if (currentNote[0].todo === desc) {
+            delete noteJSON[item];
             localStorage.setItem(key, JSON.stringify(noteJSON));
+
+            break;
         }
     }
 
