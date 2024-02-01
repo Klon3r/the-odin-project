@@ -1,5 +1,6 @@
 import { showNoteDialog } from "./dialog";
 import noteClass from "./class";
+import bin from './img/bin.png';
 
 export function noteInit(projectId) {
     clearNoteContent()
@@ -89,7 +90,7 @@ function updateNoteContent(desc) {
     const findProjectKey = document.getElementById('note-title');
 
     const noteButtonDiv = document.createElement('div');
-    const deleteButton = document.createElement('button');
+    const deleteButton = document.createElement('img');
 
     noteInfoDiv.id = 'note-info-div';
     noteButtonDiv.id = 'note-button-div';
@@ -98,7 +99,7 @@ function updateNoteContent(desc) {
     noteButtonDiv.className = 'note-content';
 
     noteDesc.innerText = `${desc}`;
-    deleteButton.innerText = "-"
+    deleteButton.src = bin;
 
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
     
