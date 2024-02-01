@@ -1,4 +1,5 @@
 import { showNoteDialog } from "./dialog";
+import noteClass from "./class";
 
 export function noteInit(projectId) {
     clearNoteContent()
@@ -33,6 +34,7 @@ function createNoteTitle(projectId) {
 
     noteTitle.id = 'note-title';
     noteTitle.innerText = `-Notes for ${projectId}-`;
+    noteTitle.value = projectId;
 
     noteTitleDiv.appendChild(noteTitle);
 }
@@ -50,8 +52,11 @@ function createNoteAddButton() {
 }
 
 export function addNote(title, desc) {
-    console.log(`Title: ${title} \nDesc: ${desc}`);
-    
+    const note = new noteClass(title, desc)
+
+    const findProjectKey = document.getElementById('note-title');
+    // set storage with note
+    note.setNoteToStorage(findProjectKey.value);
 
 }
 
