@@ -77,7 +77,7 @@ function reloadNoteContent() {
 function updateNoteContent(title, desc) {
     const noteDiv = document.getElementById('note-content-div');
     const noteObjDiv = document.createElement('div');
-    const noteTitle = document.createElement('h3');
+    const noteTitle = document.createElement('h4');
     const noteDesc = document.createElement('p');
 
     noteObjDiv.id = 'note-obj-div';
