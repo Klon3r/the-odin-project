@@ -49,3 +49,9 @@ function createNoteAddButton() {
     noteButtonDiv.appendChild(noteButton);
 }
 
+export function addNote(title, desc) {
+    console.log(`Title: ${title} \nDesc: ${desc}`);
+    
+
+}
+
