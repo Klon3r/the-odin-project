@@ -112,18 +112,27 @@ function deleteNoteFromStorage(key, desc, callback) {
     const noteJSON = JSON.parse(localStorage.getItem(key));
     
     for (let item in noteJSON) {
-        const currentNote = noteJSON[item];
-        if (currentNote[0].todo === desc) {
-            delete noteJSON[item];
-            localStorage.setItem(key, JSON.stringify(noteJSON));
+        const currentNoteArray = noteJSON[item];
+        for (let i = 0; i < currentNoteArray.length; i++) {
+            const currentNote = currentNoteArray[i];
+            
+            // Remove note from array
+            if (currentNote.todo === desc) {
+                currentNoteArray.splice(i, 1);
+            }
 
-            break;
+            // If the array is empty, remove the key
+            if (currentNoteArray.length === 0) {
+                delete noteJSON[item];
+            }            
         }
     }
 
+    localStorage.setItem(key, JSON.stringify(noteJSON));
+
     // Set a slight delay before reloading
     setTimeout(() => {
-        callback();
-    }, 10)
+        callback(key);
+    }, 100)
     
 }
