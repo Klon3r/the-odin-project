@@ -23,6 +23,7 @@ function closeProjectDialog() {
 
 function addInputProjectDialog() {
     const projectDialog = document.getElementById('project-dialog');
+    const projectTitleTop = document.createElement('h3');
     const projectTitle = document.createElement('input');
     const projectTitleLabel = document.createElement('label');
     const projectDialogDiv = document.createElement('div');
@@ -32,9 +33,11 @@ function addInputProjectDialog() {
     projectTitle.type = "text";
     projectTitleLabel.textContent = "Project Name: "
     projectDialogAddButton.innerText = "add";
+    projectTitleTop.innerText = "-Project-"
 
     projectDialogAddButton.addEventListener('click', () => { addProject( projectTitle.value ); closeProjectDialog(); });
 
+    projectDialog.appendChild(projectTitleTop);
     projectDialog.appendChild(projectTitleLabel)
     projectDialog.appendChild(projectTitle);
     projectDialog.appendChild(projectDialogDiv);
