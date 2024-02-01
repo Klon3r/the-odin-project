@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 body {
     background-color: lightgrey;
 }
@@ -10,21 +14,34 @@ body {
 
 #header {
     display: flex;
-    border: 1px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-left: 2px solid black; 
+    border-bottom: 1px solid black;
     justify-content: center;
+    font-family: 'Nova Mono', monospace;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#header > h2 {
+    margin: 10px;
 }
 
 #container {
     /* border: 1px solid black; */
-    border-left:1px solid black;
-    border-right:1px solid black;
-    border-bottom: 1px solid black;
+    border-left:2px solid black;
+    border-right:2px solid black;
+    border-bottom: 2px solid black;
     display: grid;
     grid-template-columns: 1fr 5fr;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #project {
     border-right: 1px solid black;
+    font-family: 'Roboto', sans-serif;
 }
 
 #content {
@@ -35,18 +52,16 @@ body {
 
 .project-title-list:hover {
     cursor: pointer;
-}
-
-#project-title-div {
-    padding-left: 5px;
+    color: white;
 }
 
 #project-title-div > h3 {
     margin: 2px;
+    text-align: center;
 }
 
 #project-list-div {
-    padding-left: 15px;
+    padding-left: 0px;
 }
 
 #project-list-div > h4 {
@@ -59,6 +74,18 @@ body {
     padding-right: 5px;
     margin: 5px;
 }
+
+#project-button-div > button {
+    font-family: 'Josefin Sans', sans-serif;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+#project-button-div > button:hover {
+    cursor: pointer;
+}
+
+
 
 #note-title-div > h3 {
     margin: 2px;
@@ -82,3 +109,9 @@ body {
     margin-left: 5px;
 }
 
+#project-dialog > h3 {
+    margin: 0px;
+    margin-bottom: 5px;
+    justify-content: center;
+    text-align: center;
+}
