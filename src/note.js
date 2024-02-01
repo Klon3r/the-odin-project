@@ -20,6 +20,7 @@ export function noteInit(projectId) {
     
     createNoteTitle(projectId);
     createNoteAddButton();
+    reloadNoteContent();
 }
 
 function clearNoteContent() {
@@ -52,11 +53,38 @@ function createNoteAddButton() {
 }
 
 export function addNote(title, desc) {
-    const note = new noteClass(title, desc)
-
     const findProjectKey = document.getElementById('note-title');
+    const note = new noteClass(findProjectKey.value, title, desc)
     // set storage with note
     note.setNoteToStorage(findProjectKey.value);
 
 }
 
+function reloadNoteContent() {
+    const findProjectKey = document.getElementById('note-title');
+
+    const noteObjJSON = localStorage.getItem(findProjectKey.value);
+    let noteObj = noteObjJSON ? JSON.parse(noteObjJSON) : {};
+    
+    for (let objects in noteObj) {
+        const currentNote = noteObj[objects];
+        const desc = currentNote[0].desc;
+        console.log(`Title: ${objects}\nDesc: ${desc}`);
+        updateNoteContent(objects, desc);
+    }
+}
+
+function updateNoteContent(title, desc) {
+    const noteDiv = document.getElementById('note-content-div');
+    const noteObjDiv = document.createElement('div');
+    const noteTitle = document.createElement('h3');
+    const noteDesc = document.createElement('p');
+
+    noteObjDiv.id = 'note-obj-div';
+    noteTitle.innerText = title;
+    noteDesc.innerText = `- ${desc}`;
+
+    noteObjDiv.appendChild(noteTitle);
+    noteObjDiv.appendChild(noteDesc);
+    noteDiv.appendChild(noteObjDiv);
+}
