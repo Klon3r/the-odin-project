@@ -76,15 +76,29 @@ function reloadNoteContent() {
 
 function updateNoteContent(title, desc) {
     const noteDiv = document.getElementById('note-content-div');
-    const noteObjDiv = document.createElement('div');
+    const noteInfoDiv = document.createElement('div');
+    const noteTitleDiv = document.createElement('div');
     const noteTitle = document.createElement('h4');
     const noteDesc = document.createElement('p');
 
-    noteObjDiv.id = 'note-obj-div';
+    const noteButtonDiv = document.createElement('div');
+    const deleteButton = document.createElement('button');
+
+    noteTitleDiv.id = 'note-obj-div';
+    noteInfoDiv.id = 'note-info-div';
+    noteButtonDiv.id = 'note-button-div';
+    deleteButton.id = 'note-delete-button'
+
     noteTitle.innerText = title;
     noteDesc.innerText = `- ${desc}`;
 
-    noteObjDiv.appendChild(noteTitle);
-    noteObjDiv.appendChild(noteDesc);
-    noteDiv.appendChild(noteObjDiv);
+    deleteButton.innerText = "-"
+
+    noteTitleDiv.appendChild(noteTitle);
+    noteTitleDiv.appendChild(deleteButton);
+
+    noteInfoDiv.appendChild(noteDesc);
+
+    noteDiv.appendChild(noteTitleDiv)
+    noteDiv.appendChild(noteInfoDiv);
 }
