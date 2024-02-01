@@ -107,13 +107,17 @@ body {
 }
 
 #note-obj-div > h4 {
-    margin: 5px;
+    margin: 2px;
 }
 
-#note-obj-div > p {
-    margin: 2px;
-    margin-left: 5px;
-    font-size: 0.8em;
+#note-obj-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#note-delete-button {
+    margin-right: 5px;
 }
 
 #project-dialog > h3 {
@@ -121,4 +125,11 @@ body {
     margin-bottom: 5px;
     justify-content: center;
     text-align: center;
+}
+
+#note-info-div p {
+    margin: 2px;
+    padding-left: 20px;
+    font-size: 0.8rem;
+
 }
