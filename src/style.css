@@ -48,6 +48,7 @@ body {
     padding-left: 1em;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
 }
 
 .project-title-list:hover {
@@ -85,7 +86,12 @@ body {
     cursor: pointer;
 }
 
-
+#note-button {
+    font-family: 'Josefin Sans', sans-serif;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 3px;
+}
 
 #note-title-div > h3 {
     margin: 2px;
@@ -100,13 +106,14 @@ body {
     margin-top: 10px;
 }
 
-#note-obj-div > h3 {
-    margin: 2px;
+#note-obj-div > h4 {
+    margin: 5px;
 }
 
 #note-obj-div > p {
     margin: 2px;
     margin-left: 5px;
+    font-size: 0.8em;
 }
 
 #project-dialog > h3 {
