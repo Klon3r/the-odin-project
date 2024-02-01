@@ -20,7 +20,7 @@ export function noteInit(projectId) {
     
     createNoteTitle(projectId);
     createNoteAddButton();
-    reloadNoteContent();
+    reloadNoteContent(projectId);
 }
 
 function clearNoteContent() {
@@ -52,17 +52,17 @@ function createNoteAddButton() {
     noteButtonDiv.appendChild(noteButton);
 }
 
-export function addNote(title, desc) {
+export function addNote(desc) {
     const findProjectKey = document.getElementById('note-title');
-    const note = new noteClass(findProjectKey.value, title, desc)
+    const note = new noteClass(findProjectKey.value, desc)
     // set storage with note
     note.setNoteToStorage(findProjectKey.value);
     setTimeout(() => {
-        reloadNoteContent();
+        reloadNoteContent(findProjectKey.value);
     }, 10)
 }
 
-function reloadNoteContent() {
+function reloadNoteContent(projectId) {
     const findProjectKey = document.getElementById('note-title');
     const noteDiv = document.getElementById('note-content-div');
 
@@ -72,19 +72,21 @@ function reloadNoteContent() {
     const noteObjJSON = localStorage.getItem(findProjectKey.value);
     let noteObj = noteObjJSON ? JSON.parse(noteObjJSON) : {};
     
-    for (let objects in noteObj) {
-        const currentNote = noteObj[objects];
-        const desc = currentNote[0].desc;
-        console.log(`Title: ${objects}\nDesc: ${desc}`);
-        updateNoteContent(objects, desc);
+    if (noteObj[projectId]) {
+        const projectNotes = noteObj[projectId];
+        for (let i = 0; i < projectNotes.length; i++) {
+            const desc = projectNotes[i].desc;
+            console.log(`Project: ${projectId}\nDesc: ${desc}`);
+            updateNoteContent(desc);
+        }
     }
 }
 
-function updateNoteContent(title, desc) {
+function updateNoteContent(desc) {
     const noteDiv = document.getElementById('note-content-div');
     const noteInfoDiv = document.createElement('div');
     const noteTitleDiv = document.createElement('div');
-    const noteTitle = document.createElement('h4');
+    // const noteTitle = document.createElement('h4');
     const noteDesc = document.createElement('p');
 
     const findProjectKey = document.getElementById('note-title');
@@ -100,13 +102,13 @@ function updateNoteContent(title, desc) {
     noteButtonDiv.className = 'note-content';
     noteTitleDiv.className = 'note-content';
 
-    noteTitle.innerText = title;
+    // noteTitle.innerText = title;
     noteDesc.innerText = `- ${desc}`;
     deleteButton.innerText = "-"
 
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,noteTitle.innerText, reloadNoteContent)} );
 
-    noteTitleDiv.appendChild(noteTitle);
+    // noteTitleDiv.appendChild(noteTitle);
     noteTitleDiv.appendChild(deleteButton);
 
     noteInfoDiv.appendChild(noteDesc);

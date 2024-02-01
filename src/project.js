@@ -6,8 +6,8 @@ export function addProject(title) {
 }
 
 export function reloadProjectSidebar() {
-    removeProjectSidebarContent();
     const project = document.getElementById('project-list-div');
+    project.innerHTML = '';
 
     // loop through local storage
     for (const [key] of Object.entries(localStorage)) {
@@ -20,8 +20,4 @@ export function reloadProjectSidebar() {
 
         project.appendChild(projectNames)
      }
-}
-
-function removeProjectSidebarContent() {
-    document.querySelectorAll('.project-title-list').forEach(e => e.remove());
 }

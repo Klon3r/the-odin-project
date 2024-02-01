@@ -22,7 +22,6 @@ function init() {
     projectListDiv.id = 'project-list-div'
     header.id = 'header';
     content.id = 'content';
-    projectTitleHeading.innerText = "-Projects-"
     
     document.body.appendChild(root);
     root.appendChild(header);
@@ -34,7 +33,6 @@ function init() {
     project.appendChild(projectButtonDiv);
     container.appendChild(content)
 
-    
     addHeaderTitle();
     addProjectButton();
     createProjectDialog()
