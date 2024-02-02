@@ -1,7 +1,8 @@
 export default class noteClass {
-    constructor(project, desc) {
+    constructor(project, desc, checked) {
         this.project = project;
         this.desc = desc;
+        this.checked = checked;
     }
 
     setNoteToStorage(key) {
@@ -13,7 +14,8 @@ export default class noteClass {
         }
 
         existingNotes[this.project].push({
-            todo: this.desc
+            todo: this.desc,
+            checked: this.checked
         })
 
         localStorage.setItem(key, JSON.stringify(existingNotes))
