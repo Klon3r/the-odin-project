@@ -140,7 +140,7 @@ function deleteNoteFromStorage(key, desc, callback) {
     }, 100)
 }
 
-export function editNoteFromStorage(desc) {
+export function editNoteFromStorage(oldDesc, newDesc) {
     const findProjectKey = document.getElementById('note-title');
     const noteJSON = JSON.parse(localStorage.getItem(findProjectKey.value));
 
@@ -148,9 +148,13 @@ export function editNoteFromStorage(desc) {
     if(noteJSON) {
         for(let item in noteJSON) {
             const currentNoteArray = noteJSON[item];
-            const index = currentNoteArray.findIndex(note => note.todo === desc);
-            console.log(currentNoteArray[index].todo);
-            // run function to change desc;
+            const index = currentNoteArray.findIndex(note => note.todo === oldDesc);
+            
+            if(index !== -1) {
+                currentNoteArray[index].todo = newDesc;
+                localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
+                reloadNoteContent(findProjectKey.value);
+            }
         }
     }
 }
