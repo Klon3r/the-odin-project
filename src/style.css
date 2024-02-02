@@ -152,6 +152,11 @@ body {
     font-size: 0.9rem;
 }
 
+#note-info-div p:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 #note-info-div {
     background-color: lightgrey;
     margin: 10px;
