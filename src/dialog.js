@@ -61,7 +61,6 @@ export function showNoteDialog() {
 
 function addInputNoteDialog() {
     const noteDialog = document.getElementById('note-dialog');
-    const noteTitleDiv = document.createElement('div');
     const noteDescDiv = document.createElement('div');
     const noteDesc = document.createElement('input');
     const noteDescLabel = document.createElement('label');
@@ -77,8 +76,6 @@ function addInputNoteDialog() {
     
     noteDescDiv.appendChild(noteDescLabel);
     noteDescDiv.appendChild(noteDesc);
-
-    noteDialog.appendChild(noteTitleDiv);
     noteDialog.appendChild(noteDescDiv);
 
     // button    
@@ -90,3 +87,43 @@ function closeNoteDialog() {
     const noteDialog = document.getElementById('note-dialog');
     noteDialog.close();
 }
+
+export function createNoteEditDialog() {
+    const noteEditDialog = document.createElement('dialog');
+    noteEditDialog.id = 'note-edit-dialog';
+    document.body.appendChild(noteEditDialog);
+    addInputNoteEditDialog();
+}
+
+function addInputNoteEditDialog() {
+    const noteEditDialog = document.getElementById('note-edit-dialog');
+    const noteEditDiv = document.createElement('div');
+    const noteEditLabel = document.createElement('label');
+    const noteEditInput = document.createElement('input');
+    const noteButtonDiv = document.createElement('div');
+    const noteEditAddButton = document.createElement('button');
+
+    noteEditDiv.id = 'note-edit-div';
+    noteEditLabel.textContent = "Edit todo: "
+    noteEditInput.id = 'note-edit-input';
+    noteEditInput.type = 'text';
+    noteEditAddButton.innerText = "Edit"
+
+    noteEditAddButton.addEventListener('click', () => { console.log("ADD")});
+
+    noteEditDiv.appendChild(noteEditLabel);
+    noteEditDiv.appendChild(noteEditInput);
+    noteButtonDiv.appendChild(noteEditAddButton);
+    noteEditDiv.appendChild(noteButtonDiv);
+    noteEditDialog.appendChild(noteEditDiv);
+}
+
+export function showEditDialog(desc) {
+    const editDialog = document.getElementById('note-edit-dialog');
+    const noteDesc = document.getElementById('note-edit-input');
+
+    noteDesc.value = desc;
+    console.log(noteDesc.value);
+    editDialog.showModal();
+}
+
