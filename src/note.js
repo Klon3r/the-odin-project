@@ -103,7 +103,8 @@ function updateNoteContent(desc, checked) {
     deleteButton.src = binImg;
     editButton.src = editImg;
 
-    noteDesc.className = noteDescChecked(checked)
+    noteDesc.className = noteDescChecked(checked);
+    noteInfoDiv.className = noteDescChecked(checked);
 
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
     editButton.addEventListener("click", () => {showEditDialog(desc);});
