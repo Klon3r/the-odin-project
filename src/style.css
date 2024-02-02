@@ -143,12 +143,17 @@ body {
     font-size: 0.9rem;
 }
 
-#note-info-div {background-color: whitesmoke;
+#note-info-div {
+    background-color: lightgrey;
     margin: 10px;
     padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    background-color: lightgray;
+    box-shadow: 2px 2px 2px black;
+}
+
+#note-info-div:hover {
+    transform: scale(1.02);
 }
