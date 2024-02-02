@@ -78,12 +78,13 @@ function reloadNoteContent(projectId) {
         const projectNotes = noteObj[projectId];
         for (let i = 0; i < projectNotes.length; i++) {
             const desc = projectNotes[i].todo;
-            updateNoteContent(desc);
+            const checked = projectNotes[i].checked;
+            updateNoteContent(desc, checked);
         }
     }
 }
 
-function updateNoteContent(desc) {
+function updateNoteContent(desc, checked) {
     const noteDiv = document.getElementById('note-content-div');
     const noteInfoDiv = document.createElement('div');
     const noteDesc = document.createElement('p');
@@ -102,8 +103,11 @@ function updateNoteContent(desc) {
     deleteButton.src = binImg;
     editButton.src = editImg;
 
+    noteDesc.className = noteDescChecked(checked)
+
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
     editButton.addEventListener("click", () => {showEditDialog(desc);});
+    noteDesc.addEventListener("click", () => {changeCheckedNoteFromStorage(desc, checked)});
     
     noteInfoDiv.appendChild(noteDesc);
     noteInfoDiv.appendChild(noteButtonDiv)
@@ -156,5 +160,37 @@ export function editNoteFromStorage(oldDesc, newDesc) {
                 reloadNoteContent(findProjectKey.value);
             }
         }
+    }
+}
+
+function changeCheckedNoteFromStorage(desc, checked) {
+    const findProjectKey = document.getElementById('note-title');
+    const noteJSON = JSON.parse(localStorage.getItem(findProjectKey.value));
+
+    // Check if noteJSON is not null
+    if(noteJSON) {
+        for(let item in noteJSON) {
+            const currentNoteArray = noteJSON[item];
+            const index = currentNoteArray.findIndex(note => note.todo === desc);
+            
+            if(index !== -1) {
+                if(checked === false) {
+                    currentNoteArray[index].checked = true;
+                } else {
+                    currentNoteArray[index].checked = false;
+                }
+                
+                localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
+                reloadNoteContent(findProjectKey.value);
+            }
+        }
+    }
+}
+
+function noteDescChecked(checked) {
+    if(checked === false) {
+        return 'checked-false';
+    } else {
+        return 'checked-true';
     }
 }
