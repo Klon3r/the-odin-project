@@ -1,5 +1,5 @@
 import { addProject } from "./project";
-import { addNote } from "./note";
+import { addNote, editNoteFromStorage } from "./note";
 
 export function createProjectDialog() {
     const projectDialog = document.createElement('dialog');
@@ -102,17 +102,20 @@ function addInputNoteEditDialog() {
     const noteEditInput = document.createElement('input');
     const noteButtonDiv = document.createElement('div');
     const noteEditAddButton = document.createElement('button');
+    const noteOldDesc = document.createElement('div');
 
     noteEditDiv.id = 'note-edit-div';
     noteEditLabel.textContent = "Edit todo: "
     noteEditInput.id = 'note-edit-input';
     noteEditInput.type = 'text';
+    noteOldDesc.id = 'note-old-desc'
     noteEditAddButton.innerText = "Edit"
 
-    noteEditAddButton.addEventListener('click', () => { console.log("ADD")});
+    noteEditAddButton.addEventListener('click', () => { editNoteFromStorage(noteOldDesc.value, noteEditInput.value); closeEditDialog()});
 
     noteEditDiv.appendChild(noteEditLabel);
     noteEditDiv.appendChild(noteEditInput);
+    noteEditDiv.appendChild(noteOldDesc);
     noteButtonDiv.appendChild(noteEditAddButton);
     noteEditDiv.appendChild(noteButtonDiv);
     noteEditDialog.appendChild(noteEditDiv);
@@ -121,9 +124,16 @@ function addInputNoteEditDialog() {
 export function showEditDialog(desc) {
     const editDialog = document.getElementById('note-edit-dialog');
     const noteDesc = document.getElementById('note-edit-input');
+    const noteOldDesc = document.getElementById('note-old-desc')
 
     noteDesc.value = desc;
-    console.log(noteDesc.value);
+    noteOldDesc.value = desc;
+
     editDialog.showModal();
+}
+
+function closeEditDialog() {
+    const editDialog = document.getElementById('note-edit-dialog');
+    editDialog.close();
 }
 
