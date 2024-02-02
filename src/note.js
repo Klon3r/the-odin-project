@@ -1,4 +1,4 @@
-import { showNoteDialog } from "./dialog";
+import { showNoteDialog, showEditDialog } from "./dialog";
 import noteClass from "./class";
 import binImg from './img/bin.png';
 import editImg from './img/edit.png';
@@ -103,7 +103,7 @@ function updateNoteContent(desc) {
     editButton.src = editImg;
 
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
-    editButton.addEventListener("click", () => {console.log("EDIT")});
+    editButton.addEventListener("click", () => {showEditDialog(desc);});
     
     noteInfoDiv.appendChild(noteDesc);
     noteInfoDiv.appendChild(noteButtonDiv)
@@ -138,5 +138,19 @@ function deleteNoteFromStorage(key, desc, callback) {
     setTimeout(() => {
         callback(key);
     }, 100)
-    
+}
+
+export function editNoteFromStorage(desc) {
+    const findProjectKey = document.getElementById('note-title');
+    const noteJSON = JSON.parse(localStorage.getItem(findProjectKey.value));
+
+    // Check if noteJSON is not null
+    if(noteJSON) {
+        for(let item in noteJSON) {
+            const currentNoteArray = noteJSON[item];
+            const index = currentNoteArray.findIndex(note => note.todo === desc);
+            console.log(currentNoteArray[index].todo);
+            // run function to change desc;
+        }
+    }
 }
