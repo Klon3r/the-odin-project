@@ -131,6 +131,15 @@ body {
     transform: scale(110%);
 }
 
+#note-edit-button {
+    width: 20px;
+}
+
+#note-edit-button:hover {
+    cursor: pointer;
+    transform: scale(110%);
+}
+
 #project-dialog > h3 {
     margin: 0px;
     margin-bottom: 5px;
@@ -155,5 +164,5 @@ body {
 }
 
 #note-info-div:hover {
-    transform: scale(1.02);
+    background-color: rgb(223, 223, 223);
 }
