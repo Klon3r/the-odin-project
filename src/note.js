@@ -56,7 +56,7 @@ function createNoteAddButton() {
 
 export function addNote(desc) {
     const findProjectKey = document.getElementById('note-title');
-    const note = new noteClass(findProjectKey.value, desc)
+    const note = new noteClass(findProjectKey.value, desc, false);
     // set storage with note
     note.setNoteToStorage(findProjectKey.value);
     setTimeout(() => {
