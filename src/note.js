@@ -1,6 +1,7 @@
 import { showNoteDialog } from "./dialog";
 import noteClass from "./class";
-import bin from './img/bin.png';
+import binImg from './img/bin.png';
+import editImg from './img/edit.png';
 
 export function noteInit(projectId) {
     clearNoteContent()
@@ -86,25 +87,28 @@ function updateNoteContent(desc) {
     const noteDiv = document.getElementById('note-content-div');
     const noteInfoDiv = document.createElement('div');
     const noteDesc = document.createElement('p');
-
     const findProjectKey = document.getElementById('note-title');
-
     const noteButtonDiv = document.createElement('div');
     const deleteButton = document.createElement('img');
+    const editButton = document.createElement('img');
 
     noteInfoDiv.id = 'note-info-div';
     noteButtonDiv.id = 'note-button-div';
     deleteButton.id = 'note-delete-button'
-
-    noteButtonDiv.className = 'note-content';
+    editButton.id = 'note-edit-button';
+    // noteButtonDiv.className = 'note-content';
 
     noteDesc.innerText = `${desc}`;
-    deleteButton.src = bin;
+    deleteButton.src = binImg;
+    editButton.src = editImg;
 
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
+    editButton.addEventListener("click", () => {console.log("EDIT")});
     
     noteInfoDiv.appendChild(noteDesc);
-    noteInfoDiv.appendChild(deleteButton);
+    noteInfoDiv.appendChild(noteButtonDiv)
+    noteButtonDiv.appendChild(editButton);
+    noteButtonDiv.appendChild(deleteButton);
     noteDiv.appendChild(noteInfoDiv);
 }
 
