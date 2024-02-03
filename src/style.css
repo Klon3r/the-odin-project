@@ -182,3 +182,28 @@ body {
 #note-info-div.checked-true {
     background-color: lightgreen;
 }
+
+#project-dialog > h3 {
+    font-family: 'Nova Mono', monospace;
+    padding-bottom: 10px;
+}
+
+#project-dialog > label, #project-dialog > input, #project-dialog-button-div  > button {
+    font-family: 'Roboto', sans-serif;
+}
+
+#project-dialog-button-div {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+#project-dialog-button-div > button {
+    box-shadow: 2px 2px 2px black;
+}
+
+#project-dialog {
+    background-color: #D7C0D0;
+    border-radius: 10px;
+    border: 2px solid black;
+}
