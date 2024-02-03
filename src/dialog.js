@@ -27,21 +27,29 @@ function addInputProjectDialog() {
     const projectTitle = document.createElement('input');
     const projectTitleLabel = document.createElement('label');
     const projectDialogDiv = document.createElement('div');
+    const projectButtonDiv = document.createElement('div');
     const projectDialogAddButton = document.createElement('button');
+    const projectDialogCancelButton = document.createElement('button');
 
     projectTitle.id = 'project-title-input'
+    projectButtonDiv.id = 'project-dialog-button-div'
     projectTitle.type = "text";
-    projectTitleLabel.textContent = "Project Name: "
-    projectDialogAddButton.innerText = "add";
-    projectTitleTop.innerText = "-Project-"
+    projectTitleLabel.textContent = "List Name: "
+    projectDialogAddButton.innerText = "Add";
+    projectDialogCancelButton.innerText = "Cancel";
+    projectTitleTop.innerText = "-List Name-"
 
     projectDialogAddButton.addEventListener('click', () => { addProject( projectTitle.value ); closeProjectDialog(); });
+    projectDialogCancelButton.addEventListener('click', () => { closeProjectDialog()});
+
 
     projectDialog.appendChild(projectTitleTop);
     projectDialog.appendChild(projectTitleLabel)
     projectDialog.appendChild(projectTitle);
     projectDialog.appendChild(projectDialogDiv);
-    projectDialog.appendChild(projectDialogAddButton);
+    projectButtonDiv.appendChild(projectDialogCancelButton)
+    projectButtonDiv.appendChild(projectDialogAddButton);
+    projectDialog.appendChild(projectButtonDiv);
 }
 
 export function createNoteDialog() {
