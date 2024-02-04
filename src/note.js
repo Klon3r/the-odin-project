@@ -79,12 +79,12 @@ function reloadNoteContent(projectId) {
         for (let i = 0; i < projectNotes.length; i++) {
             const desc = projectNotes[i].todo;
             const checked = projectNotes[i].checked;
-            updateNoteContent(desc, checked);
+            updateNoteContent(desc, checked, i);
         }
     }
 }
 
-function updateNoteContent(desc, checked) {
+function updateNoteContent(desc, checked, locationIndex) {
     const noteDiv = document.getElementById('note-content-div');
     const noteInfoDiv = document.createElement('div');
     const noteDesc = document.createElement('p');
@@ -107,7 +107,7 @@ function updateNoteContent(desc, checked) {
     noteInfoDiv.className = noteDescChecked(checked);
 
     deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
-    editButton.addEventListener("click", () => {showEditDialog(desc);});
+    editButton.addEventListener("click", () => {showEditDialog(desc, locationIndex);});
     noteDesc.addEventListener("click", () => {changeCheckedNoteFromStorage(desc, checked)});
     
     noteInfoDiv.appendChild(noteDesc);
@@ -145,7 +145,8 @@ function deleteNoteFromStorage(key, desc, callback) {
     }, 100)
 }
 
-export function editNoteFromStorage(oldDesc, newDesc) {
+export function editNoteFromStorage(oldDesc, newDesc, locationIndex) {
+    console.log(`COUNTER LOCATION: ${locationIndex}`)
     const findProjectKey = document.getElementById('note-title');
     const noteJSON = JSON.parse(localStorage.getItem(findProjectKey.value));
 
@@ -153,13 +154,24 @@ export function editNoteFromStorage(oldDesc, newDesc) {
     if(noteJSON) {
         for(let item in noteJSON) {
             const currentNoteArray = noteJSON[item];
-            const index = currentNoteArray.findIndex(note => note.todo === oldDesc);
-            
-            if(index !== -1) {
-                currentNoteArray[index].todo = newDesc;
-                localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
-                reloadNoteContent(findProjectKey.value);
+
+            for (let i = 0; i < currentNoteArray.length; i++) {
+                const note = currentNoteArray[i].todo;
+                if(note === oldDesc && i === locationIndex) {
+                    currentNoteArray[i].todo = newDesc;
+                    localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
+                    reloadNoteContent(findProjectKey.value);
+                }
             }
+
+            // const index = currentNoteArray.findIndex(note => note.todo === oldDesc);
+            // console.log(`INDEX LOCATION: ${index}`)
+            
+            // if(index !== -1 && index == locationIndex) {
+            //     currentNoteArray[index].todo = newDesc;
+            //     localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
+            //     reloadNoteContent(findProjectKey.value);
+            // }
         }
     }
 }

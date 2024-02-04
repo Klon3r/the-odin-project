@@ -124,12 +124,14 @@ function addInputNoteEditDialog() {
     const noteEditAddButton = document.createElement('button');
     const noteEditCancelButton = document.createElement('button');
     const noteOldDesc = document.createElement('div');
+    const noteLocationCounterDiv = document.createElement('div');
 
     noteEditDiv.id = 'note-edit-div';
     noteButtonDiv.id = 'note-edit-button-div';
     noteEditInput.id = 'note-edit-input';
     noteOldDesc.id = 'note-old-desc'
     noteEditLabel.id = 'note-edit-label';
+    noteLocationCounterDiv.id = 'note-location-counter-div';
     
     noteEditInput.type = 'text';
 
@@ -138,26 +140,29 @@ function addInputNoteEditDialog() {
     noteEditAddButton.innerText = "Edit"
     noteEditCancelButton.innerText = "Cancel"
 
-    noteEditAddButton.addEventListener('click', () => { editNoteFromStorage(noteOldDesc.value, noteEditInput.value); closeEditDialog()});
+    noteEditAddButton.addEventListener('click', () => { editNoteFromStorage(noteOldDesc.value, noteEditInput.value, noteLocationCounterDiv.value); closeEditDialog()});
     noteEditCancelButton.addEventListener('click', () => { closeEditDialog(); });
 
     noteEditDiv.appendChild(noteEditTitle);
     noteEditDiv.appendChild(noteEditLabel);
     noteEditDiv.appendChild(noteEditInput);
     noteEditDiv.appendChild(noteOldDesc);
+    noteEditDiv.appendChild(noteLocationCounterDiv)
     noteButtonDiv.appendChild(noteEditCancelButton);
     noteButtonDiv.appendChild(noteEditAddButton);
     noteEditDiv.appendChild(noteButtonDiv);
     noteEditDialog.appendChild(noteEditDiv);
 }
 
-export function showEditDialog(desc) {
+export function showEditDialog(desc, locationIndex) {
     const editDialog = document.getElementById('note-edit-dialog');
     const noteDesc = document.getElementById('note-edit-input');
-    const noteOldDesc = document.getElementById('note-old-desc')
+    const noteOldDesc = document.getElementById('note-old-desc');
+    const noteLocationCounter = document.getElementById('note-location-counter-div');
 
     noteDesc.value = desc;
     noteOldDesc.value = desc;
+    noteLocationCounter.value = locationIndex;
 
     editDialog.showModal();
 }
