@@ -117,24 +117,35 @@ export function createNoteEditDialog() {
 function addInputNoteEditDialog() {
     const noteEditDialog = document.getElementById('note-edit-dialog');
     const noteEditDiv = document.createElement('div');
+    const noteEditTitle = document.createElement('h3');
     const noteEditLabel = document.createElement('label');
     const noteEditInput = document.createElement('input');
     const noteButtonDiv = document.createElement('div');
     const noteEditAddButton = document.createElement('button');
+    const noteEditCancelButton = document.createElement('button');
     const noteOldDesc = document.createElement('div');
 
     noteEditDiv.id = 'note-edit-div';
-    noteEditLabel.textContent = "Edit todo: "
+    noteButtonDiv.id = 'note-edit-button-div';
     noteEditInput.id = 'note-edit-input';
-    noteEditInput.type = 'text';
     noteOldDesc.id = 'note-old-desc'
+    noteEditLabel.id = 'note-edit-label';
+    
+    noteEditInput.type = 'text';
+
+    noteEditTitle.innerText = '-Title-';
+    noteEditLabel.textContent = 'Edit: '
     noteEditAddButton.innerText = "Edit"
+    noteEditCancelButton.innerText = "Cancel"
 
     noteEditAddButton.addEventListener('click', () => { editNoteFromStorage(noteOldDesc.value, noteEditInput.value); closeEditDialog()});
+    noteEditCancelButton.addEventListener('click', () => { closeEditDialog(); });
 
+    noteEditDiv.appendChild(noteEditTitle);
     noteEditDiv.appendChild(noteEditLabel);
     noteEditDiv.appendChild(noteEditInput);
     noteEditDiv.appendChild(noteOldDesc);
+    noteButtonDiv.appendChild(noteEditCancelButton);
     noteButtonDiv.appendChild(noteEditAddButton);
     noteEditDiv.appendChild(noteButtonDiv);
     noteEditDialog.appendChild(noteEditDiv);
