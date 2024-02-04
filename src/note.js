@@ -106,9 +106,9 @@ function updateNoteContent(desc, checked, locationIndex) {
     noteDesc.className = noteDescChecked(checked);
     noteInfoDiv.className = noteDescChecked(checked);
 
-    deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent)} );
+    deleteButton.addEventListener("click", () => { deleteNoteFromStorage(findProjectKey.value ,desc, reloadNoteContent, locationIndex)} );
     editButton.addEventListener("click", () => {showEditDialog(desc, locationIndex);});
-    noteDesc.addEventListener("click", () => {changeCheckedNoteFromStorage(desc, checked)});
+    noteDesc.addEventListener("click", () => {changeCheckedNoteFromStorage(desc, checked, locationIndex)});
     
     noteInfoDiv.appendChild(noteDesc);
     noteInfoDiv.appendChild(noteButtonDiv)
@@ -117,16 +117,17 @@ function updateNoteContent(desc, checked, locationIndex) {
     noteDiv.appendChild(noteInfoDiv);
 }
 
-function deleteNoteFromStorage(key, desc, callback) {
+function deleteNoteFromStorage(key, desc, callback, locationIndex) {
     const noteJSON = JSON.parse(localStorage.getItem(key));
     
     for (let item in noteJSON) {
         const currentNoteArray = noteJSON[item];
         for (let i = 0; i < currentNoteArray.length; i++) {
             const currentNote = currentNoteArray[i];
+            const index = i;
             
             // Remove note from array
-            if (currentNote.todo === desc) {
+            if (currentNote.todo === desc && locationIndex == index) {
                 currentNoteArray.splice(i, 1);
             }
 
@@ -163,20 +164,11 @@ export function editNoteFromStorage(oldDesc, newDesc, locationIndex) {
                     reloadNoteContent(findProjectKey.value);
                 }
             }
-
-            // const index = currentNoteArray.findIndex(note => note.todo === oldDesc);
-            // console.log(`INDEX LOCATION: ${index}`)
-            
-            // if(index !== -1 && index == locationIndex) {
-            //     currentNoteArray[index].todo = newDesc;
-            //     localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
-            //     reloadNoteContent(findProjectKey.value);
-            // }
         }
     }
 }
 
-function changeCheckedNoteFromStorage(desc, checked) {
+function changeCheckedNoteFromStorage(desc, checked, locationIndex) {
     const findProjectKey = document.getElementById('note-title');
     const noteJSON = JSON.parse(localStorage.getItem(findProjectKey.value));
 
@@ -184,18 +176,21 @@ function changeCheckedNoteFromStorage(desc, checked) {
     if(noteJSON) {
         for(let item in noteJSON) {
             const currentNoteArray = noteJSON[item];
-            const index = currentNoteArray.findIndex(note => note.todo === desc);
-            
-            if(index !== -1) {
-                if(checked === false) {
-                    currentNoteArray[index].checked = true;
-                } else {
-                    currentNoteArray[index].checked = false;
+
+            for(let i = 0; i < currentNoteArray.length; i++){
+                const note = currentNoteArray[i].todo;
+                if(note === desc && i === locationIndex) {
+                    console.log(note)
+                    if(checked === false) {
+                        currentNoteArray[i].checked = true;
+                    } else {
+                        currentNoteArray[i].checked = false;
+                    }
+
+                    localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
+                    reloadNoteContent(findProjectKey.value);
                 }
-                
-                localStorage.setItem(findProjectKey.value, JSON.stringify(noteJSON));
-                reloadNoteContent(findProjectKey.value);
-            }
+            }            
         }
     }
 }
