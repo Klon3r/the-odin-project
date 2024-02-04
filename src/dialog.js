@@ -69,26 +69,37 @@ export function showNoteDialog() {
 
 function addInputNoteDialog() {
     const noteDialog = document.getElementById('note-dialog');
-    const noteDescDiv = document.createElement('div');
+    const noteTitle = document.createElement('h3');
+    const noteDialogDiv = document.createElement('div');
     const noteDesc = document.createElement('input');
     const noteDescLabel = document.createElement('label');
-    const noteDialogDiv = document.createElement('div');
+    const noteButtonDiv = document.createElement('div');
     const noteDialogAddButton = document.createElement('button');
+    const noteDialogCancelButton = document.createElement('button');
 
     noteDesc.id = 'note-desc-input';
+    noteDialogDiv.id = 'note-dialog-div';
+    noteButtonDiv.id = 'note-add-button-div';
+    noteDescLabel.id = 'note-desc-label'
     noteDescLabel.textContent = "Todo: "
     noteDesc.type = 'text';
-    noteDialogAddButton.innerText = 'add';
+    noteTitle.innerText = "-Note-";
+    noteDialogAddButton.innerText = 'Add';
+    noteDialogCancelButton.innerText = 'Cancel';
 
     noteDialogAddButton.addEventListener('click', () => { addNote(noteDesc.value); closeNoteDialog() })
+    noteDialogCancelButton.addEventListener('click', () => { closeNoteDialog() })
     
-    noteDescDiv.appendChild(noteDescLabel);
-    noteDescDiv.appendChild(noteDesc);
-    noteDialog.appendChild(noteDescDiv);
-
-    // button    
+    noteDialog.appendChild(noteTitle);
+    noteDialogDiv.appendChild(noteDescLabel);
+    noteDialogDiv.appendChild(noteDesc);
     noteDialog.appendChild(noteDialogDiv);
-    noteDialogDiv.appendChild(noteDialogAddButton);
+
+    // button 
+    noteButtonDiv.appendChild(noteDialogCancelButton);   
+    noteButtonDiv.appendChild(noteDialogAddButton);
+    noteDialog.appendChild(noteButtonDiv);
+
 }
 
 function closeNoteDialog() {
