@@ -141,13 +141,6 @@ body {
     transform: scale(110%);
 }
 
-#project-dialog > h3 {
-    margin: 0px;
-    margin-bottom: 5px;
-    justify-content: center;
-    text-align: center;
-}
-
 #note-info-div p {
     margin: 2px;
     font-size: 0.9rem;
@@ -183,27 +176,38 @@ body {
     background-color: lightgreen;
 }
 
-#project-dialog > h3 {
+#project-dialog > h3,
+#note-dialog > h3 {
     font-family: 'Nova Mono', monospace;
+    margin: 0px;
+    margin-bottom: 5px;
+    justify-content: center;
+    text-align: center;
     padding-bottom: 10px;
 }
 
-#project-dialog > label, #project-dialog > input, #project-dialog-button-div  > button {
+#project-dialog > label, #project-dialog > input, #project-dialog-button-div  > button,
+#note-dialog-div > label, #note-add-button-div > input, #nnote-add-button-div > button {
     font-family: 'Roboto', sans-serif;
 }
 
-#project-dialog-button-div {
+#project-dialog-button-div, #note-add-button-div {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
 }
 
-#project-dialog-button-div > button {
+#project-dialog-button-div > button, #note-add-button-div > button {
     box-shadow: 2px 2px 2px black;
 }
 
-#project-dialog {
+#project-dialog, #note-dialog {
     background-color: #D7C0D0;
     border-radius: 10px;
     border: 2px solid black;
+}
+
+#note-desc-label {
+    font-weight: 900;
+    padding-right: 5px;
 }
