@@ -177,7 +177,8 @@ body {
 }
 
 #project-dialog > h3,
-#note-dialog > h3 {
+#note-dialog > h3,
+#note-edit-div > h3 {
     font-family: 'Nova Mono', monospace;
     margin: 0px;
     margin-bottom: 5px;
@@ -187,27 +188,34 @@ body {
 }
 
 #project-dialog > label, #project-dialog > input, #project-dialog-button-div  > button,
-#note-dialog-div > label, #note-add-button-div > input, #nnote-add-button-div > button {
+#note-dialog-div > label, #note-add-button-div > input, #note-add-button-div > button,
+#note-edit-dialog > label, #note-edit-div > input,  #note-edit-div > button {
     font-family: 'Roboto', sans-serif;
 }
 
-#project-dialog-button-div, #note-add-button-div {
+#project-dialog-button-div,
+#note-add-button-div,
+#note-edit-button-div {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
 }
 
-#project-dialog-button-div > button, #note-add-button-div > button {
+#project-dialog-button-div > button, 
+#note-add-button-div > button,
+#note-edit-button-div > button  {
     box-shadow: 2px 2px 2px black;
 }
 
-#project-dialog, #note-dialog {
+#project-dialog, #note-dialog,
+#note-edit-dialog {
     background-color: #D7C0D0;
     border-radius: 10px;
     border: 2px solid black;
 }
 
-#note-desc-label {
+#note-desc-label, 
+#note-edit-label {
     font-weight: 900;
     padding-right: 5px;
 }
