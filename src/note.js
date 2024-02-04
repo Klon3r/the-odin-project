@@ -1,4 +1,5 @@
 import { showNoteDialog, showEditDialog } from "./dialog";
+import { deleteProject } from "./project";
 import noteClass from "./class";
 import binImg from './img/bin.png';
 import editImg from './img/edit.png';
@@ -6,29 +7,39 @@ import editImg from './img/edit.png';
 export function noteInit(projectId) {
     clearNoteContent()
 
+    const getProjectListDiv = document.getElementById('project-button-div');
+
     const content = document.getElementById('content')
     const noteTitleDiv = document.createElement('div');
     const noteContentDiv = document.createElement('div');
     const noteButtonDiv = document.createElement('div');
 
+    const projectDeleteButton = document.createElement('button');
+    projectDeleteButton.addEventListener('click', () => {deleteProject(projectId)})
+
     noteTitleDiv.id = 'note-title-div';
     noteContentDiv.id = 'note-content-div';
     noteButtonDiv.id = 'note-button-div';
+    projectDeleteButton.id = 'project-delete-button'
+
+    projectDeleteButton.innerText = "Delete List"
 
     content.appendChild(noteTitleDiv);
     content.appendChild(noteContentDiv);
     content.appendChild(noteButtonDiv);
     
+    getProjectListDiv.appendChild(projectDeleteButton);
     
     createNoteTitle(projectId);
     createNoteAddButton();
     reloadNoteContent(projectId);
 }
 
-function clearNoteContent() {
+export function clearNoteContent() {
     document.querySelectorAll('#note-title-div').forEach(e => e.remove());
     document.querySelectorAll('#note-content-div').forEach(e => e.remove());
     document.querySelectorAll('#note-button-div').forEach(e => e.remove());
+    document.querySelectorAll('#project-delete-button').forEach(e => e.remove())
 }
 
 function createNoteTitle(projectId) {

@@ -1,4 +1,5 @@
 import { noteInit } from "./note";
+import { clearNoteContent } from "./note";
 
 export function addProject(title) {
     localStorage.setItem(title, "")
@@ -20,4 +21,10 @@ export function reloadProjectSidebar() {
 
         project.appendChild(projectNames)
      }
+}
+
+export function deleteProject(projectId) {
+    localStorage.removeItem(projectId);
+    reloadProjectSidebar();
+    clearNoteContent()
 }
