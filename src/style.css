@@ -77,7 +77,7 @@ body {
 
 #project-button-div {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     padding-right: 5px;
     margin: 5px;
 }
