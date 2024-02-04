@@ -137,7 +137,7 @@ function addInputNoteEditDialog() {
 
     noteEditTitle.innerText = '-Title-';
     noteEditLabel.textContent = 'Edit: '
-    noteEditAddButton.innerText = "Edit"
+    noteEditAddButton.innerText = "Save"
     noteEditCancelButton.innerText = "Cancel"
 
     noteEditAddButton.addEventListener('click', () => { editNoteFromStorage(noteOldDesc.value, noteEditInput.value, noteLocationCounterDiv.value); closeEditDialog()});
