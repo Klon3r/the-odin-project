@@ -1,5 +1,6 @@
 # The Odin Project: Todo List
-Creating a todo list using javascript, while using npm/webpack
+- Creating a todo list using javascript, JSON, npm & webpack.
+- Using local storage to store the users information so that it can be reloaded if the webpage gets closed
 
 ## Live Site
   [![Git Pages](https://img.shields.io/badge/Live%20Preview-121013?style=for-the-badge&logo=github&logoColor=white)](https://terminalklone.github.io/odin-todo-list/)
