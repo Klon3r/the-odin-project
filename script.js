@@ -10,6 +10,7 @@ class Book {
 		this.finished = finished;
 		let id;
 	}
+}
 
 function refreshBooks() {
   for (book in myLibrary) {
