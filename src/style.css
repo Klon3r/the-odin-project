@@ -1,0 +1,29 @@
+.header-div {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-center-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.search-button {
+    width: 1.6em;
+    height: 1.6em;
+    cursor: pointer;
+
+    border: 1px solid gray;
+    border-left: none;
+}
+
+.search-button:hover {
+    background-color: rgba(211, 211, 211, 0.473);
+}
+
+h3 {
+    margin: 0.3em;
+}
