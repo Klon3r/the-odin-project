@@ -1,1 +1,4 @@
-# odin-weather-app
+# Odin Weather App
+
+- Webpack
+- npm
