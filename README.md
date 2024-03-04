@@ -1,4 +1,6 @@
 # Odin Weather App
 
-- Webpack
+## Summary
+- webpack
 - npm
+- normalize.css
