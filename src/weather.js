@@ -2,11 +2,7 @@ const key = "c610c25042474efb93d150114241502";
 
 export async function GetWeatherCurrent(location) {
   fetch(
-    "https://api.weatherapi.com/v1/current.json?key=" +
-      key +
-      "&q=" +
-      location +
-      "&aqi=no",
+    `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=no`,
     { mode: "cors" }
   )
     .then(function (response) {
@@ -74,8 +70,8 @@ function displayWeatherInfo(weather) {
   const locationDiv = document.createElement("div");
   const locationName = document.createElement("h5");
 
-  locationName.innerText = `${weather.name}, ${weather.region}, ${weather.country}`
-  locationName.className = 'location-text';
+  locationName.innerText = `${weather.name}, ${weather.region}, ${weather.country}`;
+  locationName.className = "location-text";
 
   locationDiv.appendChild(locationName);
   weatherDiv.appendChild(locationDiv);
@@ -86,7 +82,8 @@ function displayWeatherInfo(weather) {
   const tempTextDiv = document.createElement("div");
 
   tempText.innerText = weather.temp_c + weather.celcius;
-  feelsLikeText.innerText = "FEELS LIKE " + weather.feelslike_c + weather.celcius;
+  feelsLikeText.innerText =
+    "FEELS LIKE " + weather.feelslike_c + weather.celcius;
   feelsLikeText.className = "feels-like-text";
   tempText.className = "temp-text";
   tempTextDiv.className = "temp-text-div";
