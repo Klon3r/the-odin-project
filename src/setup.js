@@ -24,6 +24,7 @@ export function SetupHeader() {
   const headerDiv = document.getElementById("header");
   const leftDiv = document.createElement("div");
   const centerDiv = document.createElement("div");
+  const searchDiv = document.createElement("div");
   const rightDiv = document.createElement("div");
   const title = document.createElement("h3");
   const search = document.createElement("input");
@@ -33,6 +34,7 @@ export function SetupHeader() {
   title.innerText = "Weather";
   headerDiv.className = "header-div";
   centerDiv.className = "header-center-div";
+  searchDiv.className = "header-search-div";
   leftDiv.className = "header-left-div";
   rightDiv.className = "header-right-div";
 
@@ -47,6 +49,7 @@ export function SetupHeader() {
   searchButton.addEventListener('click', () => {
     RemoveWeatherCardContent()
     GetWeatherCurrent(search.value);
+    autocompleteDiv.style.display = 'none';
   })
 
   search.addEventListener('input', async () => {
@@ -56,17 +59,20 @@ export function SetupHeader() {
       if(autoCompleteResultsData.length > 0) {
         console.log(autoCompleteResultsData)
         DisplayAutocompleteResults(autoCompleteResultsData);
+        autocompleteDiv.style.display = 'block';
       }
     } else {
       autocompleteDiv.innerHTML = "";
+      autocompleteDiv.style.display = 'none';
     }
   })
 
   headerDiv.appendChild(leftDiv);
   leftDiv.appendChild(title);
   headerDiv.appendChild(centerDiv);
-  centerDiv.appendChild(search);
-  centerDiv.appendChild(searchButton);
+  searchDiv.appendChild(search);
+  searchDiv.appendChild(searchButton)
+  centerDiv.appendChild(searchDiv);
   centerDiv.appendChild(autocompleteDiv);
   headerDiv.appendChild(rightDiv);
 }
