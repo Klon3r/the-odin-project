@@ -1,4 +1,6 @@
 import searchIcon from "./img/search.png";
+import { FetchAutoCompleteResults, DisplayAutocompleteResults } from "./search";
+import { GetWeatherCurrent } from "./weather";
 
 // setup
 export function SetupPage() {
@@ -13,6 +15,9 @@ export function SetupPage() {
   document.body.appendChild(mainDiv);
   mainDiv.appendChild(headerDiv);
   mainDiv.appendChild(contentDiv);
+
+  SetupHeader();
+  SetupContent();
 }
 
 export function SetupHeader() {
@@ -23,6 +28,7 @@ export function SetupHeader() {
   const title = document.createElement("h3");
   const search = document.createElement("input");
   const searchButton = document.createElement("img");
+  const autocompleteDiv = document.createElement("div");
 
   title.innerText = "Weather";
   headerDiv.className = "header-div";
@@ -30,17 +36,38 @@ export function SetupHeader() {
   leftDiv.className = "header-left-div";
   rightDiv.className = "header-right-div";
 
+  // search box 
   searchButton.className = "search-button";
   searchButton.src = searchIcon;
 
   search.placeholder = "Enter a city..";
   search.id = "search-input"
+  autocompleteDiv.id = "autocomplete-div";
+
+  searchButton.addEventListener('click', () => {
+    RemoveWeatherCardContent()
+    GetWeatherCurrent(search.value);
+  })
+
+  search.addEventListener('input', async () => {
+    const query = search.value.trim();
+    if (query.length > 0) {
+      const autoCompleteResultsData = await FetchAutoCompleteResults(query);
+      if(autoCompleteResultsData.length > 0) {
+        console.log(autoCompleteResultsData)
+        DisplayAutocompleteResults(autoCompleteResultsData);
+      }
+    } else {
+      autocompleteDiv.innerHTML = "";
+    }
+  })
 
   headerDiv.appendChild(leftDiv);
   leftDiv.appendChild(title);
   headerDiv.appendChild(centerDiv);
   centerDiv.appendChild(search);
   centerDiv.appendChild(searchButton);
+  centerDiv.appendChild(autocompleteDiv);
   headerDiv.appendChild(rightDiv);
 }
 
@@ -53,4 +80,9 @@ export function SetupContent() {
   weatherCard.id = "weather-card";
 
   contentDiv.appendChild(weatherCard);
+}
+
+function RemoveWeatherCardContent() {
+  const weatherCard = document.getElementById('weather-card');
+  weatherCard.innerHTML = '';
 }
