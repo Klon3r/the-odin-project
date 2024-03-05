@@ -61,28 +61,33 @@ h3 {
     align-items: center;
 }
 
+/* weather description */
 .weather-image-text-div > p {
     margin: 0;
     font-size: 1em;
+    text-align: center;
 }
 
-.weather-div {
+/* .weather-div {
     display: flex;
-    gap: 50px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-}
+} */
 
 .feels-like-text {
     font-size: 1em;
+    text-align: center;
 }
 
 .temp-text {
     text-align: center;
     margin: 0;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
-.temp-text-div {
-   
+/* location text */
+.location-text {
+    padding: 0;
+    margin: 0;
+    padding-bottom: 20px;
 }
