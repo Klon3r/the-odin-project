@@ -34,7 +34,7 @@ function GetWeatherCurrentInfo(weather) {
   const location_region = weather.location.region;
   const location_country = weather.location.country;
 
-  const weather_last_updated_split = weather_last_updated.split(" ")
+  const weather_last_updated_split = weather_last_updated.split(" ");
 
   // weather hashmap
   const weatherInfo = {
@@ -53,16 +53,35 @@ function GetWeatherCurrentInfo(weather) {
 }
 
 function displayWeatherInfo(weather) {
-  const weatherCard = document.getElementById('weather-card');
-  const lastUpdateDiv = document.createElement('div');
-  const lastUpdate = document.createElement('p');
+  const weatherCard = document.getElementById("weather-card");
+  // last updated
+  const lastUpdateDiv = document.createElement("div");
+  const lastUpdate = document.createElement("p");
 
   lastUpdate.innerText = "LAST UPDATED " + weather.last_updated;
-  lastUpdate.className = 'last-update';
-
-
+  lastUpdate.className = "last-update";
 
   lastUpdateDiv.appendChild(lastUpdate);
   weatherCard.appendChild(lastUpdateDiv);
+
+  // temp
+  const tempDiv = document.createElement('div');
+  const imageTextDiv = document.createElement('div');
+  const tempTextDiv = document.createElement('div');
+  const weatherImg = document.createElement('img');
+  const weatherText = document.createElement('p');
+  const tempText = document.createElement('h4');
+  const feelsLikeText = document.createElement('p');
+
+  imageTextDiv.className = 'weather-image-text-div';
+  weatherImg.src = weather.image;
+  weatherText.innerText = weather.description;
+
+
+  imageTextDiv.appendChild(weatherImg);
+  imageTextDiv.appendChild(weatherText);
+  tempDiv.appendChild(imageTextDiv);
+  tempDiv.appendChild(tempTextDiv);
+  weatherCard.appendChild(tempDiv);
 
 }
