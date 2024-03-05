@@ -38,8 +38,14 @@ h3 {
 }
 
 .weather-card {
+    display: flex;
+    justify-content: center;
     margin: 5em;
     border: 1px solid black;
     width: 20em;
     height: 20em;
+}
+
+.last-update {
+    font-size: 0.8em;
 }
