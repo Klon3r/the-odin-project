@@ -53,4 +53,16 @@ function GetWeatherCurrentInfo(weather) {
 }
 
 function displayWeatherInfo(weather) {
+  const weatherCard = document.getElementById('weather-card');
+  const lastUpdateDiv = document.createElement('div');
+  const lastUpdate = document.createElement('p');
+
+  lastUpdate.innerText = "LAST UPDATED " + weather.last_updated;
+  lastUpdate.className = 'last-update';
+
+
+
+  lastUpdateDiv.appendChild(lastUpdate);
+  weatherCard.appendChild(lastUpdateDiv);
+
 }
