@@ -64,24 +64,38 @@ function displayWeatherInfo(weather) {
   lastUpdateDiv.appendChild(lastUpdate);
   weatherCard.appendChild(lastUpdateDiv);
 
-  // temp
-  const tempDiv = document.createElement('div');
+  // weather img & description
+  const weatherDiv = document.createElement('div');
   const imageTextDiv = document.createElement('div');
-  const tempTextDiv = document.createElement('div');
+
   const weatherImg = document.createElement('img');
   const weatherText = document.createElement('p');
-  const tempText = document.createElement('h4');
-  const feelsLikeText = document.createElement('p');
 
   imageTextDiv.className = 'weather-image-text-div';
+  weatherDiv.className = 'weather-div';
   weatherImg.src = weather.image;
-  weatherText.innerText = weather.description;
-
+  weatherText.innerText = weather.description.toUpperCase();
 
   imageTextDiv.appendChild(weatherImg);
   imageTextDiv.appendChild(weatherText);
-  tempDiv.appendChild(imageTextDiv);
-  tempDiv.appendChild(tempTextDiv);
-  weatherCard.appendChild(tempDiv);
+  weatherDiv.appendChild(imageTextDiv);
+
+  weatherCard.appendChild(weatherDiv);
+
+  // temp info
+  const tempText = document.createElement('h1');
+  const feelsLikeText = document.createElement('p');
+  const tempTextDiv = document.createElement('div');
+
+  tempText.innerText = weather.temp_c;
+  feelsLikeText.innerText = 'FEELS LIKE ' + weather.feelslike_c;
+  feelsLikeText.className = 'feels-like-text';
+  tempText.className = 'temp-text';
+  tempTextDiv.className = 'temp-text-div'
+
+  tempTextDiv.appendChild(tempText);
+  tempTextDiv.appendChild(feelsLikeText);
+  weatherDiv.appendChild(tempTextDiv);
+
 
 }
