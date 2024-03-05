@@ -20,6 +20,7 @@ export function DisplayAutocompleteResults(results) {
     option.addEventListener("click", () => {
       searchInput.value = `${result.name} ${result.region}`;
       removeAutoCompleteResults()
+      autocompleteResults.style.display = 'none';
     });
     autocompleteResults.append(option);
   });
