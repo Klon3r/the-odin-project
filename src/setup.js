@@ -34,6 +34,7 @@ export function SetupHeader() {
   searchButton.src = searchIcon;
 
   search.placeholder = "Enter a city..";
+  search.id = "search-input"
 
   headerDiv.appendChild(leftDiv);
   leftDiv.appendChild(title);
