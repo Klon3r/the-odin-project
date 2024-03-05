@@ -49,6 +49,7 @@ export function SetupContent() {
 
   contentDiv.className = "content-div";
   weatherCard.className = "weather-card";
+  weatherCard.id = 'weather-card';
 
   contentDiv.appendChild(weatherCard);
 }
