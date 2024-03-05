@@ -28,6 +28,8 @@ function GetWeatherCurrentInfo(weather) {
   const weather_last_updated = weather.current.last_updated;
   const weather_img = weather.current.condition.icon;
   const weather_description = weather.current.condition.text;
+  const weather_celcius = "°C";
+  const weather_fahrenheit = "°F";
 
   // location info
   const location_name = weather.location.name;
@@ -47,6 +49,8 @@ function GetWeatherCurrentInfo(weather) {
     name: location_name,
     region: location_region,
     country: location_country,
+    celcius: weather_celcius,
+    fahrenheit: weather_fahrenheit,
   };
 
   displayWeatherInfo(weatherInfo);
@@ -54,6 +58,8 @@ function GetWeatherCurrentInfo(weather) {
 
 function displayWeatherInfo(weather) {
   const weatherCard = document.getElementById("weather-card");
+  const weatherDiv = document.createElement("div");
+
   // last updated
   const lastUpdateDiv = document.createElement("div");
   const lastUpdate = document.createElement("p");
@@ -64,15 +70,39 @@ function displayWeatherInfo(weather) {
   lastUpdateDiv.appendChild(lastUpdate);
   weatherCard.appendChild(lastUpdateDiv);
 
+  // location info
+  const locationDiv = document.createElement("div");
+  const locationName = document.createElement("h5");
+
+  locationName.innerText = `${weather.name}, ${weather.region}, ${weather.country}`
+  locationName.className = 'location-text';
+
+  locationDiv.appendChild(locationName);
+  weatherDiv.appendChild(locationDiv);
+
+  // temp info
+  const tempText = document.createElement("h1");
+  const feelsLikeText = document.createElement("p");
+  const tempTextDiv = document.createElement("div");
+
+  tempText.innerText = weather.temp_c + weather.celcius;
+  feelsLikeText.innerText = "FEELS LIKE " + weather.feelslike_c + weather.celcius;
+  feelsLikeText.className = "feels-like-text";
+  tempText.className = "temp-text";
+  tempTextDiv.className = "temp-text-div";
+
+  tempTextDiv.appendChild(tempText);
+  tempTextDiv.appendChild(feelsLikeText);
+  weatherDiv.appendChild(tempTextDiv);
+
   // weather img & description
-  const weatherDiv = document.createElement('div');
-  const imageTextDiv = document.createElement('div');
+  const imageTextDiv = document.createElement("div");
 
-  const weatherImg = document.createElement('img');
-  const weatherText = document.createElement('p');
+  const weatherImg = document.createElement("img");
+  const weatherText = document.createElement("p");
 
-  imageTextDiv.className = 'weather-image-text-div';
-  weatherDiv.className = 'weather-div';
+  imageTextDiv.className = "weather-image-text-div";
+  weatherDiv.className = "weather-div";
   weatherImg.src = weather.image;
   weatherText.innerText = weather.description.toUpperCase();
 
@@ -81,21 +111,4 @@ function displayWeatherInfo(weather) {
   weatherDiv.appendChild(imageTextDiv);
 
   weatherCard.appendChild(weatherDiv);
-
-  // temp info
-  const tempText = document.createElement('h1');
-  const feelsLikeText = document.createElement('p');
-  const tempTextDiv = document.createElement('div');
-
-  tempText.innerText = weather.temp_c;
-  feelsLikeText.innerText = 'FEELS LIKE ' + weather.feelslike_c;
-  feelsLikeText.className = 'feels-like-text';
-  tempText.className = 'temp-text';
-  tempTextDiv.className = 'temp-text-div'
-
-  tempTextDiv.appendChild(tempText);
-  tempTextDiv.appendChild(feelsLikeText);
-  weatherDiv.appendChild(tempTextDiv);
-
-
 }
