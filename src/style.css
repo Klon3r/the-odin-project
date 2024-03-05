@@ -39,7 +39,9 @@ h3 {
 
 .weather-card {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     margin: 5em;
     border: 1px solid black;
     width: 20em;
@@ -48,4 +50,15 @@ h3 {
 
 .last-update {
     font-size: 0.8em;
+}
+
+.weather-image-text-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-image-text-div > p {
+    margin: 0;
 }
