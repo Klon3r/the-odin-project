@@ -50,6 +50,8 @@ h3 {
 
 .last-update {
     font-size: 0.8em;
+    font-weight:500;
+    opacity: 50%;
 }
 
 .weather-image-text-div {
@@ -61,4 +63,26 @@ h3 {
 
 .weather-image-text-div > p {
     margin: 0;
+    font-size: 1em;
+}
+
+.weather-div {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.feels-like-text {
+    font-size: 1em;
+}
+
+.temp-text {
+    text-align: center;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.temp-text-div {
+   
 }
