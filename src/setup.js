@@ -4,11 +4,11 @@ import searchIcon from "./img/search.png";
 export function SetupPage() {
   const mainDiv = document.createElement("div");
   const headerDiv = document.createElement("div");
-  const contentDiv = document.createElement('div');
+  const contentDiv = document.createElement("div");
 
   headerDiv.id = "header";
   mainDiv.id = "main-div";
-  contentDiv.id = 'content-div'
+  contentDiv.id = "content-div";
 
   document.body.appendChild(mainDiv);
   mainDiv.appendChild(headerDiv);
@@ -49,7 +49,7 @@ export function SetupContent() {
 
   contentDiv.className = "content-div";
   weatherCard.className = "weather-card";
-  weatherCard.id = 'weather-card';
+  weatherCard.id = "weather-card";
 
   contentDiv.appendChild(weatherCard);
 }
