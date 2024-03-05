@@ -7,10 +7,19 @@
 
 .header-center-div {
     display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-right: 85px; */
+}
+
+.header-search-div {
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
-    margin-right: 85px;
+    margin-right: 90px;
 }
 
 .search-button {
@@ -61,18 +70,13 @@ h3 {
     align-items: center;
 }
 
-/* weather description */
+ /* WEATHER DESC */
 .weather-image-text-div > p {
     margin: 0;
     font-size: 1em;
     text-align: center;
 }
 
-/* .weather-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
 
 .feels-like-text {
     font-size: 1em;
@@ -82,12 +86,31 @@ h3 {
 .temp-text {
     text-align: center;
     margin: 0;
-    /* padding-top: 30px; */
 }
 
-/* location text */
+/* LOCATION TEXT */
 .location-text {
     padding: 0;
     margin: 0;
     padding-bottom: 20px;
+}
+
+/* AUTOCOMPLETE */
+.autocomplete-option {
+    cursor: pointer;
+    padding: 8px;
+}
+
+.autocomplete-option:hover {
+    color: lightgray;
+}
+
+#autocomplete-div {
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+    margin: 5px;
+    top: 30px;
+    z-index: 999;
+    display: none;
 }
