@@ -46,10 +46,14 @@ export function SetupHeader() {
   search.id = "search-input"
   autocompleteDiv.id = "autocomplete-div";
 
+  const noResultsText = "No results found"
+
   searchButton.addEventListener('click', () => {
+    if (autocompleteDiv.innerText != noResultsText) {
     RemoveWeatherCardContent()
     GetWeatherCurrent(search.value);
     autocompleteDiv.style.display = 'none';
+    }
   })
 
   search.addEventListener('input', async () => {
@@ -64,7 +68,7 @@ export function SetupHeader() {
         // If no results are found
         autocompleteDiv.innerHTML = "";
         autocompleteDiv.style.display = 'block';
-        autocompleteDiv.innerText = "No Results Found"
+        autocompleteDiv.innerText = noResultsText;
         
       }
     } else {
