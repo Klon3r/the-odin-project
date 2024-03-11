@@ -2,11 +2,12 @@ const key = "c610c25042474efb93d150114241502";
 
 export async function GetWeatherCurrent(location) {
   const response = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=no`
+    `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=no`,
+    { mode: "cors" }
   );
   const data = await response.json();
   GetWeatherCurrentInfo(data);
-};
+}
 
 function GetWeatherCurrentInfo(weather) {
   console.log(weather);
