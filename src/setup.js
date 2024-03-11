@@ -38,7 +38,7 @@ export function SetupHeader() {
   leftDiv.className = "header-left-div";
   rightDiv.className = "header-right-div";
 
-  // search box 
+  // Search box 
   searchButton.className = "search-button";
   searchButton.src = searchIcon;
 
@@ -60,6 +60,12 @@ export function SetupHeader() {
         console.log(autoCompleteResultsData)
         DisplayAutocompleteResults(autoCompleteResultsData);
         autocompleteDiv.style.display = 'block';
+      } else {
+        // If no results are found
+        autocompleteDiv.innerHTML = "";
+        autocompleteDiv.style.display = 'block';
+        autocompleteDiv.innerText = "No Results Found"
+        
       }
     } else {
       autocompleteDiv.innerHTML = "";
