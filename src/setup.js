@@ -61,7 +61,6 @@ export function SetupHeader() {
     if (query.length > 0) {
       const autoCompleteResultsData = await FetchAutoCompleteResults(query);
       if(autoCompleteResultsData.length > 0) {
-        console.log(autoCompleteResultsData)
         DisplayAutocompleteResults(autoCompleteResultsData);
         autocompleteDiv.style.display = 'block';
       } else {
