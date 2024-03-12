@@ -48,7 +48,7 @@ h3 {
 
 .weather-card {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 5em;
@@ -114,3 +114,19 @@ h3 {
     z-index: 999;
     display: none;
 }
+
+/* CHANGE TEMP BUTTON */
+.change-temp-button {
+    border: none;
+    padding: 10px 10px;
+  }
+
+  .change-temp-button:hover {
+    cursor: pointer;
+  }
+
+  .change-temp-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
