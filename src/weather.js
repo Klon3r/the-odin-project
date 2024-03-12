@@ -10,8 +10,6 @@ export async function GetWeatherCurrent(location) {
 }
 
 function GetWeatherCurrentInfo(weather) {
-  // console.log(weather);
-
   // current weather info
   const weather_temp_c = weather.current.temp_c;
   const weather_temp_f = weather.current.temp_f;
@@ -106,12 +104,12 @@ function displayWeatherInfo(weather) {
   weatherDiv.className = "weather-div";
   weatherImg.src = weather.image;
   weatherText.innerText = weather.description.toUpperCase();
-      
+
   imageTextDiv.appendChild(weatherImg);
   imageTextDiv.appendChild(weatherText);
   weatherDiv.appendChild(imageTextDiv);
 
-  // F TO C
+  // Change Temp
   const changeTempDiv = document.createElement("div");
   const changeTempButton = document.createElement("button");
 
@@ -129,17 +127,17 @@ function displayWeatherInfo(weather) {
   weatherCard.appendChild(weatherDiv);
 }
 
-function changeTempUnit(tempC, tempF, feelsC, feelsF){
-  // grab info
+function changeTempUnit(tempC, tempF, feelsC, feelsF) {
   const tempText = document.getElementById("temp-text");
   const feelsLikeText = document.getElementById("feels-like");
 
-  if(tempText.innerText.includes("C")) {
+  if (tempText.innerText.includes("C")) {
     // convert to farenheit
     feelsLikeText.innerText = feelsF;
     tempText.innerText = tempF;
   } else {
+    // convert to celcius
     tempText.innerText = tempC;
     feelsLikeText.innerText = feelsC;
   }
-};
+}
