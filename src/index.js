@@ -4,4 +4,4 @@ import { SetupPage } from "./setup";
 import { GetWeatherCurrent } from "./weather";
 
 SetupPage();
-GetWeatherCurrent('brisbane');
+GetWeatherCurrent("brisbane");
