@@ -10,11 +10,13 @@ export async function GetWeatherCurrent(location) {
 }
 
 function GetWeatherCurrentInfo(weather) {
-  console.log(weather);
+  // console.log(weather);
 
   // current weather info
   const weather_temp_c = weather.current.temp_c;
+  const weather_temp_f = weather.current.temp_f;
   const weather_feelslike_c = weather.current.feelslike_c;
+  const weather_feelslike_f = weather.current.feelslike_f;
   const weather_humidity = weather.current.humidity;
   const weather_last_updated = weather.current.last_updated;
   const weather_img = weather.current.condition.icon;
@@ -32,7 +34,9 @@ function GetWeatherCurrentInfo(weather) {
   // weather hashmap
   const weatherInfo = {
     temp_c: weather_temp_c,
+    temp_f: weather_temp_f,
     feelslike_c: weather_feelslike_c,
+    feelslike_f: weather_feelslike_f,
     humidity: weather_humidity,
     last_updated: weather_last_updated_split[1],
     description: weather_description,
@@ -43,7 +47,6 @@ function GetWeatherCurrentInfo(weather) {
     celcius: weather_celcius,
     fahrenheit: weather_fahrenheit,
   };
-
   displayWeatherInfo(weatherInfo);
 }
 
@@ -73,12 +76,18 @@ function displayWeatherInfo(weather) {
 
   // temp info
   const tempText = document.createElement("h1");
+  tempText.id = "temp-text";
   const feelsLikeText = document.createElement("p");
+  feelsLikeText.id = "feels-like";
   const tempTextDiv = document.createElement("div");
 
-  tempText.innerText = weather.temp_c + weather.celcius;
-  feelsLikeText.innerText =
-    "FEELS LIKE " + weather.feelslike_c + weather.celcius;
+  const tempTextC = weather.temp_c + weather.celcius;
+  const tempTextF = weather.temp_f + weather.fahrenheit;
+  const feelsLikeF = "FEELS LIKE " + weather.feelslike_f + weather.fahrenheit;
+  const feelsLikeC = "FEELS LIKE " + weather.feelslike_c + weather.celcius;
+
+  tempText.innerText = tempTextC;
+  feelsLikeText.innerText = feelsLikeC;
   feelsLikeText.className = "feels-like-text";
   tempText.className = "temp-text";
   tempTextDiv.className = "temp-text-div";
@@ -97,10 +106,40 @@ function displayWeatherInfo(weather) {
   weatherDiv.className = "weather-div";
   weatherImg.src = weather.image;
   weatherText.innerText = weather.description.toUpperCase();
-
+      
   imageTextDiv.appendChild(weatherImg);
   imageTextDiv.appendChild(weatherText);
   weatherDiv.appendChild(imageTextDiv);
 
+  // F TO C
+  const changeTempDiv = document.createElement("div");
+  const changeTempButton = document.createElement("button");
+
+  changeTempButton.textContent = "Change temp unit";
+  changeTempDiv.className = "change-temp-div";
+  changeTempButton.className = "change-temp-button";
+
+  changeTempButton.addEventListener("click", () => {
+    changeTempUnit(tempTextC, tempTextF, feelsLikeC, feelsLikeF);
+  });
+
+  changeTempDiv.appendChild(changeTempButton);
+  weatherDiv.appendChild(changeTempDiv);
+
   weatherCard.appendChild(weatherDiv);
 }
+
+function changeTempUnit(tempC, tempF, feelsC, feelsF){
+  // grab info
+  const tempText = document.getElementById("temp-text");
+  const feelsLikeText = document.getElementById("feels-like");
+
+  if(tempText.innerText.includes("C")) {
+    // convert to farenheit
+    feelsLikeText.innerText = feelsF;
+    tempText.innerText = tempF;
+  } else {
+    tempText.innerText = tempC;
+    feelsLikeText.innerText = feelsC;
+  }
+};
