@@ -20,10 +20,6 @@ body {
 .header-center-div {
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: center;
-    padding: 5px;
-    margin-right: 85px; */
 }
 
 .header-search-div {
@@ -31,7 +27,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 5px;
-    margin-right: 90px;
+    padding-left: 45px;
 }
 
 .search-button {
@@ -60,14 +56,14 @@ h3 {
 
 .weather-card {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     margin: 5em;
     border: 1px solid black;
     border-radius: 15px;
     box-shadow: 3px 3px 3px;
-    width: 20em;
+    width: 22em;
     height: 20em;
     background-color: var(--background-color);
 }
@@ -101,6 +97,11 @@ h3 {
 .temp-text {
     text-align: center;
     margin: 0;
+}
+
+/* WEATHER DIV */
+.weather-div {
+    padding-bottom: 50px;
 }
 
 /* LOCATION TEXT */
@@ -143,5 +144,5 @@ h3 {
   .change-temp-div {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
