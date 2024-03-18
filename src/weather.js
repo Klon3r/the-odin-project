@@ -58,6 +58,7 @@ function displayWeatherInfo(weather) {
 
   lastUpdate.innerText = "LAST UPDATED " + weather.last_updated;
   lastUpdate.className = "last-update";
+  lastUpdateDiv.id = "last-update-div";
 
   lastUpdateDiv.appendChild(lastUpdate);
   weatherCard.appendChild(lastUpdateDiv);
@@ -102,6 +103,7 @@ function displayWeatherInfo(weather) {
 
   imageTextDiv.className = "weather-image-text-div";
   weatherDiv.className = "weather-div";
+  weatherDiv.id = "weather-div";
   weatherImg.src = weather.image;
   weatherText.innerText = weather.description.toUpperCase();
 
@@ -113,7 +115,7 @@ function displayWeatherInfo(weather) {
   const changeTempDiv = document.createElement("div");
   const changeTempButton = document.createElement("button");
 
-  changeTempButton.textContent = "Change temp unit";
+  changeTempButton.textContent = "⚙️ Change Unit";
   changeTempDiv.className = "change-temp-div";
   changeTempButton.className = "change-temp-button";
 
@@ -122,7 +124,9 @@ function displayWeatherInfo(weather) {
   });
 
   changeTempDiv.appendChild(changeTempButton);
-  weatherDiv.appendChild(changeTempDiv);
+
+  const headerRight = document.getElementById('header-right-div')
+  headerRight.appendChild(changeTempDiv);
 
   weatherCard.appendChild(weatherDiv);
 }
