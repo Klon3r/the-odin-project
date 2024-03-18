@@ -37,6 +37,7 @@ export function SetupHeader() {
   searchDiv.className = "header-search-div";
   leftDiv.className = "header-left-div";
   rightDiv.className = "header-right-div";
+  rightDiv.id = "header-right-div";
 
   // Search box 
   searchButton.className = "search-button";
@@ -99,5 +100,9 @@ export function SetupContent() {
 
 function RemoveWeatherCardContent() {
   const weatherCard = document.getElementById('weather-card');
+  const headerRightDiv = document.getElementById('header-right-div');
+
   weatherCard.innerHTML = '';
+  headerRightDiv.innerHTML = '';
+
 }
