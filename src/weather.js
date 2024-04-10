@@ -57,7 +57,6 @@ function GetWeatherCurrentInfo(weather) {
   displayWeatherInfo(weatherInfo);
 }
 
-
 /**
  * Using the weather information display it on the page
  * @param {hashmap} weather Hashmap of weather information
@@ -150,7 +149,7 @@ function displayWeatherInfo(weather) {
  * @param {int} tempC What the temperature is in Celcius
  * @param {int} tempF What the temperature is in Fahrenheit
  * @param {int} feelsC What the weather feels like in Celcius
- * @param {int} feelsF What the weather feels like in Fahrenheit 
+ * @param {int} feelsF What the weather feels like in Fahrenheit
  */
 function changeTempUnit(tempC, tempF, feelsC, feelsF) {
   const tempText = document.getElementById("temp-text");
