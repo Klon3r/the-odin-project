@@ -1,5 +1,10 @@
 const key = "c610c25042474efb93d150114241502";
 
+/**
+ * Fetches current weather information for a specific location from the WeatherAPI.
+ * @param {string} location The location for which to fetch the weather information.
+ * @returns {Promise<void>} A promise that resolves once the weather information is fetched and processed.
+ */
 export async function GetWeatherCurrent(location) {
   const response = await fetch(
     `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=no`,
@@ -9,6 +14,10 @@ export async function GetWeatherCurrent(location) {
   GetWeatherCurrentInfo(data);
 }
 
+/**
+ * Processes the current weather information and prepares it for display.
+ * @param {object} weather The weather data object containing current weather information.
+ */
 function GetWeatherCurrentInfo(weather) {
   // current weather info
   const weather_temp_c = weather.current.temp_c;
@@ -48,6 +57,11 @@ function GetWeatherCurrentInfo(weather) {
   displayWeatherInfo(weatherInfo);
 }
 
+
+/**
+ * Using the weather information display it on the page
+ * @param {hashmap} weather Hashmap of weather information
+ */
 function displayWeatherInfo(weather) {
   const weatherCard = document.getElementById("weather-card");
   const weatherDiv = document.createElement("div");
@@ -125,12 +139,19 @@ function displayWeatherInfo(weather) {
 
   changeTempDiv.appendChild(changeTempButton);
 
-  const headerRight = document.getElementById('header-right-div')
+  const headerRight = document.getElementById("header-right-div");
   headerRight.appendChild(changeTempDiv);
 
   weatherCard.appendChild(weatherDiv);
 }
 
+/**
+ * Change the unit of measurement for the temperature
+ * @param {int} tempC What the temperature is in Celcius
+ * @param {int} tempF What the temperature is in Fahrenheit
+ * @param {int} feelsC What the weather feels like in Celcius
+ * @param {int} feelsF What the weather feels like in Fahrenheit 
+ */
 function changeTempUnit(tempC, tempF, feelsC, feelsF) {
   const tempText = document.getElementById("temp-text");
   const feelsLikeText = document.getElementById("feels-like");

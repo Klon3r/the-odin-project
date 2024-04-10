@@ -2,7 +2,9 @@ import searchIcon from "./img/search.png";
 import { FetchAutoCompleteResults, DisplayAutocompleteResults } from "./search";
 import { GetWeatherCurrent } from "./weather";
 
-// setup
+/**
+ * Setup the page with header, main and content div
+ */
 export function SetupPage() {
   const mainDiv = document.createElement("div");
   const headerDiv = document.createElement("div");
@@ -20,6 +22,9 @@ export function SetupPage() {
   SetupContent();
 }
 
+/**
+ * Setup the page header with title, search box & button
+ */
 export function SetupHeader() {
   const headerDiv = document.getElementById("header");
   const leftDiv = document.createElement("div");
@@ -39,54 +44,58 @@ export function SetupHeader() {
   rightDiv.className = "header-right-div";
   rightDiv.id = "header-right-div";
 
-  // Search box 
+  // Search box
   searchButton.className = "search-button";
   searchButton.src = searchIcon;
 
   search.placeholder = "Enter a city..";
-  search.id = "search-input"
+  search.id = "search-input";
   autocompleteDiv.id = "autocomplete-div";
 
-  const noResultsText = "No results found"
+  const noResultsText = "No results found";
 
-  searchButton.addEventListener('click', () => {
+  searchButton.addEventListener("click", () => {
     if (autocompleteDiv.innerText != noResultsText) {
-    RemoveWeatherCardContent()
-    GetWeatherCurrent(search.value);
-    autocompleteDiv.style.display = 'none';
+      RemoveWeatherCardContent();
+      GetWeatherCurrent(search.value);
+      autocompleteDiv.style.display = "none";
     }
-  })
+  });
 
-  search.addEventListener('input', async () => {
+  // Search results
+  search.addEventListener("input", async () => {
     const query = search.value.trim();
     if (query.length > 0) {
+      // If there is something to search
       const autoCompleteResultsData = await FetchAutoCompleteResults(query);
-      if(autoCompleteResultsData.length > 0) {
+      if (autoCompleteResultsData.length > 0) {
         DisplayAutocompleteResults(autoCompleteResultsData);
-        autocompleteDiv.style.display = 'block';
+        autocompleteDiv.style.display = "block";
       } else {
         // If no results are found
         autocompleteDiv.innerHTML = "";
-        autocompleteDiv.style.display = 'block';
+        autocompleteDiv.style.display = "block";
         autocompleteDiv.innerText = noResultsText;
-        
       }
     } else {
       autocompleteDiv.innerHTML = "";
-      autocompleteDiv.style.display = 'none';
+      autocompleteDiv.style.display = "none";
     }
-  })
+  });
 
   headerDiv.appendChild(leftDiv);
   leftDiv.appendChild(title);
   headerDiv.appendChild(centerDiv);
   searchDiv.appendChild(search);
-  searchDiv.appendChild(searchButton)
+  searchDiv.appendChild(searchButton);
   centerDiv.appendChild(searchDiv);
   centerDiv.appendChild(autocompleteDiv);
   headerDiv.appendChild(rightDiv);
 }
 
+/**
+ * Setup content with content, weather-card divs
+ */
 export function SetupContent() {
   const contentDiv = document.getElementById("content-div");
   const weatherCard = document.createElement("div");
@@ -98,11 +107,13 @@ export function SetupContent() {
   contentDiv.appendChild(weatherCard);
 }
 
+/**
+ * Remove content from weather card
+ */
 function RemoveWeatherCardContent() {
-  const weatherCard = document.getElementById('weather-card');
-  const headerRightDiv = document.getElementById('header-right-div');
+  const weatherCard = document.getElementById("weather-card");
+  const headerRightDiv = document.getElementById("header-right-div");
 
-  weatherCard.innerHTML = '';
-  headerRightDiv.innerHTML = '';
-
+  weatherCard.innerHTML = "";
+  headerRightDiv.innerHTML = "";
 }
