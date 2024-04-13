@@ -3,25 +3,27 @@ import { clearNoteContent } from "./note";
 
 // Add a project to local storage
 export function addProject(title) {
-  localStorage.setItem(title, "")
+  localStorage.setItem(title, "");
   reloadProjectSidebar();
 }
 
 // Reload the project sidebar
 export function reloadProjectSidebar() {
-  const project = document.getElementById('project-list-div');
-  project.innerHTML = '';
+  const project = document.getElementById("project-list-div");
+  project.innerHTML = "";
 
   // loop through local storage
   for (const [key] of Object.entries(localStorage)) {
-    const projectNames = document.createElement('h4');
+    const projectNames = document.createElement("h4");
     projectNames.id = key;
-    projectNames.className = "project-title-list"
+    projectNames.className = "project-title-list";
     projectNames.innerText = key;
 
-    projectNames.addEventListener('click', () => { noteInit(projectNames.id); })
+    projectNames.addEventListener("click", () => {
+      noteInit(projectNames.id);
+    });
 
-    project.appendChild(projectNames)
+    project.appendChild(projectNames);
   }
 }
 
@@ -29,5 +31,5 @@ export function reloadProjectSidebar() {
 export function deleteProject(projectId) {
   localStorage.removeItem(projectId);
   reloadProjectSidebar();
-  clearNoteContent()
+  clearNoteContent();
 }
