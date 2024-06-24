@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  /* variables */
+  --banner-color: rgba(0, 0, 0, 0.650);
+  --banner-txt-color: rgb(255, 255, 255);
+  --background-color: pink;
+  --error-color: rgba(252, 5, 5, 0.87);
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.bg-img {
+  display: flex;
+  background-image: url(/img/bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  width: 100vw;
+  min-width: 230px;
+  min-height: 300px;
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  background-color: var(--banner-color);
+  width: 100vw;
+  height: 10vh;
+  top: 20vh;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.logo-img {
+  height: 7vh;
+}
+
+.logo-txt {
+  justify-content: center;
+  color: var(--banner-txt-color);
+  font-family: 'Press Start 2P';
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.right-side {
+  width: 130vw;
+  background-color: var(--background-color);
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  padding-top: 20vh;
+  padding-left: 2vw;
+}
+
+
+form {
+  display: flex;
+  flex-flow: row wrap;
+  width: 30vw;
+  gap: 20px;
+  /* border: 1px solid black; */
+}
+
+.input {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.create {
+  margin-top: 3vh;
+}
+
+p {
+  font-size: 1.1em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+  font-family: 'Courier New', Courier, monospace;
+  min-width: 13vw;
+  min-height: 2vh;
+}
+
+label {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+  min-width: 10vw;
+  min-height: 3vh;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+}
+
+.password {
+  border: 2px solid var(--error-color);
+}
+
+#passwordMessage {
+  font-size: 0.8rem;
+  color: var(--error-color);
+  padding-top: 0.5vh;
+}
