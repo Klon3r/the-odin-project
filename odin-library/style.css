@@ -1,0 +1,63 @@
+:root {
+  --background-color: white;
+}
+
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  border: 2px solid black;
+  align-items: center;
+  background-color: lightpink;
+}
+
+h2 {
+  padding-left: 1rem;
+}
+
+#new-book {
+  width: 6rem;
+  height: 3rem;
+}
+
+.book-content {
+  border: 2px solid black;
+  border-radius: 5%;
+  padding: 1rem;
+  min-width: 200px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 2em;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+#input-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  margin-bottom: 0.5em;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  border: 2px solid black;
+  background-color: white;
+}
