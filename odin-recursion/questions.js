@@ -10,11 +10,8 @@
 function fibs(number) {
   let fibArray = [];
   for (let i = 0; i < number; i++) {
-    if (i === 0) {
-      fibArray.push(0);
-    } else if (i === 1) {
-      fibArray.push(1);
-    } else {
+    if (i < 2) fibArray.push(i);
+    else {
       let currentNumber = fibArray[fibArray.length - 1];
       let previousNumber = fibArray[fibArray.length - 2];
       let newNumber = currentNumber + previousNumber;
