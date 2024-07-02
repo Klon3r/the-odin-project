@@ -58,6 +58,10 @@ class LinkedList {
     return null;
   }
 
+  /**
+   * @description Return the last node in the list
+   * @returns {object|null} The last node object in the linked list, or null if the list is empty
+   */
   tail() {
     if (this.size() >= 1) console.log("TAIL:", this.list[this.size() - 1]);
   }
