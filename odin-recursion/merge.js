@@ -4,6 +4,11 @@
 
 array = [3, 2, 1, 13, 8, 5, 0, 1];
 
+/**
+ * Function to perform merge sort on an array.
+ * @param {number[]} array - The array of numbers to be sorted.
+ * @returns {number[]} - Sorted array in ascending order.
+ */
 function mergeSort(array) {
   if (array.length <= 1) {
     return array;
@@ -18,6 +23,12 @@ function mergeSort(array) {
   return merge(mergeSort(l), mergeSort(r));
 }
 
+/**
+ * Function to merge two sorted arrays into a single sorted array.
+ * @param {number[]} left - The left sorted array.
+ * @param {number[]} right - The right sorted array.
+ * @returns {number[]} - Merged sorted array.
+ */
 function merge(left, right) {
   let array = [];
 
