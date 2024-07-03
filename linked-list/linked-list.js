@@ -83,6 +83,8 @@ class LinkedList {
   pop() {
     if (this.list.length >= 1) {
       this.list.pop();
+      const lastNode = this.list[this.list.length - 1];
+      lastNode.nextValue = null;
     } else {
       console.log("You cannot use 'pop()' due to the list size being 0");
     }
@@ -124,6 +126,43 @@ class LinkedList {
     array.push("null");
     console.log(array.join(" ").toString());
   }
+
+  /**
+   * @description Insert a new node with the provided **value** at the given **index**
+   * @param {int} value
+   * @param {int} index
+   */
+  insertAt(value, index) {
+    if (this.list.length >= index) {
+      const oldNode = this.list[index];
+      const newNode = new Node(value, oldNode.value);
+
+      if (index - 1 > this.list.length) {
+        const prevNode = this.list[index - 1];
+        prevNode.nextValue = value;
+      }
+
+      const insertedList = [
+        ...this.list.slice(0, index),
+        newNode,
+        ...this.list.slice(index, this.list.length),
+      ];
+      this.list = insertedList;
+    } else {
+      console.error("Index is out of length of the Linked List cannot insert");
+    }
+  }
+
+  removeAt(index) {
+    if (this.list.length >= index) {
+      this.list.splice(index, 1);
+      if (index - 1 > this.list.length && index + 1 <= this.list.length) {
+        const prevNode = this.list[index - 1];
+        const nextNode = this.list[index];
+        prevNode.nextValue = nextNode.value;
+      }
+    }
+  }
 }
 
 class Node {
@@ -134,34 +173,42 @@ class Node {
 }
 
 const linkedList = new LinkedList();
-linkedList.append(10);
-linkedList.append(5);
-linkedList.append(2);
-linkedList.append(7);
-linkedList.append(9);
-linkedList.prepend(1);
-linkedList.prepend(3);
-linkedList.prepend(11);
-console.log("The amount of nodes in the list is...", linkedList.size());
-linkedList.head();
-linkedList.tail();
+linkedList.append(10); // 10
+linkedList.append(5); // 10 -> 5
+linkedList.append(2); // 10 -> 5 -> 2
+linkedList.append(7); // 10 -> 5 -> 2 -> 7
+linkedList.append(9); // 10 -> 5 -> 2 -> 7 -> 9
+linkedList.prepend(1); // 1 -> 10 -> 5 -> 2 -> 7 -> 9
+linkedList.prepend(3); // 3 -> 1 -> 10 -> 5 -> 2 -> 7 -> 9
+linkedList.prepend(11); // 11 -> 3 -> 1 -> 10 -> 5 -> 2 -> 7 -> 9
+console.log("The amount of nodes in the list is...", linkedList.size()); // 8
+linkedList.head(); // Node { value: 11, nextValue: 3 }
+linkedList.tail(); // Node { value: 9, nextValue: null }
 const index = 2;
-console.log(`The node at index ${index}: `, linkedList.at(index));
-linkedList.pop();
-linkedList.tail();
+console.log(`The node at index ${index}: `, linkedList.at(index)); // The node at index 2:  Node { value: 1, nextValue: 10 }
+linkedList.pop(); // 11 -> 3 -> 1 -> 10 -> 5 -> 2 -> 7
+linkedList.tail(); // TAIL: Node { value: 7, nextValue: null }
 let contains = 5;
 console.log(
   `Does the linked list contain ${contains}: `,
   linkedList.contains(contains)
-);
+); // Does the linked list contain 5:  true
 contains = 10;
 console.log(
   `Does the linked list contain ${contains}: `,
   linkedList.contains(contains)
-);
+); // Does the linked list contain 10:  true
 
 console.log(
   `Where is the value 10 in the linked list: Index `,
   linkedList.find(10)
-);
-linkedList.toString();
+); // Where is the value 10 in the linked list: Index  3
+linkedList.toString(); // ( 11 ) -> ( 3 ) -> ( 1 ) -> ( 10 ) -> ( 5 ) -> ( 2 ) -> ( 7 ) -> null
+
+linkedList.insertAt(0, 0);
+linkedList.toString(); // ( 0 ) -> ( 11 ) -> ( 3 ) -> ( 1 ) -> ( 10 ) -> ( 5 ) -> ( 2 ) -> ( 7 ) -> null
+console.log(`The node at index ${5}: `, linkedList.at(5)); // The node at index 5:  Node { value: 5, nextValue: 2 }
+
+linkedList.removeAt(0);
+linkedList.toString(); // ( 11 ) -> ( 3 ) -> ( 1 ) -> ( 10 ) -> ( 5 ) -> ( 2 ) -> ( 7 ) -> null
+console.log(`Node: `, linkedList.at(0)); //Node:  Node { value: 11, nextValue: 3 }
