@@ -10,3 +10,18 @@ test.set("Mr. Krabs", "Mr. Krabs");
 test.set("Plankton", "Plankton");
 test.set("Sandy Cheeks", "Sandy Cheeks");
 test.set("Pearl Krabs", "Pearl Krabs");
+
+console.log(test.get("Patrick"));
+console.log(test.get("1"));
+
+console.log("Has:", test.has("1"));
+console.log("Remove:", test.remove("1"));
+
+console.log("Length:", test.length());
+
+test.set("Test Krabs", "Test Krabs");
+console.log("Keys: ", test.keys());
+
+console.log("Values: ", test.values());
+
+console.log("Entries: ", test.values());
