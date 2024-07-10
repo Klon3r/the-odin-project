@@ -2,11 +2,26 @@ import { Node } from "./node.js";
 
 export class Tree {
   constructor(array) {
-    this.buildTree(array);
+    array = this.removeArrayDuplicates(array);
+    this.root = this.buildTree(array, 0, array.length - 1);
   }
 
-  buildTree(array) {
-    array = this.removeArrayDuplicates(array);
+  /**
+   * Build the binary search tree using recursion
+   * @param {int[]} array
+   * @param {int} start
+   * @param {int} end
+   * @returns The root of the tree
+   */
+  buildTree(array, start, end) {
+    if (start > end) return null;
+    let mid = Math.floor((start + end) / 2);
+
+    let root = new Node(null, null, array[mid]);
+    root.setLeft(this.buildTree(array, start, mid - 1));
+    root.setRight(this.buildTree(array, mid + 1, end));
+
+    return root;
   }
 
   /**

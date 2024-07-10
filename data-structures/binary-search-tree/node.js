@@ -1,8 +1,8 @@
 export class Node {
-  constructor(left = null, right = null, root = null) {
+  constructor(left = null, right = null, data = null) {
     this.left = left;
     this.right = right;
-    this.root = root;
+    this.data = data;
   }
 
   /**
@@ -19,13 +19,5 @@ export class Node {
    */
   setRight(right) {
     this.right = right;
-  }
-
-  /**
-   * @description Set the root of the node
-   * @param {string|int} root The root node
-   */
-  setRoot(root) {
-    this.root = root;
   }
 }
