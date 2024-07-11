@@ -28,3 +28,5 @@ prettyPrint(test.root);
 
 let find = test.find(test.root, 1);
 console.log(find);
+
+console.log("Level Order:", test.levelOrder(test.root)); // 9, 4, 324, 1, 5, 23, 6345, 3, 7, 50

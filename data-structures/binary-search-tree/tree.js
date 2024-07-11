@@ -4,6 +4,8 @@ export class Tree {
   constructor(array) {
     array = this.removeArrayDuplicates(array);
     this.root = this.buildTree(array, 0, array.length - 1);
+    this.queue = [];
+    this.levelOrderArray = [];
   }
 
   /**
@@ -133,5 +135,25 @@ export class Tree {
       //console.log(node);
       return node;
     }
+  }
+
+  levelOrder(node) {
+    if (node === null) return null;
+
+    this.queue.push(node);
+
+    while (this.queue.length > 0) {
+      let currentNode = this.queue.shift();
+      this.levelOrderArray.push(currentNode.data);
+
+      if (currentNode.left != null) {
+        this.queue.push(currentNode.left);
+      }
+      if (currentNode.right != null) {
+        this.queue.push(currentNode.right);
+      }
+    }
+
+    return this.levelOrderArray;
   }
 }
