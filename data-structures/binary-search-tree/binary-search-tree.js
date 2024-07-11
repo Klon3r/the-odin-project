@@ -17,3 +17,14 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 prettyPrint(test.root);
+test.insert(50);
+test.insert(50);
+test.insert(2);
+test.deleteNode(2);
+test.deleteNode(67);
+test.deleteNode(8);
+
+prettyPrint(test.root);
+
+let find = test.find(test.root, 1);
+console.log(find);
