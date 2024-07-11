@@ -137,6 +137,11 @@ export class Tree {
     }
   }
 
+  /**
+   * @description Traverses the tree in breadth-first level order
+   * @param {object} node The node
+   * @returns {array|null} Returns an array with the level order nodes in it
+   */
   levelOrder(node) {
     if (node === null) return null;
 
@@ -155,5 +160,31 @@ export class Tree {
     }
 
     return this.levelOrderArray;
+  }
+
+  /**
+   * @description Traverses the tree in order
+   * @param {object} node A node
+   * @returns Returns null if node is null
+   */
+  inOrder(node) {
+    if (node === null) return null;
+
+    this.inOrder(node.left);
+    console.log(node.data);
+    this.inOrder(node.right);
+  }
+
+  /**
+   * @description Traverses the tree in, pre order
+   * @param {object} node The node obj
+   * @returns Returns null if no node is found
+   */
+  preOrder(node) {
+    if (node === null) return null;
+
+    console.log(node.data);
+    this.preOrder(node.left);
+    this.preOrder(node.right);
   }
 }

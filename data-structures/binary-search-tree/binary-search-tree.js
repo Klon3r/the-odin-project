@@ -30,3 +30,8 @@ let find = test.find(test.root, 1);
 console.log(find);
 
 console.log("Level Order:", test.levelOrder(test.root)); // 9, 4, 324, 1, 5, 23, 6345, 3, 7, 50
+
+console.log("In Order Traversal:");
+test.inOrder(test.root);
+console.log("Pre Order Traversal:");
+test.preOrder(test.root);
