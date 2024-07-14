@@ -202,18 +202,65 @@ export class Tree {
     console.log(node.data);
   }
 
+  /**
+   * @description Return the given node's height
+   * @param {object} node The node object
+   * @returns Return the heigh of the given node
+   */
   height(node) {
     if (node === null) {
       return 0;
     } else {
       let lDepth = this.height(node.left);
-      let rDepth = this.height(node.left);
+      let rDepth = this.height(node.right);
 
       if (lDepth > rDepth) {
         return lDepth + 1;
       } else {
         return rDepth + 1;
       }
+    }
+  }
+
+  /**
+   * @description Return the depth of the given node
+   * @param {Object} node The node object
+   * @param {int} x The node value
+   * @returns {int} The depth amount
+   */
+  depth(node, x) {
+    if (node === null) return -1;
+
+    // Init distance as -1
+    let dist = -1;
+
+    if (
+      node.data == x ||
+      (dist = this.depth(node.left, x)) >= 0 ||
+      (dist = this.depth(node.right, x)) >= 0
+    ) {
+      return dist + 1;
+    }
+    return dist;
+  }
+
+  /**
+   * @description Check if the tree is balanced
+   * @param {Object} node The node object
+   * @returns Returns 0 if the node is null
+   */
+  isBalanced(node) {
+    if (node === null) return 0;
+
+    // Check left & right subtree
+    let left = this.height(node.left);
+    let right = this.height(node.right);
+
+    console.log("Left Height:", left);
+    console.log("Right Height:", right);
+
+    if (Math.abs(left - right) > 1) {
+      console.error("The tree is not balanced");
     }
   }
 }

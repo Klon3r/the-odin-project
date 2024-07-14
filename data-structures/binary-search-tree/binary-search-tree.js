@@ -38,3 +38,11 @@ test.preOrder(test.root);
 console.log("Post Order Traversal:");
 test.postOrder(test.root);
 console.log("The height of the tree is:", test.height(test.root));
+
+console.log("Depth:", test.depth(test.root, 3));
+
+test.isBalanced(test.root);
+test.insert(49);
+test.insert(48);
+test.insert(47);
+test.isBalanced(test.root);
