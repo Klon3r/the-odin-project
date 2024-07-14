@@ -187,4 +187,33 @@ export class Tree {
     this.preOrder(node.left);
     this.preOrder(node.right);
   }
+
+  /**
+   * @description Traverses the tree in, post order
+   * @param {object} node The node object
+   * @returns Returns null if no node is found
+   */
+  postOrder(node) {
+    if (node === null) return null;
+
+    this.postOrder(node.left);
+    this.postOrder(node.right);
+
+    console.log(node.data);
+  }
+
+  height(node) {
+    if (node === null) {
+      return 0;
+    } else {
+      let lDepth = this.height(node.left);
+      let rDepth = this.height(node.left);
+
+      if (lDepth > rDepth) {
+        return lDepth + 1;
+      } else {
+        return rDepth + 1;
+      }
+    }
+  }
 }

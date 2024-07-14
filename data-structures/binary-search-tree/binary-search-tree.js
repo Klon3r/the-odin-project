@@ -35,3 +35,6 @@ console.log("In Order Traversal:");
 test.inOrder(test.root);
 console.log("Pre Order Traversal:");
 test.preOrder(test.root);
+console.log("Post Order Traversal:");
+test.postOrder(test.root);
+console.log("The height of the tree is:", test.height(test.root));
