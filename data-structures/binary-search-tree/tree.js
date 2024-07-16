@@ -263,4 +263,18 @@ export class Tree {
       console.error("The tree is not balanced");
     }
   }
+
+  /**
+   * @description Rebalances the binary tree
+   */
+  rebalance() {
+    this.levelOrderArray = [];
+    this.queue = [];
+
+    let treeArray = this.levelOrder(this.root);
+    treeArray = this.removeArrayDuplicates(treeArray);
+
+    console.log(treeArray);
+    this.root = this.buildTree(treeArray, 0, treeArray.length - 1);
+  }
 }
