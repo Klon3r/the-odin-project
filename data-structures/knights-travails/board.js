@@ -27,6 +27,9 @@ export class Board {
     this.adjacencyList.get(key2).push(key);
   }
 
+  /**
+   * @description Print out the adjacency list
+   */
   print() {
     console.log(" ─────────────────────── ");
     console.log("│ Location │ Can Visit  │");
