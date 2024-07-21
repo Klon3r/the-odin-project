@@ -93,14 +93,42 @@ const alphabetMap = [
   "t",
   "u",
   "v",
+  "w",
   "x",
   "y",
   "z",
 ];
 
+/**
+ * @description Takes a string and a shift factor and returns it with each character “shifted”.
+ * @param {string} word The string to be shifted
+ * @param {number} shift The amount to shift by
+ * @returns Returns the shifted word
+ */
 export function caesarCipher(word: string, shift: number) {
-  // Take string and convert into letters
-  // Find letter in array and find index
-  // Plus shift number to index ( number % 26? )
-  // Rejoin array
+  let splitArray: string[] = word.split("");
+  let capitalCheck: boolean;
+
+  for (let i = 0; i < splitArray.length; i++) {
+    capitalCheck = false;
+
+    if (splitArray[i] === splitArray[i].toUpperCase()) {
+      capitalCheck = true;
+      splitArray[i] = splitArray[i].toLowerCase();
+    }
+    if (alphabetMap.includes(splitArray[i])) {
+      const element = (element) => element === splitArray[i];
+      const whatElement = alphabetMap.findIndex(element);
+
+      const shiftIndex = (whatElement + shift) % 26;
+      splitArray[i] = alphabetMap[shiftIndex];
+
+      if (capitalCheck === true) {
+        splitArray[i] = splitArray[i].toUpperCase();
+      }
+    }
+  }
+
+  word = splitArray.join("");
+  return word;
 }

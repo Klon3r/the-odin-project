@@ -1,5 +1,5 @@
 import { test, describe, expect } from "@jest/globals";
-import { Calculator, capitalize, reverseString } from "./main.ts";
+import { caesarCipher, Calculator, capitalize, reverseString } from "./main.ts";
 
 describe("Capitalize Function: ", () => {
   test("Capitalize hello to Hello", () => {
@@ -56,5 +56,17 @@ describe("Calculator Class: ", () => {
   });
   test("Multiply: 10 * -1 = -10", () => {
     expect(calc.divide(10, -1)).toBe(-10);
+  });
+});
+
+describe("Caeser Cipher: ", () => {
+  test("xyz by 3 => abc", () => {
+    expect(caesarCipher("xyz", 3)).toBe("abc");
+  });
+  test("Hello, World! => Khoor, Zruog!", () => {
+    expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+  });
+  test("HeLLo => KhOOr", () => {
+    expect(caesarCipher("HeLLo", 3)).toBe("KhOOr");
   });
 });
