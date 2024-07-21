@@ -1,5 +1,11 @@
 import { test, describe, expect } from "@jest/globals";
-import { caesarCipher, Calculator, capitalize, reverseString } from "./main.ts";
+import {
+  analyzeArray,
+  caesarCipher,
+  Calculator,
+  capitalize,
+  reverseString,
+} from "./main.ts";
 
 describe("Capitalize Function: ", () => {
   test("Capitalize hello to Hello", () => {
@@ -68,5 +74,16 @@ describe("Caeser Cipher: ", () => {
   });
   test("HeLLo => KhOOr", () => {
     expect(caesarCipher("HeLLo", 3)).toBe("KhOOr");
+  });
+});
+
+describe("Analyze Array: ", () => {
+  test("analyzeArray([1, 8, 3, 4, 2, 6])", () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
+      average: 4,
+      length: 6,
+      max: 8,
+      min: 1,
+    });
   });
 });

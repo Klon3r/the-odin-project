@@ -132,3 +132,43 @@ export function caesarCipher(word: string, shift: number) {
   word = splitArray.join("");
   return word;
 }
+
+/**
+ * @description Takes an array of numbers and returns an object with the following properties: average, min, max, and length
+ * @param {number[]}array The array to turn into an object
+ * @returns {object} Returns a object with average, min, max & length
+ */
+export function analyzeArray(array: number[]) {
+  if (array.length > 0) {
+    array = array.sort();
+    const length: number = array.length;
+    const initalValue: number = 0;
+    const average: number =
+      array.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initalValue
+      ) / length;
+    const min: number = array[0];
+    const max: number = array[array.length - 1];
+
+    const object = {
+      average: average,
+      min: min,
+      max: max,
+      length: length,
+    };
+
+    return object;
+  }
+
+  /**
+  
+    
+    [1,8,3,4,2,6
+   object == {
+   average: 4,
+   min: 1,
+   max: 8,
+   length: 6
+   **/
+}
