@@ -30,6 +30,9 @@ Merged all projects into one git repo for easier viewing.
   - [Calculator](https://github.com/Klon3r/the-odin-project/tree/main/odin-projects/odin-calculator)
   - [Calculator v2](https://github.com/Klon3r/the-odin-project/tree/main/odin-projects/odin-calculator-v2)
   - [Admin Dashboard](https://github.com/Klon3r/the-odin-project/tree/main/odin-projects/odin-admin-dashboard)
+  - [Battleship](https://github.com/Klon3r/the-odin-project/tree/main/odin-projects/odin-battleship)
+  - [Todo List](https://github.com/Klon3r/the-odin-project/tree/main/odin-projects/odin-todo-list)
+  - [Weather App](https://github.com/Klon3r/the-odin-project/tree/main/odin-projects/odin-weather-app)
 
 </details>
 
