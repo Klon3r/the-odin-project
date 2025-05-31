@@ -1,0 +1,31 @@
+:root {
+  --background-color: #fae2ff;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+#gameboard-div {
+  margin: auto;
+  justify-content: center;
+}
+
+.cell-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  border: 1px solid black;
+  margin: 1px;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  align-content: center;
+}
+
+.cell:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
