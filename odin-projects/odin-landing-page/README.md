@@ -1,4 +1,5 @@
 # The Odin Project: Landing Page
+
 This is my version of the landing page. I have taken a rough styling of what was required and ran with my own content.
 
 Below is a screenshot of the landing page site
